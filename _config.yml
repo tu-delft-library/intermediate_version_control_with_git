@@ -1,5 +1,5 @@
-title:  Readiness Quiz - Introduction to the Unix Shell 
-description: This quiz tests your knowledge of basic UNIX shell commands, including file navigation and management.  
+title:  Intermediate Version Control with Git
+description: Learn to work with Git branches and fix simple merge conflicts.
 theme: null 
 markdown: kramdown 
 kramdown: 
