@@ -7,6 +7,18 @@ When two branches change the same part of the same file, Git can't guess which v
 > **Key insight:** A conflict means "two people changed the same thing — I need a human to decide." Git will never silently overwrite someone's work. That's a feature, not a bug.
 
 ---
+## Escape hatches
+
+| Command | What it does |
+|---|---|
+| `git merge --abort` | Cancel the merge entirely — safe at any time |
+| `git status` | Show which files still have conflicts |
+| `git diff` | Show all unresolved conflict content |
+| `git switch --ours <file>` | Accept your branch's version of a file |
+| `git switch --theirs <file>` | Accept the incoming branch's version |
+| `git log --oneline` | Compact commit history |
+
+---
 
 ## Lab overview
 
@@ -33,7 +45,7 @@ nano recipe.txt
 Add the text below to `recipe.txt`
 ```bash
 Grandma's Tomato Soup
-======================
+---------------------
 Serves: 4
 Prep time: 10 minutes
 Cook time: 30 minutes
@@ -59,7 +71,7 @@ nano bio.txt
 Add the text below to `bio.txt`
 ```bash
 About Our Team
-==============
+--------------
 We are a small team of designers and writers based in Amsterdam.
 We have been working together since 2019.
 Our old office was in Rotterdam.
@@ -75,7 +87,7 @@ nano event.txt
 Add the text below to `event.txt`
 ```bash
 Summer Workshop 2025
-====================
+--------------------
 Date: Saturday 14 June 2025
 Location: Community Hall, Delft
 Maximum attendees: 40
@@ -90,7 +102,7 @@ nano README.txt
 Add the text below to `README.txt`
 ```bash
 Event details
-=============
+-------------
 Date: 14 June 2025
 Ticket price: 25 euros
 ```
@@ -217,7 +229,7 @@ Remove lines referring to Rotterdam office (i.e. third and fourth lines).
 The content of `bio.txt` should like the text below:
 ```bash
 About Our Team
-==============
+--------------
 We are a small team of designers and writers based in Amsterdam.
 We have been working together since 2019.
 We specialise in brand identity and editorial design.
@@ -368,18 +380,7 @@ git log --oneline --all --graph
 
 ---
 
-## Escape hatches
 
-| Command | What it does |
-|---|---|
-| `git merge --abort` | Cancel the merge entirely — safe at any time |
-| `git status` | Show which files still have conflicts |
-| `git diff` | Show all unresolved conflict content |
-| `git switch --ours <file>` | Accept your branch's version of a file |
-| `git switch --theirs <file>` | Accept the incoming branch's version |
-| `git log --oneline` | Compact commit history |
-
----
 
 ## Reflection questions
 
