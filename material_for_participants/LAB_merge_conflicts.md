@@ -119,6 +119,8 @@ git commit -m "Initial files: recipe, bio, event, README"
 
 ## Conflict 1: Same-line edit
 
+> **Remember:** Avoid copy pasting. Typing all the commands help you integrate your understanding.
+
 **File:** `recipe.txt`
 
 Alice adds a stirring note; Bob adds a seasoning reminder — to the same line.
@@ -211,6 +213,7 @@ git commit -m "Merge: combine Alice and Bob recipe improvements"
 ---
 
 ## Conflict 2: Delete vs edit
+
 
 **File:** `bio.txt`
 

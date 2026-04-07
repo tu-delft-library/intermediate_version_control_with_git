@@ -1,5 +1,7 @@
 # Lab | Conflicts with Remote Repositories | ~35 min
 
+
+
 ## What is a remote conflict?
 
 When you and a colleague both change the same file and try to share your work through a shared remote repository, Git will stop and ask you to sort it out. This happens in two situations:
@@ -62,6 +64,8 @@ Copy this URL — you'll need it in the next step.
 > **Note on authentication:** You'll need your **SSH** key set up to follow these instructions.
 
 **Step 2 — Clone it as "you" and add the starting files**
+
+> **Remember:** Avoid copy pasting. Typing all the commands help you integrate your understanding.
 
 Open your terminal and run:
 
