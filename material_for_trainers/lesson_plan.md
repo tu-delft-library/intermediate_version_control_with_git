@@ -20,18 +20,19 @@
 ## 9:40 - Make local repo with history - 10' - CATA 
 Use this opportunity to **recap git commands**
 
-Let's configure some git default editor:
+Let's configure our `git` default editor:
 ```bash
 git config --global core.editor "nano -w"
 ```
 ```bash
 cd Desktop/
-mkdir gitcodev
-cd gitcodev/
+mkdir logbook
+cd logbook/
 git init
 git status
-echo 'first line' > lines.txt           # explain echo > and >>
-echo 'second line' >> lines.txt  
+echo 'first line'                       # echo prints text to terminal screen
+echo 'first line' > lines.txt           # > redirects string into a file, overwrites content
+echo 'second line' >> lines.txt         # >> similar to > but it appends instead of overwrite
 git add lines.txt 
 git commit -m 'Add first two lines' lines.txt 
 git log --oneline
@@ -230,7 +231,7 @@ sixth line
 seventh line
 ```
 >
-In this example, the conflict has been resolved by mixing both sets of changes. Parts of the changes from both branches are now present in the file. If you are done you can use git add to stage the resolved changes:
+In this example, the conflict has been resolved by mixing both sets of changes. Parts of the changes from both branches are now present in the file. If you are done you can use `git add` to stage the resolved changes:
 
 ```bash
 git status
@@ -280,13 +281,13 @@ Do not solve the LAB live. Just ask questions, share experiences or highlight co
 ## 13:30 💪 Interactive Git - 15' - HALFORD 
 - Go to this link https://learngitbranching.js.org/
 - Complete **Introduction episodes 1, 2, 3**
-[Optional] Continue on the more advanced exercises
+- [Optional] Continue on the more advanced exercises
 
 ## 13:45 - Create a remote repository on GitHub - 5' - HALFORD 
 
 1. Go to [github.com](https://github.com) and sign in.
 2. Click the **+** icon in the top-right corner and choose **New repository**.
-3. Name it `git-one`.
+3. Name it `logbook`. YES! same as our local repository.
 4. Leave it **Public**.
 5. Leave all clone_colleague options as they are. Do **not** add a README or .gitignore.
 6. Click **Create repository**.
@@ -294,7 +295,7 @@ Do not solve the LAB live. Just ask questions, share experiences or highlight co
 GitHub will show you your new empty repository and its URL. 
 Click on the `SSH` tab. It will look like:
 ```
-git@github.com:YOUR-USERNAME/git-one.git
+git@github.com:YOUR-USERNAME/logbook.git
 ```
 Copy this URL
 
@@ -303,8 +304,8 @@ Copy this URL
 Clone the repository locally:
 ```bash
 cd ~/Desktop
-git clone git@github.com:YOUR-USERNAME/git-one.git
-cd git-one
+git clone git@github.com:YOUR-USERNAME/logbook.git
+cd logbook
 ```
 
 ```bash
@@ -322,9 +323,9 @@ Explain remote operations:
 - **Pushing**: uploading your local commits to the remote repository.
 - **Pulling**: `git pull` is `git fetch` + `git merge` in one step.
 
-Copy the local `gitcodev` history into this repo and push:
+Copy the local `logbook` history into this repo and push:
 ```bash
-cp ~/Desktop/gitcodev/lines.txt .
+cp ~/Desktop/logbook/lines.txt .
 git add lines.txt
 git commit -m 'Add lines.txt from local work'
 git push origin main        # push to remote
