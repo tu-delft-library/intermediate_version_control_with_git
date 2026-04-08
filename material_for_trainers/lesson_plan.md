@@ -15,7 +15,6 @@
 
 ## 9:25 - Introduction to branches - 15' - CATA 
 🎥 Use slides
-[TODO] improve branch explanation
 
 ## 9:40 - Make local repo with history - 10' - CATA 
 Use this opportunity to **recap git commands**
@@ -70,8 +69,8 @@ git switch main         # switch to main
 git log --oneline       # notice HEAD -> main
 ```
 
-## 10:05 - 💪 Get familiar with branches - 10' - CATA 
-See `exercises.md`
+## 10:05 - 1 💪 Get familiar with branches - 10' - CATA 
+See `exercises.md`. There is an optional challenge under each numbered exercise.. There is an optional challenge under each numbered exercise.
 
 Solution:
 ```bash
@@ -111,8 +110,8 @@ git log --oneline --all --graph            # show graph with all branches
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
-## 10:25 - 💪 Commit in a secondary branch - 5' - CATA
-see `exercises.md` 
+## 10:25 - 2 💪 Commit in a secondary branch - 5' - CATA
+See `exercises.md`. There is an optional challenge under each numbered exercise. 
 
 Solution:
 ```bash
@@ -169,8 +168,8 @@ git commit -m 'Correct fifth line on main' lines.txt # routine
 git log --oneline --graph
 ```
 
-## 10:55 - 💪  Explore differences across branches - 10' - HALFORD
-see `exercises.md`
+## 10:55 - 3 💪  Explore differences across branches - 10' - HALFORD
+See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
 ```bash
@@ -250,8 +249,8 @@ git log --oneline --all --graph --parents                 # see merge with hashe
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:lines.txt :2:lines.txt`
 
-## 11:20 💪 A first type for merge - 10' - HALFORD 
-see `exercises.md`
+## 11:20 4 💪 A first type for merge - 10' - HALFORD 
+See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
 ```bash
@@ -277,10 +276,8 @@ Do not solve the LAB live. Just ask questions, share experiences or highlight co
 
 ## 12:30 - 	Lunch - 60'		
 
-## 13:30 💪 Interactive Git - 15' - HALFORD 
-- Go to this link https://learngitbranching.js.org/
-- Complete **Introduction episodes 1, 2, 3**
-- [Optional] Continue on the more advanced exercises
+## 13:30 5 💪 Interactive Git - 15' - HALFORD 
+See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 ## 13:45 - Create a remote repository on GitHub - 5' - HALFORD 
 
@@ -391,8 +388,8 @@ Visit GitHub and confirm the resolved file is there.
 
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
-## 14:25 -💪 Undo a Bad Merge - 10' - HALFORD
-see `exercises.md`
+## 14:25 - 6 💪 Undo a Bad Merge - 10' - HALFORD
+See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
 ```bash
