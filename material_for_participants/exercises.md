@@ -93,7 +93,7 @@ Follow the steps listed below:
 - Add `~1` or `~2` to the name of the branch to refer to earlier commits (e.g. parents)
 </details>
 
-#### 🚀 Optional challenge - detect a specific change
+#### 🚀 Optional challenge — detect a specific change
 
 1. Use `git log --oneline --all` to list the commits across all branches
 1. Use `git diff <hash1> <hash2>` with pairs of commit hashes to narrow down which commit first introduced `fifth line`
@@ -118,7 +118,7 @@ Follow the steps listed below:
 - Use `nano file_in_conflict` to edit the file manually
 </details>
 
-#### 🚀 Optional challenge
+#### 🚀 Optional challenge — read the graph
 
 After the merge is done, look at the graph with `git log --oneline --all --graph`.  
 Now try to answer these questions just by reading the graph — without using `cat` or `diff`:
@@ -185,7 +185,31 @@ Now practice undoing a merge that was **already committed**.
    commit to GitHub before running `git reset --hard`?
 
 
-## 7 🚀 Optional challenge: Full workflow in a GUI
+## 7 🚀 Optional challenge — rebase instead of merge
+
+You have been merging branches, which creates a merge commit with two parents.
+Rebase is an alternative that replays your commits on top of another branch,
+resulting in a cleaner linear history.
+
+1. Create a new branch called `rebase-test` from `main` and switch to it in one step
+1. Add a new line `rebase line` to `lines.txt` and commit it
+1. Switch back to `main` and add a new line `main line` to `lines.txt` and commit it — the two branches have now diverged
+1. Switch back to `rebase-test` and run `git rebase main`
+1. Inspect the result with `git log --oneline --all --graph`
+
+Compare what you see with the graph from the merge exercise above:
+- Is there a merge commit?
+- Where does `rebase-test` sit relative to `main`?
+- What happened to the original commit on `rebase-test`?
+
+6. Switch to `main` and merge `rebase-test` with `git merge rebase-test`
+7. Check the graph again — notice the merge is a fast-forward this time. Why?
+
+> ⚠️ Rebase rewrites commit history. It is safe on a local branch that you
+> have not shared with anyone. Avoid rebasing branches that have already been pushed.
+
+
+## 8 🚀 Optional challenge: Full workflow in a GUI
 
 Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitHub Desktop, R Studio)
 
