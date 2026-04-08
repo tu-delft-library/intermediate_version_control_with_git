@@ -1,7 +1,7 @@
 # Exercises
 
 
-## 💪 Get familiar with branches
+## 1 💪 Get familiar with branches
 
 Follow the steps listed below:
 
@@ -25,7 +25,7 @@ When you are finished:
 - To delete branches use `git branch -d name_of_branch name_of_another_branch`
 </details>
 
-## 💪 Commit on a secondary branch
+## 2 💪 Commit on a secondary branch
 
 Follow the steps listed below:
 
@@ -35,7 +35,7 @@ Follow the steps listed below:
 1. Inspect the working tree
 
 
-## 💪 Explore differences across branches
+## 3 💪 Explore differences across branches
 Follow the steps listed below:
 
 1. Move to branch `b2`
@@ -55,7 +55,7 @@ Follow the steps listed below:
 
 
 
-## 💪 A first type for merge
+## 4 💪 A first type for merge
 Follow the steps listed below:
 
 1. Inspect the differences of `lines.txt` between branches. How many more lines has `lines.txt` in `main` than in `b2`? 
@@ -74,13 +74,13 @@ Follow the steps listed below:
 </details>
 
 
-## 💪 Interactive Git 
+## 5 💪 Interactive Git 
 1. Go to this link https://learngitbranching.js.org/
 1. Complete **Introduction episodes 1, 2, 3**
 1. [Optional] Continue on the more advanced exercises
 
 
-##  💪 Undo a bad merge 
+##  6 💪 Undo a bad merge 
 
 Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
 1. Create a new branch called `bad-merge` and step into it
@@ -111,12 +111,13 @@ Merges don't always go as planned. In this exercise you will practice how to can
 
 </details>
 
-##  💪 Full workflow in a GUI
+
+##  [Optional] 💪 Full workflow in a GUI
 
 Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitHub Desktop, R Studio)
 
 1. Open your GUI of choice
-1. Open the folder with your local repository `git-one`
+1. Open the folder with your local repository `logbook`
 1. Make sure your local `main` is up to date with the remote
 1. Create a new branch called `gui` and stand on it
 1. Modify the text `second line` to `2nd line`
