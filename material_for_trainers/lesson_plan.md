@@ -17,7 +17,7 @@
 🎥 Use slides
 [TODO] improve branch explanation
 
-## 9:40 - Make local repo with history - 5' - CATA 
+## 9:40 - Make local repo with history - 10' - CATA 
 Use this opportunity to **recap git commands**
 
 Let's configure some git default editor:
@@ -40,7 +40,7 @@ git add lines.txt
 git commit -m 'Add third line' lines.txt
 git log --oneline
 ```
-## 9:45 - New commands for branching - 15' - CATA 
+## 9:50 - New commands for branching - 15' - CATA 
 
 ```bash
 git branch              # check branches (explain the * pointing to main) 
@@ -56,18 +56,7 @@ git branch -m b1 b2     # rename branch (-m for move)
 git log --oneline       # branch b1 was renamed to b2 (HEAD -> main, b2)
 git branch -d b2        # delete branch
 git log --oneline       # verify main is the only branch
-git branch -m main foo  # rename main to foo
-git log --oneline       # verify renaming worked
-```
-only rename `main` if there is a good reason for it
-
-```bash
-git branch -d foo       # fails - can't delete current branch
-git branch -m foo main  # rename foo to main again
-git log --oneline       # verify renaming worked
-```
-
-```bash
+git branch -d main      # fails - can't delete current branch
 git branch b1           # create again branch b1
 git log --oneline       # verify
 git switch              # fails - no branch name
@@ -82,7 +71,7 @@ git switch main         # switch to main
 git log --oneline       # notice HEAD -> main
 ```
 
-## 9:55 - 💪 Get familiar with branches - 5' - CATA 
+## 10:05 - 💪 Get familiar with branches - 10' - CATA 
 See `exercises.md`
 
 Solution:
@@ -99,7 +88,7 @@ git branch -d pe pi po
 git log --oneline
 ```
 
-## 10:05 - Develop on different branches - 10' - CATA 
+## 10:15 - Develop on different branches - 10' - CATA 
 
 
 ```bash
@@ -123,7 +112,7 @@ git log --oneline --all --graph            # show graph with all branches
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
-## 10:15 - 💪 Commit in a secondary branch - 5' - CATA
+## 10:25 - 💪 Commit in a secondary branch - 5' - CATA
 see `exercises.md` 
 
 Solution:
@@ -137,9 +126,9 @@ git add lines.txt
 git commit -m "Add two more lines on b2"
 ```
 
-## 10:20 - Break - 10' 
+## 10:30 - Break - 10' 
 
-## 10:30 - Explore differences across branches - 15' - HALFORD 
+## 10:40 - Explore differences across branches - 15' - HALFORD 
 
 Let's keep adding to our history:
 ```bash
@@ -180,7 +169,7 @@ git commit -m 'Correct fifth line on main' lines.txt # routine
 git log --oneline --graph
 ```
 
-## 10:45 - 💪  Explore differences across branches - 10' - HALFORD
+## 10:55 - 💪  Explore differences across branches - 10' - HALFORD
 see `exercises.md`
 
 Solution:
@@ -194,7 +183,7 @@ git diff b2 b1 lines.txt
 git diff main b2~1 lines.txt
 ```
 
-## 10:55 - Merging branches and conflict resolution - 15' - HALFORD 
+## 11:05 - Merging branches and conflict resolution - 15' - HALFORD 
 
 Let's develop further on branch `b1`:
 ```bash
@@ -261,7 +250,7 @@ git log --oneline --all --graph --parents                 # see merge with hashe
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:lines.txt :2:lines.txt`
 
-## 11:10 💪 A first type for merge - 10' - HALFORD 
+## 11:20 💪 A first type for merge - 10' - HALFORD 
 see `exercises.md`
 
 Solution:
@@ -276,22 +265,24 @@ git commit -m 'Merge b2 into main'
 git log --oneline --all --graph # verify
 ```
 
-## 11:20 - Break  - 10' 
+> **Before break:** Turn to a neighbour and compare the output of `git log --oneline --all --graph`. Does it look the same? Different commit hashes? Same shape?
 
-## 11:45 -  💻 LAB - Understanding merge conflicts - 40' - CATA
+## 11:30 - Break  - 10' 
+
+## 11:40 -  💻 LAB - Understanding merge conflicts - 40' - CATA
 see `LAB_merge_conflicts.md`
 
-## 12:10 -  Review LAB with group - 10' - CATA
+## 12:20 -  Review LAB with group - 10' - CATA
 Do not solve the LAB live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
 
-## 12:20 - 	Lunch - 60'		
+## 12:30 - 	Lunch - 60'		
 
-## 13:00 💪 Interactive Git - 15' - HALFORD 
+## 13:30 💪 Interactive Git - 15' - HALFORD 
 - Go to this link https://learngitbranching.js.org/
 - Complete **Introduction episodes 1, 2, 3**
 [Optional] Continue on the more advanced exercises
 
-## 13:15 - Create a remote repository on GitHub - 5' - HALFORD 
+## 13:45 - Create a remote repository on GitHub - 5' - HALFORD 
 
 1. Go to [github.com](https://github.com) and sign in.
 2. Click the **+** icon in the top-right corner and choose **New repository**.
@@ -307,7 +298,7 @@ git@github.com:YOUR-USERNAME/git-one.git
 ```
 Copy this URL
 
-## 13:20 - Cloning and pushing - 10' - HALFORD 
+## 13:50 - Cloning and pushing - 10' - HALFORD 
 
 Clone the repository locally:
 ```bash
@@ -342,7 +333,7 @@ Note the message from git showing the commits were pushed to Github.
 
 Visit GitHub and refresh — students should see `lines.txt` appear online.
 
-## 13:30 - Pulling from a remote repository - 10' - HALFORD
+## 14:00 - Pulling from a remote repository - 10' - HALFORD
 Let's pretend someone else edited the file. 
 We'll simulate this by using GitHub web editor:
 1. Open `lines.txt` on GitHub.
@@ -360,7 +351,7 @@ cat lines.txt               # eighth line is there
 
 > **Key message:** always pull before you start working to avoid unnecessary conflicts.
 
-## 13:40 - Solve a conflict when pushing - 15' - HALFORD
+## 14:10 - Solve a conflict when pushing - 15' - HALFORD
 
 Make a small edit directly on GitHub (via the web editor):
 1. Open `lines.txt` on GitHub.
@@ -397,103 +388,51 @@ Visit GitHub and confirm the resolved file is there.
 
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
-## 13:55 - 💪 Another type of merge: squash merge - 15' - HALFORD
+## 14:25 -💪 Undo a Bad Merge - 10' - HALFORD
 see `exercises.md`
 
 Solution:
 ```bash
 git switch main
-git branch messy
-git switch messy
-echo 'draft line A' >> lines.txt
+git branch bad-merge
+git switch bad-merge
+echo 'tenth line - branch version' >> lines.txt
 git add lines.txt
-git commit -m 'WIP draft line A'
-echo 'draft line B' >> lines.txt
-git add lines.txt
-git commit -m 'WIP draft line B'
-echo 'final feature line' >> lines.txt
-git add lines.txt
-git commit -m 'Finally done'
-git log --oneline           # three commits on messy
-```
-
-Now merge with `--squash`:
-```bash
+git commit -m 'Add tenth line on bad-merge'
 git switch main
-git merge --squash messy    # stages all changes but does NOT commit yet
-git status                          # changes are staged, ready to commit
-git commit -m 'Add feature lines (squashed from messy)'
-git log --oneline                   # only one clean commit appears on main
+echo 'tenth line - main version' >> lines.txt
+git add lines.txt
+git commit -m 'Add tenth line on main'
+git merge bad-merge         # conflict! both branches changed the last line
+git status                  # lines.txt listed as "both modified"
+cat lines.txt               # conflict markers are visible
+git merge --abort
+git status                  # clean — back to where you were before the merge
+cat lines.txt               # conflict markers are gone, file is as it was on main
+git log --oneline --graph   # no merge commit was created
+git branch -D bad-merge     # force-delete (it was never cleanly merged)
+git log --oneline --graph   # back to a clean main
 ```
 
-Compare with a regular merge:
-- Regular merge: all three WIP commits would appear in `main`'s history.
-- Squash merge: only one tidy commit appears — the branch history is left behind.
+`git merge --abort` is only available **while a merge is in progress** 
 
-Note: because no merge commit is created, Git does not know `messy-feature` was merged. Clean up explicitly:
-```bash
-git branch -d messy-feature        # use -D (force) if Git warns it's not fully merged
-git log --oneline --graph
-git push origin main
-```
+## 14:35 - Break - 10' 
 
-
-## 14:10 - Break - 10' 
-
-## 14:20 - 💻 LAB - Conflicts with Remote Repositories - 40' - CATA 
+## 14:45 - 💻 LAB - Conflicts with Remote Repositories - 40' - CATA 
 see `LAB_remote_conflicts_github.md`
 
-## 15:00 - Review LAB with the group - 10' - CATA
+## 15:25 - Review LAB with the group - 10' - CATA
 Do not solve the LAB live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
 
-## 15:10 - Break - 10'
-
-## 15:20 - Git using a GUI - 20' - CATA
-[TODO] Try this section and adapt instructions for clarity
-
-Cover two tools briefly — the goal is not to master them but to show students that the terminal concepts map directly onto any GUI.
-
-Demo the full cycle in one of the tools: make a change → stage → commit → push.
-
-**VS Code built-in Source Control** (`Ctrl+Shift+G` / `Cmd+Shift+G`):
-Demo the full cycle in one of the tools: make a change → stage → commit → push.
-- **Changes panel** → `git status`
-- Clicking `+` next to a file → `git add`
-- Typing a message and clicking ✓ → `git commit`
-- Branch name in the bottom-left status bar → `git switch` / `git branch`
-- "Sync Changes" button → `git pull` then `git push`
-- Demo a branch merge:
-  - Stand on `main` — check the branch name in the bottom-left status bar and click it to switch if needed.
-  - Open the `Command Palette` with `Ctrl+Shift+P` / `Cmd+Shift+P`.
-  - Type `Git: Merge Branch` and select it.
-  - A dropdown will list all available branches. Select the branch you want to merge from.
-  - If there are no conflicts, the merge completes immediately.
-  - If there is a conflict, the Source Control panel will show the affected files. Open the file to see the conflict highlighted with **Accept Current / Accept Incoming / Accept Both**  buttons above each conflict block. Click the appropriate option, then save the file.
-  - Go to the Source Control panel (`Ctrl+Shift+G` / `Cmd+Shift+G`), stage the resolved file by clicking +, write a commit message, and click ✓ to commit.
-
-
-**GitHub Desktop**:
-- Left panel shows changed files; right panel shows the diff — equivalent to `git diff`.
-- Ticking files and writing a summary → `git add` + `git commit`.
-- "Push origin" / "Fetch origin" buttons → `git push` / `git pull`.
-- Branch switching via the top-centre dropdown.
-- Demo a branch merge:
-  - Stand on `main` — check the top-centre dropdown and switch if needed.
-  - In the top menu, go to Branch → Merge into Current Branch.
-  - A list of branches will appear. Select the branch you want to merge from and click Merge into main.
-  - If there are no conflicts, the merge completes immediately.
-  - If there is a conflict, GitHub Desktop will show a warning listing the conflicted files, with an Open in editor button next to each. Click it to open the file in VS Code (or your default editor), resolve the conflict markers manually, and save.
-  - Back in GitHub Desktop, the conflicted file will now show as resolved. Click Commit merge to finish.
-
-> **Key message:** every button in these GUIs runs the same commands you have been typing all day. Knowing the terminal first means you can read error messages, use any tool, and are never stuck when a GUI hides what went wrong.
-
-## 15:40 - Summarize key points - 10' - HALFORD 
+## 15:35 - Break - 10'
+## 15:45 - Summarize key points - 10' - HALFORD 
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
-- **Merging**: bring changes together with `git merge`. Three kinds covered today:
-  - *Three-way merge*: both branches have new commits, Git creates a merge commit.
-  - *Squash merge*: collapses all branch commits into one clean commit on `main`.
+- **Merging**: bring changes together with `git merge`.
+Git creates a merge commit.
 - **Conflicts**: happen when the same lines were changed in both branches. Always: edit → remove markers → `git add` → `git commit`.
 - **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way.
+- **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit.
 
-## 15:50 - Give feedback about the course - 5' 
+
+## 15:55 - Give feedback about the course - 5' 
 Go to the link in `README.md`
