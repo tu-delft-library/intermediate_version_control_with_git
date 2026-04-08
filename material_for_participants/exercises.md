@@ -25,6 +25,14 @@ When you are finished:
 - To delete branches use `git branch -d name_of_branch name_of_another_branch`
 </details>
 
+#### 🚀 Optional challenge
+
+Before running each command, write down (or say out loud) what you expect
+`git log --oneline` to show. Then run it and check if you were right.
+Pay attention to where `HEAD` points and which branches appear — can you
+predict when the output changes and when it stays the same?
+
+
 ## 2 💪 Commit on a secondary branch
 
 Follow the steps listed below:
@@ -34,8 +42,17 @@ Follow the steps listed below:
 1. Make a single commit of these two changes. Specify the branch name in the commit message!
 1. Inspect the working tree
 
+#### 🚀 Optional challenge
+
+Instead of appending new lines, edit an existing line directly in `lines.txt`
+using `nano` — for example, change `second line` to `2nd line`.  
+Use `git diff` to inspect the change before committing.  
+Think about this: when this branch is eventually merged into `main`, will Git
+be able to resolve this automatically? Why or why not?
+
 
 ## 3 💪 Explore differences across branches
+
 Follow the steps listed below:
 
 1. Move to branch `b2`
@@ -53,9 +70,17 @@ Follow the steps listed below:
 - Add `~1` or `~2` to the name of the branch to refer to earlier commits (e.g. parents)
 </details>
 
+#### 🚀 Optional challenge
+
+Compare all three branches systematically: `main` vs `b1`, `main` vs `b2`,
+and `b1` vs `b2`.  
+For each pair, look at the output of `git diff` and write down a prediction:
+if you were to merge these two branches right now, which changes would Git
+resolve automatically and which would cause a conflict? What is your reasoning?
 
 
-## 4 💪 A first type for merge
+## 4 💪 A first type of merge
+
 Follow the steps listed below:
 
 1. Inspect the differences of `lines.txt` between branches. How many more lines has `lines.txt` in `main` than in `b2`? 
@@ -70,19 +95,34 @@ Follow the steps listed below:
 - To inspect differences between branches `git diff name_of_branch name_of_another_branch`
 - To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 - Use `nano file_in_conflict` to edit the file manually
-- Use `git log --oneline --all --graph` to see a graphed git history with all branches
 </details>
+
+#### 🚀 Optional challenge
+
+After the merge is done, look at the graph with `git log --oneline --all --graph`.  
+Now try to answer these questions just by reading the graph — without using `cat` or `diff`:
+
+- Which commit introduced the conflict?
+- Which branch was ahead before the merge?
+- How many parent commits does the merge commit have, and why?
+
+Then verify your answers by inspecting the commits directly with
+`git diff <hash1> <hash2>`.
 
 
 ## 5 💪 Interactive Git 
+
 1. Go to this link https://learngitbranching.js.org/
 1. Complete **Introduction episodes 1, 2, 3**
-1. [Optional] Continue on the more advanced exercises
+
+#### 🚀 Optional challenge
+Continue on the more advanced exercises
 
 
-##  6 💪 Undo a bad merge 
+## 6 💪 Undo a bad merge
 
 Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
+
 1. Create a new branch called `bad-merge` and step into it
 1. Add a new line with the text `tenth line - branch version` at the bottom of `lines.txt`
 1. Commit your changes
@@ -98,7 +138,6 @@ Merges don't always go as planned. In this exercise you will practice how to can
 1. Check the history of git and confirm there was no merge commit created
 1. Delete the `bad-merge` branch
 
-
 <details>
 <summary>🔍 Click here for a hint! </summary>
 
@@ -108,11 +147,22 @@ Merges don't always go as planned. In this exercise you will practice how to can
 - To check the status of git use `git status`
 - To check the history of a branch use `git log --oneline --all --graph`
 - To force delete a branch use `git branch -D name_of_branch`
-
 </details>
 
+#### 🚀 Optional challenge
 
-##  [Optional] 💪 Full workflow in a GUI
+Now practice undoing a merge that was **already committed**.
+
+1. Recreate the `bad-merge` branch from where you left off and redo the merge —
+   but this time resolve the conflict (however you like) and commit it
+1. Verify the merge commit appears in `git log --oneline --graph`
+1. Use `git reset --hard HEAD~1` to undo the merge commit
+1. Verify the merge commit is gone and `lines.txt` is back to its previous state
+1. Think about this: what would happen if you had already pushed the merge
+   commit to GitHub before running `git reset --hard`?
+
+
+## 7 🚀 Optional challenge: Full workflow in a GUI
 
 Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitHub Desktop, R Studio)
 
