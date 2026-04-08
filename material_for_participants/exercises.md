@@ -3,7 +3,7 @@
 
 ## 💪 Get familiar with branches
 
-Perform the following tasks individually:
+Follow the steps listed below:
 
 1. Revise the commands we have used so far
 1. Create at least three branches with any name you like
@@ -27,7 +27,7 @@ When you are finished:
 
 ## 💪 Commit on a secondary branch
 
-Perform the following tasks individually:
+Follow the steps listed below:
 
 1. Move to branch `b2` (the file `lines.txt` contains three lines)
 1. Append a forth and a fifth line using `echo`
@@ -36,7 +36,7 @@ Perform the following tasks individually:
 
 
 ## 💪 Explore differences across branches
-Perform the following tasks individually:
+Follow the steps listed below:
 
 1. Move to branch `b2`
 1. Inspect several previous versions in the history using `git diff` with appropriate arguments
@@ -56,14 +56,13 @@ Perform the following tasks individually:
 
 
 ## 💪 A first type for merge
-Please perform the following tasks individually
+Follow the steps listed below:
 
-1. How many more lines has `lines.txt` in `main` than in `b2`? 
+1. Inspect the differences of `lines.txt` between branches. How many more lines has `lines.txt` in `main` than in `b2`? 
 1. Merge `b2` into `main`
 1. Solve any conflicts
 1. Commit the merge
 1. Verify the outcome with a graphed `git log`
-
 
 <details>
 <summary>🔍 Click here for a hint! </summary>
@@ -71,63 +70,59 @@ Please perform the following tasks individually
 - To inspect differences between branches `git diff name_of_branch name_of_another_branch`
 - To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 - Use `nano file_in_conflict` to edit the file manually
+- Use `git log --oneline --all --graph` to see a graphed git history with all branches
 </details>
 
 
 ## 💪 Interactive Git 
-- Go to this link https://learngitbranching.js.org/
-- Complete **Introduction episodes 1, 2, 3**
-[Optional] Continue on the more advanced exercises
+1. Go to this link https://learngitbranching.js.org/
+1. Complete **Introduction episodes 1, 2, 3**
+1. [Optional] Continue on the more advanced exercises
 
 
-##  💪 Another type of merge: squash merge
+##  💪 Undo a bad merge 
 
-Sometimes a feature branch has many small, messy commits ("fix typo", "try again", "finally works"). A **squash merge** collapses all of them into a single clean commit on `main`, keeping the history readable.
-
-1. Make a new branch called `messy` and stand on it
-1. Add 'draft line A' to `lines.txt`
+Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
+1. Create a new branch called `bad-merge` and step into it
+1. Add a new line with the text `tenth line - branch version` at the bottom of `lines.txt`
 1. Commit your changes
-1. Add 'draft line B' to `lines.txt`
+1. Switch back to `main`
+1. Add a new line with the text `tenth line - main version` at the bottom of `lines.txt`
 1. Commit your changes
-1. Add 'final feature line' to `lines.txt`
-1. Commit your changes
-1. Verify your three commits on `messy`
+1. Merge `bad-merge` branch into `main`
+1. Use `cat` to see the content of `lines.txt`
+1. Imagine you do not know how to solve this conflict and decide to take a step back
+1. Use the command `git merge --abort` to cancel the merge process
+1. Check the status of git
+1. Use `cat` to see the content of `lines.txt`
+1. Check the history of git and confirm there was no merge commit created
+1. Delete the `bad-merge` branch
 
-Here comes the new part:
-
-1. Stand on main branch
-1. Merge the `messy` branch by adding the flag `--squash` BEFORE the branch name 
-1. Commit your changes
-1. Verify the squash commit is in the history
-
-Finally, because no merge commit is created, Git does not know `messy` was merged. 
-Clean up explicitly by deleting the branch:
-1. Delete `messy`
-1. Verify 
-1. Push to remote
 
 <details>
 <summary>🔍 Click here for a hint! </summary>
 
 - To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
-- To check the history of a branch use `git log --oneline`
-- To delete branches use `git branch -d name_of_branch name_of_another_branch`
-- To do a squash commit use `git merge --squash name_of_branch`
-</details>
+- To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
+- To check the status of git use `git status`
+- To check the history of a branch use `git log --oneline --all --graph`
+- To force delete a branch use `git branch -D name_of_branch`
 
+</details>
 
 ##  💪 Full workflow in a GUI
 
-Complete the following tasks using your GUI of choice (VS Code or GitHub Desktop)
+Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitHub Desktop, R Studio)
 
 1. Open your GUI of choice
 1. Open the folder with your local repository `git-one`
 1. Make sure your local `main` is up to date with the remote
 1. Create a new branch called `gui` and stand on it
-1. Add a new line with the text `gui feature line` at the bottom of `lines.txt`
+1. Modify the text `second line` to `2nd line`
+1. Add a new line with the text `gui line` at the bottom of `lines.txt`
 1. Visualize the changes in `lines.txt`
-1. Stage and commit the change with message `Add gui feature line`
+1. Stage and commit the change with message `Add gui line`
 1. Switch back to `main` 
 1. Add a new line with the text `gui main line` at the bottom of `lines.txt`
 1. Visualize the changes in `lines.txt`
