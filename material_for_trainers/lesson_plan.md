@@ -249,7 +249,7 @@ git log --oneline --all --graph --parents                 # see merge with hashe
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:lines.txt :2:lines.txt`
 
-## 11:20 4 💪 A first type for merge - 10' - HALFORD 
+## 11:20 - 4 💪 A first type for merge - 10' - HALFORD 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
@@ -276,7 +276,7 @@ Do not solve the LAB live. Just ask questions, share experiences or highlight co
 
 ## 12:30 - 	Lunch - 60'		
 
-## 13:30 5 💪 Interactive Git - 15' - HALFORD 
+## 13:30 - 5 💪 Interactive Git - 15' - HALFORD 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 ## 13:45 - Create a remote repository on GitHub - 5' - HALFORD 
