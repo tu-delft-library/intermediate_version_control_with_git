@@ -26,8 +26,8 @@ git config --global core.editor "nano -w"
 ```
 ```bash
 cd Desktop/
-mkdir logbook
-cd logbook/
+mkdir sandbox
+cd sandbox/
 git init
 git status
 echo 'first line'                       # echo prints text to terminal screen
@@ -64,9 +64,7 @@ git switch              # fails - no branch name
 git switch b1          # stand on branch b1
 git log --oneline       # verify
 git branch b1           # branch alreay exists 
-git branch b2           # new branch
-git log --oneline       # verify
-git switch b2           # switch to b2
+git switch -c b2        # create and switch to b2
 git log --oneline       # notice HEAD -> b2
 git switch main         # switch to main
 git log --oneline       # notice HEAD -> main
@@ -85,6 +83,7 @@ git switch po
 git log --oneline
 git switch pe
 git log --oneline
+git switch main         # stand on main to delete other branches
 git branch -d pe pi po
 git log --oneline
 ```
@@ -94,8 +93,6 @@ git log --oneline
 
 ```bash
 git status
-git branch b1                               # create b1
-git branch b2                               # create b2
 echo 'forth line' >> lines.txt              # add more lines
 git diff
 git add lines.txt 
@@ -109,6 +106,7 @@ git add lines.txt
 git commit -m 'Add forth line on branch b1' lines.txt # commit changes on b1
 git status
 git switch main
+git log --oneline --all                    # show all branches
 git log --oneline --all --graph            # show graph with all branches
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
@@ -125,6 +123,7 @@ echo 'fifth line' >> lines.txt
 git diff
 git add lines.txt
 git commit -m "Add two more lines on b2"
+git status
 ```
 
 ## 10:30 - Break - 10' 
@@ -152,7 +151,7 @@ Maybe we are confused about what was done on which branch. Let's see how to inve
 
 ```bash
 git switch main                     
-git diff HEAD HEAD~1 lines.txt      # changes between latest and one before latest commit
+git diff HEAD HEAD~1 lines.txt      # REMEMBER: changes between latest and one before latest commit
 git diff main b1 lines.txt # changes between  main and b1
 git diff main b1~1 lines.txt # changes between main and parent of the latest commit on branch B1
 git diff main~1 b1~1 lines.txt # changes between parent of the latest commit on the main branch and the parent of the latest commit on branch B1
@@ -285,12 +284,16 @@ Do not solve the LAB live. Just ask questions, share experiences or highlight co
 
 ## 13:45 - Create a remote repository on GitHub - 5' - HALFORD 
 
-1. Go to [github.com](https://github.com) and sign in.
-2. Click the **+** icon in the top-right corner and choose **New repository**.
-3. Name it `logbook`. YES! same as our local repository.
-4. Leave it **Public**.
-5. Leave all clone_colleague options as they are. Do **not** add a README or .gitignore.
-6. Click **Create repository**.
+Our `sandbox` has grown into something we want to keep. Time turn it into a remote repository.
+
+Because our local history is a little messy, we prefer to have a fresh clean repo and copy the current state of the files there.
+
+1. Go to [github.com](https://github.com) and sign in
+2. Click the **+** icon in the top-right corner and choose **New repository**
+3. Name it `logbook`
+4. Leave it **Public**
+5. Leave all clone_colleague options as they are. Do **not** add a `README` or `.gitignore`
+6. Click **Create repository**
 
 GitHub will show you your new empty repository and its URL. 
 Click on the `SSH` tab. It will look like:
@@ -304,14 +307,14 @@ Copy this URL
 Clone the repository locally:
 ```bash
 cd ~/Desktop
-git clone git@github.com:YOUR-USERNAME/logbook.git
+git clone git@github.com:YOUR-USERNAME/logbook.git  # empty repo warning is ok!
 cd logbook
 ```
 
 ```bash
 git status                                        # nothing to commit
 git branch                                        # observe that is empty
-git log                                           # observe (fatal: your current branch 'main' does not have any commits yet)
+git log                                           # observe - fatal error -> no branch
 ```
 
 ```bash
@@ -323,9 +326,9 @@ Explain remote operations:
 - **Pushing**: uploading your local commits to the remote repository.
 - **Pulling**: `git pull` is `git fetch` + `git merge` in one step.
 
-Copy the local `logbook` history into this repo and push:
+Copy the local `sandbox` file into this repo and push:
 ```bash
-cp ~/Desktop/logbook/lines.txt .
+cp ~/Desktop/sandbox/lines.txt .
 git add lines.txt
 git commit -m 'Add lines.txt from local work'
 git push origin main        # push to remote
@@ -335,12 +338,12 @@ Note the message from git showing the commits were pushed to Github.
 Visit GitHub and refresh — students should see `lines.txt` appear online.
 
 ## 14:00 - Pulling from a remote repository - 10' - HALFORD
-Let's pretend someone else edited the file. 
+Let's pretend someone else edited the file.
 We'll simulate this by using GitHub web editor:
-1. Open `lines.txt` on GitHub.
-1. Click on the pencil icon on the upper right corner to edit.
-1. Add a new line at the bottom: `eighth line`.
-1. Commit with message `Add eighth line via GitHub`.
+1. Open `lines.txt` on GitHub
+1. Click on the pencil icon on the upper right corner to edit
+1. Add a new line at the bottom: `eighth line`
+1. Commit with message `Add eighth line via GitHub`
 
 Now pull it locally:
 ```bash
@@ -355,9 +358,9 @@ cat lines.txt               # eighth line is there
 ## 14:10 - Solve a conflict when pushing - 15' - HALFORD
 
 Make a small edit directly on GitHub (via the web editor):
-1. Open `lines.txt` on GitHub.
-2. Add a new line at the bottom: `ninth line - GitHub`.
-3. Commit with message `Add ninth line via GitHub`.
+1. Open `lines.txt` on GitHub
+2. Add a new line at the bottom: `ninth line - GitHub`
+3. Commit with message `Add ninth line via GitHub`
 
 Now, back in the terminal, make a **different** local change without pulling:
 ```bash
@@ -372,7 +375,6 @@ Explain **divergent branches**: both the local and remote `main` have moved forw
 Let's ask Git to use `merge` by default
 ```bash
 git config pull.rebase false      # merge
-git pull origin main
 ```
 
 Resolve it:
@@ -429,10 +431,10 @@ Do not solve the LAB live. Just ask questions, share experiences or highlight co
 ## 15:45 - Summarize key points - 10' - HALFORD 
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
 - **Merging**: bring changes together with `git merge`.
-Git creates a merge commit.
-- **Conflicts**: happen when the same lines were changed in both branches. Always: edit → remove markers → `git add` → `git commit`.
-- **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way.
-- **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit.
+Git creates a merge commit
+- **Conflicts**: happen when the same lines were changed in both branches. Always: edit → remove markers → `git add` → `git commit`
+- **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way
+- **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit
 
 
 ## 15:55 - Give feedback about the course - 5' 
