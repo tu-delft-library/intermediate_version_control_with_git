@@ -5,8 +5,8 @@
 
 Follow the steps listed below:
 
-1. Revise the commands we have used so far
-1. Create at least three branches with any name you like
+1. Create two branches with any name you like
+1. Create a new branch and switch in one step
 1. Rename them and switch between them
 1. Check the status message and the history in each branch you are in
 
@@ -19,18 +19,32 @@ When you are finished:
 <summary>🔍 Click here for a hint! </summary>
 
 - To create use `git branch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
 - To rename use `git branch -m current_name_of_branch new_name_of_branch`
 - To switch between branches use `git switch name_of_branch`
 - To check the history of a branch use `git log --oneline`
 - To delete branches use `git branch -d name_of_branch name_of_another_branch`
 </details>
 
-#### 🚀 Optional challenge
+#### 🚀 Optional challenge — safe delete vs force delete
 
-Before running each command, write down (or say out loud) what you expect
-`git log --oneline` to show. Then run it and check if you were right.
-Pay attention to where `HEAD` points and which branches appear — can you
-predict when the output changes and when it stays the same?
+1. Create a branch called `experiment` and switch to it in ONE STEP
+1. Add a new line to `lines.txt`
+1. Commit your changes
+1. Switch back to main
+1. Try to delete `experiment` with `git branch -d experiment`
+1. Git will refuse. Read the error message carefully — why is it blocking you?
+1. Follow the hint in the error message to force delete the branch
+
+
+<details>
+<summary>🔍 Explanation! </summary>
+
+- `-d` is a safe delete — Git refuses if the branch has commits that have not been merged into the current branch. It is protecting you from losing work.
+- `-D` is a force delete — Git deletes it regardless. The commits are not immediately gone but they are hard to recover.
+
+>**As a rule of thumb:** if `-d` refuses, pause and ask yourself whether those commits are actually needed before reaching for `-D`.
+</details>
 
 
 ## 2 💪 Commit on a secondary branch
@@ -38,16 +52,25 @@ predict when the output changes and when it stays the same?
 Follow the steps listed below:
 
 1. Move to branch `b2` (the file `lines.txt` contains three lines)
-1. Append a forth and a fifth line using `echo`
+1. Append a **forth** line using `echo`
+1. Append a **fifth** line using `echo`
 1. Make a single commit of these two changes. Specify the branch name in the commit message!
 1. Inspect the working tree
 
+
+<details>
+<summary>🔍 Click here for a hint! </summary>
+
+- To switch between branches use `git switch name_of_branch`
+- To inspect the working tree use `git status`
+</details>
+
+
 #### 🚀 Optional challenge
 
-Instead of appending new lines, edit an existing line directly in `lines.txt`
-using `nano` — for example, change `second line` to `2nd line`.  
-Use `git diff` to inspect the change before committing.  
-Think about this: when this branch is eventually merged into `main`, will Git
+1. Use `nano` to change `second line` to `2nd line`  
+1. Use `git diff` to inspect the change before committing 
+1. Think about this: when this branch is eventually merged into `main`, will Git
 be able to resolve this automatically? Why or why not?
 
 
@@ -70,20 +93,18 @@ Follow the steps listed below:
 - Add `~1` or `~2` to the name of the branch to refer to earlier commits (e.g. parents)
 </details>
 
-#### 🚀 Optional challenge
+#### 🚀 Optional challenge - detect a specific change
 
-Compare all three branches systematically: `main` vs `b1`, `main` vs `b2`,
-and `b1` vs `b2`.  
-For each pair, look at the output of `git diff` and write down a prediction:
-if you were to merge these two branches right now, which changes would Git
-resolve automatically and which would cause a conflict? What is your reasoning?
+1. Use `git log --oneline --all` to list the commits across all branches
+1. Use `git diff <hash1> <hash2>` with pairs of commit hashes to narrow down which commit first introduced `fifth line`
+1. Confirm your answer with `git show <hash>` — this shows the full content of a single commit
 
 
 ## 4 💪 A first type of merge
 
 Follow the steps listed below:
 
-1. Inspect the differences of `lines.txt` between branches. How many more lines has `lines.txt` in `main` than in `b2`? 
+1. Inspect the differences of `lines.txt` between branches. How many more lines are there in `lines.txt` in `main` than in `b2`? 
 1. Merge `b2` into `main`
 1. Solve any conflicts
 1. Commit the merge
@@ -124,10 +145,10 @@ Continue on the more advanced exercises
 Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
 
 1. Create a new branch called `bad-merge` and step into it
-1. Add a new line with the text `tenth line - branch version` at the bottom of `lines.txt`
+1. Add a new line with the text `tenth line - branch` at the bottom of `lines.txt`
 1. Commit your changes
 1. Switch back to `main`
-1. Add a new line with the text `tenth line - main version` at the bottom of `lines.txt`
+1. Add a new line with the text `tenth line - main` at the bottom of `lines.txt`
 1. Commit your changes
 1. Merge `bad-merge` branch into `main`
 1. Use `cat` to see the content of `lines.txt`
@@ -136,7 +157,7 @@ Merges don't always go as planned. In this exercise you will practice how to can
 1. Check the status of git
 1. Use `cat` to see the content of `lines.txt`
 1. Check the history of git and confirm there was no merge commit created
-1. Delete the `bad-merge` branch
+1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
 
 <details>
 <summary>🔍 Click here for a hint! </summary>
@@ -146,19 +167,21 @@ Merges don't always go as planned. In this exercise you will practice how to can
 - To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 - To check the status of git use `git status`
 - To check the history of a branch use `git log --oneline --all --graph`
-- To force delete a branch use `git branch -D name_of_branch`
 </details>
 
 #### 🚀 Optional challenge
 
 Now practice undoing a merge that was **already committed**.
 
-1. Recreate the `bad-merge` branch from where you left off and redo the merge —
-   but this time resolve the conflict (however you like) and commit it
+1. Recreate steps above until you execute the merge of `bad-merge` into `main`
+1. Instead of cancelling the merge, resolve the conflict
+1. Commit the merge
 1. Verify the merge commit appears in `git log --oneline --graph`
+1. Imagine you are not happy with the merge and want to `undo` it
 1. Use `git reset --hard HEAD~1` to undo the merge commit
 1. Verify the merge commit is gone and `lines.txt` is back to its previous state
-1. Think about this: what would happen if you had already pushed the merge
+1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
+>> **Think about this:** what would happen if you had already pushed the merge
    commit to GitHub before running `git reset --hard`?
 
 
