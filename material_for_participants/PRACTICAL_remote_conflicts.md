@@ -1,6 +1,4 @@
-# Lab | Conflicts with Remote Repositories | ~35 min
-
-
+# PRACTICAL | Conflicts with Remote Repositories
 
 ## What is a remote conflict?
 
@@ -27,7 +25,7 @@ When you and a colleague both change the same file and try to share your work th
 
 ---
 
-## Lab overview
+## Overview
 
 You'll simulate two people working on the same GitHub repository. You'll play both sides by using two local clones of the same repo.
 
@@ -49,7 +47,7 @@ You'll create one repository on GitHub and clone it twice — once as "you" and 
 
 1. Go to [github.com](https://github.com) and sign in.
 2. Click the **+** icon in the top-right corner and choose **New repository**.
-3. Name it `remote_conflicts_lab`.
+3. Name it `remote_conflicts`.
 4. Leave it **Public** (or Private — either works).
 5. Leave all clone_colleague options as they are. Do **not** add a README or .gitignore.
 6. Click **Create repository**.
@@ -57,7 +55,7 @@ You'll create one repository on GitHub and clone it twice — once as "you" and 
 GitHub will show you your new empty repository and its URL. 
 Click on the `SSH` tab. It will look like:
 ```
-git@github.com:YOUR-USERNAME/remote_conflicts_lab.git
+git@github.com:YOUR-USERNAME/remote_conflicts.git
 ```
 Copy this URL — you'll need it in the next step.
 
@@ -65,15 +63,16 @@ Copy this URL — you'll need it in the next step.
 
 **Step 2 — Clone it as "you" and add the starting files**
 
-> **Remember:** Avoid copy pasting. Typing all the commands help you integrate your understanding.
+
 
 Open your terminal and run:
 
 ```bash
 cd ~/Desktop
-git clone git@github.com:YOUR-USERNAME/remote_conflicts_lab.git clone_you
+git clone git@github.com:YOUR-USERNAME/remote_conflicts.git clone_you
 cd clone_you
 ```
+> **Suggestion:** For this section, you are encouraged to copy/paste the contents of the files.
 
 Create the starting files:
 Create a new file `notes.txt`
@@ -125,13 +124,15 @@ git add .        # . adds everything (only recommended for a first commit)
 git commit -m "Initial files: notes, schedule, ideas"
 git push origin main
 ```
-> **Checkpoint:** `git log --oneline` should show one commit. Go to GitHub website. View `remote_conflicts_lab` repository. You should see new files.
+> **Checkpoint:** `git log --oneline` should show one commit. Go to GitHub website. View `remote_conflicts` repository. You should see new files.
 
 **Step 3 — Clone it again as your "colleague"**
 
+> **Remember:** From here on, avoid copy pasting. Typing all the commands help you integrate your understanding.
+
 ```bash
 cd ..                   # ensure you are in the parent directory of `clone_you` folder
-git clone git@github.com:YOUR-USERNAME/remote_conflicts_lab.git clone_colleague
+git clone git@github.com:YOUR-USERNAME/remote_conflicts.git clone_colleague
 ```
 
 > **Checkpoint:** You should now have two folders side by side: `clone_you` and `clone_colleague`. `clone_colleague` should have the same three files that you created and pushed inside `clone_you`
@@ -143,6 +144,7 @@ ls clone_you/            # shows ideas.txt	notes.txt	schedule.txt
 ---
 
 ## Conflict 1: Push rejected
+
 
 **File:** `notes.txt`
 
@@ -184,7 +186,7 @@ You will see a rejection message like:
 
 ```
 ! [rejected]        main -> main (fetch first)
-error: failed to push some refs to 'github.com:YOUR-USERNAME/remote_conflicts_lab.git'
+error: failed to push some refs to 'github.com:YOUR-USERNAME/remote_conflicts.git'
 ...
 ```
 
@@ -197,7 +199,7 @@ git pull origin main
 ```
 Depending on your git settings, you might see a rejection message like::
 ```bash
-From github.com:YOUR-USERNAME/remote_conflicts_lab
+From github.com:YOUR-USERNAME/remote_conflicts
  * branch            main       -> FETCH_HEAD
    7f80970..c4aa29f  main       -> origin/main
 hint: You have divergent branches and need to specify how to reconcile them.
@@ -224,7 +226,7 @@ git push origin main          # push!
 
 > **Success:** Your push is accepted. `notes.txt` includes both your change and your colleague's. `git log --oneline --graph` shows a merge commit.
 
-> **Optional:** Go to GitHub website. View `remote_conflicts_lab` repository. Update the page to see the most recent commit message of `notes.txt`
+> **Optional:** Go to GitHub website. View `remote_conflicts` repository. Update the page to see the most recent commit message of `notes.txt`
 
 ---
 

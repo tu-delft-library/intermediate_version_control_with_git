@@ -268,11 +268,11 @@ git log --oneline --all --graph # verify
 
 ## 11:30 - Break  - 10' 
 
-## 11:40 -  💻 LAB - Understanding merge conflicts - 40' - CATA
-see `LAB_merge_conflicts.md`
+## 11:40 -  💻 PRACTICAL - Understanding merge conflicts - 40' - CATA
+see `PRACTICAL_merge_conflicts.md`
 
-## 12:20 -  Review LAB with group - 10' - CATA
-Do not solve the LAB live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
+## 12:20 -  Review PRACTICAL with group - 10' - CATA
+Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
 
 ## 12:30 - 	Lunch - 60'		
 
@@ -418,11 +418,11 @@ git log --oneline --graph   # back to a clean main
 
 ## 14:35 - Break - 10' 
 
-## 14:45 - 💻 LAB - Conflicts with Remote Repositories - 40' - CATA 
-see `LAB_remote_conflicts_github.md`
+## 14:45 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - CATA 
+see `PRACTICAL_remote_conflicts_github.md`
 
-## 15:25 - Review LAB with the group - 10' - CATA
-Do not solve the LAB live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
+## 15:25 - Review PRACTICAL with the group - 10' - CATA
+Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
 
 ## 15:35 - Break - 10'
 ## 15:45 - Summarize key points - 10' - HALFORD 

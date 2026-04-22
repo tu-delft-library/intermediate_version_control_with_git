@@ -1,4 +1,4 @@
-# Lab | Understanding Merge Conflicts | ~30 min
+# PRACTICAL | Understanding Merge Conflicts
 
 ## What is a merge conflict?
 
@@ -20,7 +20,7 @@ When two branches change the same part of the same file, Git can't guess which v
 
 ---
 
-## Lab overview
+## Overview
 
 You'll play both sides of three conflicts using plain text files.
 
@@ -35,10 +35,11 @@ You'll play both sides of three conflicts using plain text files.
 ---
 
 ## Setup
+> **Suggestion:** For this section, you are encouraged to copy/paste the contents of the files.
 
 ```bash
-mkdir conflict_lab
-cd conflict_lab
+mkdir conflict_practical
+cd conflict_practical
 git init
 nano recipe.txt
 ```
@@ -119,7 +120,7 @@ git commit -m "Initial files: recipe, bio, event, README"
 
 ## Conflict 1: Same-line edit
 
-> **Remember:** Avoid copy pasting. Typing all the commands help you integrate your understanding.
+> **Remember:** From here onwards, avoid copy pasting. Typing all the commands help you integrate your understanding.
 
 **File:** `recipe.txt`
 
