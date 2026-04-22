@@ -28,7 +28,7 @@ When you are finished:
 
 #### 🚀 Optional challenge — safe delete vs force delete
 
-1. Create a branch called `experiment` and switch to it in ONE STEP
+1. Create a branch called `experiment` and switch to it
 1. Add a new line to `lines.txt`
 1. Commit your changes
 1. Switch back to main
