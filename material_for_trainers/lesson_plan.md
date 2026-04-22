@@ -1,8 +1,8 @@
 
-## 9:00 - Land - 10' - CATA
+## 9:00 - Land - 5' - CATA
 ☕ Coffee/tea 🫖
 
-## 9:10 - Housekeeping - 10' CATA
+## 9:05 - Housekeeping - 15' CATA
 - ✅ Roll call + 🤝 Code of Conduct
 - 🖥 Did everyone:
     - install git
@@ -70,7 +70,7 @@ git log --oneline       # notice HEAD -> main
 ```
 
 ## 10:05 - 1 💪 Get familiar with branches - 10' - CATA 
-See `exercises.md`. There is an optional challenge under each numbered exercise.. There is an optional challenge under each numbered exercise.
+See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
 ```bash
@@ -419,7 +419,7 @@ git log --oneline --graph   # back to a clean main
 ## 14:35 - Break - 10' 
 
 ## 14:45 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - CATA 
-see `PRACTICAL_remote_conflicts_github.md`
+see `PRACTICAL_remote_conflicts.md`
 
 ## 15:25 - Review PRACTICAL with the group - 10' - CATA
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
