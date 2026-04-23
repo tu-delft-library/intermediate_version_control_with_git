@@ -66,7 +66,7 @@ Blend until smooth. Season and serve.
 Confirm contents of `recipe.txt`
 Create a new file `bio.txt`
 ```bash
-cat recipe
+cat recipe.txt
 nano bio.txt
 ```
 Add the text below to `bio.txt`
