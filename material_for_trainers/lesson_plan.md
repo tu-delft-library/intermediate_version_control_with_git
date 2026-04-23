@@ -10,6 +10,20 @@
     - set up SSH key
 - 🙋 Getting help (🆘 red  ✅ green stickers)
 
+> **NAVIGATION** At TU Delft, the Desktop folder is in OneDrive, and is *not* the Desktop folder under the home directory.
+> Participants should navigate to:
+>
+>   `"/c/Users/[netid]/OneDrive - Delft University of Technology/Desktop"`
+>
+> They may also use the shortcut:
+>
+>  ~/"OneDrive - Delft University of Technology/Desktop"`
+>
+> Remember that because of spaces in the filename, the quotation marks are important. Alternatively the spaces may be individually escaped with backslashes ('\\')
+> It may be helpful to create a symlink in the home folder with:
+>
+> ` ln -s "/c/Users/[netid]/OneDrive - Delft University of Technology/Desktop" ~/mydesktop `
+
 ## 9:20 - Icebreaker - 5'
 🎥 Icebreaker instructions on slides
 
