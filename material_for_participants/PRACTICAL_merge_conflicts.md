@@ -4,7 +4,7 @@
 
 When two branches change the same part of the same file, Git can't guess which version is correct — so it stops and shows you both, and asks you to decide. That pause is a merge conflict. It's not an error; it's Git being careful.
 
-> **Key insight:** A conflict means "two people changed the same thing — I need a human to decide." Git will never silently overwrite someone's work. That's a feature, not a bug.
+A conflict means "two people changed the same thing — I need a human to decide." Git will never silently overwrite someone's work. That's a feature, not a bug.
 
 ---
 ## Escape hatches
@@ -12,30 +12,14 @@ When two branches change the same part of the same file, Git can't guess which v
 | Command | What it does |
 |---|---|
 | `git merge --abort` | Cancel the merge entirely — safe at any time |
-| `git status` | Show which files still have conflicts |
-| `git diff` | Show all unresolved conflict content |
 | `git switch --ours <file>` | Accept your branch's version of a file |
 | `git switch --theirs <file>` | Accept the incoming branch's version |
-| `git log --oneline` | Compact commit history |
 
 ---
 
-## Overview
-
-You'll play both sides of three conflicts using plain text files.
-
-| # | Conflict type | File | What you decide |
-|---|---|---|---|
-| 1 | Same-line edit | `recipe.txt` | Combine both improvements |
-| 2 | Delete vs edit | `bio.txt` | Keep or remove a paragraph |
-| 3 | Multi-file | `event.txt` + `README.txt` | Keep both files consistent |
-
-> **Remember:** If anything goes wrong, `git merge --abort` cancels the merge and takes you back to safety. Nothing touches your real files.
-
----
 
 ## Setup
-> **Suggestion:** For this section, you are encouraged to copy/paste the contents of the files.
+For this section, you are encouraged to **copy/paste the contents of the files**.
 
 ```bash
 mkdir conflict_practical
@@ -120,11 +104,9 @@ git commit -m "Initial files: recipe, bio, event, README"
 
 ## Conflict 1: Same-line edit
 
-> **Remember:** From here onwards, avoid copy pasting. Typing all the commands help you integrate your understanding.
+From here onwards, **avoid copy pasting**. Typing all the commands help you integrate your understanding.
 
-**File:** `recipe.txt`
-
-Alice adds a stirring note; Bob adds a seasoning reminder — to the same line.
+**Situation** File `recipe.txt`; Alice adds a stirring note; Bob adds a seasoning reminder — to the same line.
 
 **Step 1 — Alice's branch**
 
@@ -136,17 +118,17 @@ Modify line `Add tomatoes and stock. Simmer for 25 minutes.` with `Add tomatoes 
 
 Check the differences of file `recipe.txt` and commit
 ```bash
-dif diff recipe.txt
+git diff recipe.txt
 git add recipe.txt
 git commit -m "Alice: add stirring note to method"
-git log --oneline -all --graph
+git log --oneline --all --graph
 ```
 
 **Step 2 — Bob's branch**
 
 ```bash
-git switch main
-git log --oneline -all --graph
+git switch main          # stand on main -> "bob branches" from main not from "alice"
+git log --oneline --all --graph
 git switch -c bob
 nano recipe.txt
 ```
@@ -163,7 +145,7 @@ git commit -m "Bob: remind to season before simmering"
 
 ```bash
 git switch main
-git log --oneline -all --graph
+git log --oneline --all --graph
 git merge alice   # works fine
 git merge bob     # creates a conflict
 ```
@@ -201,7 +183,7 @@ git add recipe.txt
 git commit -m "Merge: combine Alice and Bob recipe improvements"
 ```
 
-> **Success:** `recipe.txt` has no conflict markers, includes both the stirring note and seasoning step, and `git log --oneline -all --graph` shows a merge commit.
+> **Success:** `recipe.txt` has no conflict markers, includes both the stirring note and seasoning step, and `git log --oneline --all --graph` shows a merge commit.
 
 ```bash
 *   hash (HEAD -> main) Merge: combine Alice and Bob recipe improvements
@@ -216,16 +198,14 @@ git commit -m "Merge: combine Alice and Bob recipe improvements"
 ## Conflict 2: Delete vs edit
 
 
-**File:** `bio.txt`
-
-One person deletes the Rotterdam paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
+**Situation:** File `bio.txt`; One person deletes the Rotterdam paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
 
 > **Warning:** If you resolve this without thinking, you might permanently delete someone's work. In a real project, always ask why something was deleted before accepting "theirs."
 
 **Step 1 — Create the two branches**
 
 ```bash
-git switch main
+git switch main         
 git switch -c remove
 nano bio.txt
 ```
@@ -246,7 +226,7 @@ git commit -m "Remove outdated Rotterdam office paragraph"
 ```
 Go back to `main`
 ```bash
-git switch main
+git switch main             # stand on main -> "rewrite" from main not from "remove"
 git log --oneline --all --graph
 git switch -c rewrite
 nano bio.txt
@@ -272,21 +252,21 @@ git merge rewrite  # conflict
 
 For this exercise: imagine a client associates the team with Rotterdam, so the history is worth keeping. 
 
-Edit `bio.txt` using `nano`. Keep the warmer rewrite, remove conflict markers, then:
+Edit `bio.txt` using `nano`. Keep `We started out in Rotterdam, which we loved.`, remove conflict markers, then:
 
 ```bash
 git add bio.txt
-git commit -m "Keep Rotterdam history with warmer wording"
+git commit -m "Merge: Keep Rotterdam history with warmer wording"
 git log --oneline --all --graph
 ```
 
 Now try the opposite — undo and resolve the other way:
 
 ```bash
-git reset HEAD~1                    # undo the merge commit
+git reset --hard HEAD~1             # hard reset -> undo the merge commit
 git log --oneline --all --graph     # see the merge commit is removed
 git merge rewrite                   # do the merge again and get a conflict
-git nano bio.txt
+nano bio.txt
 ```
 Remove the Rotterdam paragraph entirely, remove conflict markers, then:
 ```bash
@@ -301,9 +281,7 @@ git log --oneline --all --graph
 
 ## Conflict 3: Multi-file conflict
 
-**Files:** `event.txt` + `README.txt`
-
-Two people update the ticket price in `event.txt`, but only one also updates `README.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `README.txt` is a hidden inconsistency.
+**Situation:** Files `event.txt` + `README.txt`; Two people update the ticket price in `event.txt`, but only one also updates `README.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `README.txt` is a hidden inconsistency.
 
 **Step 1 — Create the two branches**
 
@@ -344,7 +322,7 @@ git merge lower   # conflict in event.txt
 
 The conflict is only in `event.txt`, but `README.txt` now shows 35 euros. Whatever price you choose, **both files must match**.
 
-1. Open `event.txt`, choose a price (either value, or a compromise like 20 euros), remove all conflict markers, save.
+1. Open `event.txt`, choose a compromise price of 20 euros, remove all conflict markers, save.
 1. Open `README.txt`, update the price to match exactly.
 1. Check the differences
 1. Stage both files and commit:
@@ -352,7 +330,7 @@ The conflict is only in `event.txt`, but `README.txt` now shows 35 euros. Whatev
 ```bash
 git diff
 git add event.txt README.txt
-git commit -m "Resolve ticket price conflict: set to 20 euros in both files"
+git commit -m "Merge: Set to 20 euros in both files"
 ```
 
 Verify consistency:
@@ -360,6 +338,7 @@ Verify consistency:
 ```bash
 grep 'Ticket price' event.txt README.txt
 ```
+
 
 > **Success:** No conflict markers in `event.txt`, both files show the same price, `git status` is clean, and `git log --oneline --all --graph` shows three merge commits.
 
@@ -380,7 +359,7 @@ git commit -m "Reinstating ingredients"
 git log --oneline --all --graph
 ```
 
-> `git revert` is safe when you've already pushed to remote. If you haven't pushed yet, `git reset HEAD~1` removes the commit entirely.
+> `git revert` is safe when you've already pushed to remote. If you haven't pushed yet, `git reset --hard HEAD~1` removes the commit entirely.
 
 ---
 
