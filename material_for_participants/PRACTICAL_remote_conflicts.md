@@ -7,7 +7,7 @@ When you and a colleague both change the same file and try to share your work th
 - **Push rejected** — you try to upload your work, but someone else pushed first. Git won't overwrite their changes.
 - **Pull conflict** — you download someone else's changes, but they clash with edits you've already made locally.
 
-> **Key insight:** Git will never silently overwrite work. A rejected push or a pull conflict is Git protecting your team's work — not a sign that something has broken.
+Git will never silently overwrite work. A rejected push or a pull conflict is Git protecting your team's work — not a sign that something has broken.
 
 ---
 
@@ -16,28 +16,12 @@ When you and a colleague both change the same file and try to share your work th
 | Command | What it does |
 |---|---|
 | `git merge --abort` | Cancel a merge in progress — safe at any time |
-| `git status` | Show which files still have conflicts |
-| `git diff` | Show all unresolved conflict content |
-| `git log --oneline --graph` | Compact history showing branches and merges |
 | `git pull origin main` | Fetch and merge the remote's latest changes |
 | `git push origin main` | Upload your commits to the remote |
 | `git fetch origin` | Download remote changes without merging yet |
 
 ---
 
-## Overview
-
-You'll simulate two people working on the same GitHub repository. You'll play both sides by using two local clones of the same repo.
-
-| # | Conflict type | File | What you decide |
-|---|---|---|---|
-| 1 | Push rejected | `notes.txt` | Merge before you can push |
-| 2 | Pull conflict | `schedule.txt` | Resolve clashing edits after pulling |
-| 3 | Diverged history | `ideas.txt` | Decide what both versions keep |
-
-> **Remember:** `git merge --abort` cancels a merge in progress and returns everything to how it was. `git pull` is just `git fetch` + `git merge` in one step.
-
----
 
 ## Setup
 
@@ -72,7 +56,7 @@ cd ~/Desktop
 git clone git@github.com:YOUR-USERNAME/remote_conflicts.git clone_you
 cd clone_you
 ```
-> **Suggestion:** For this section, you are encouraged to copy/paste the contents of the files.
+For this section, you are **encouraged to copy/paste** the contents of the files.
 
 Create the starting files:
 Create a new file `notes.txt`
@@ -128,7 +112,7 @@ git push origin main
 
 **Step 3 — Clone it again as your "colleague"**
 
-> **Remember:** From here on, avoid copy pasting. Typing all the commands help you integrate your understanding.
+From here on, **avoid copy pasting**. Typing all the commands help you integrate your understanding.
 
 ```bash
 cd ..                   # ensure you are in the parent directory of `clone_you` folder
@@ -146,9 +130,7 @@ ls clone_you/            # shows ideas.txt	notes.txt	schedule.txt
 ## Conflict 1: Push rejected
 
 
-**File:** `notes.txt`
-
-Your colleague pushes a change while you are also working on the same file. When you try to push, Git rejects it because your history is behind theirs.
+**Situation:** File `notes.txt`; Your colleague pushes a change while you are also working on the same file. When you try to push, Git rejects it because your history is behind theirs.
 
 **Step 1 — Your colleague pushes first**
 
@@ -232,9 +214,7 @@ git push origin main          # push!
 
 ## Conflict 2: Pull conflict
 
-**File:** `schedule.txt`
-
-This time, both you and your colleague edit the **same line** of the same file before either of you pulls. When you pull, Git can't merge automatically and stops to ask you to decide.
+**Situation:** File `schedule.txt`; This time, both you and your colleague edit the **same line** of the same file before either of you pulls. When you pull, Git can't merge automatically and stops to ask you to decide.
 
 **Step 1 — Your colleague edits and pushes**
 
@@ -321,9 +301,7 @@ git push origin main
 
 ## Conflict 3: Diverged history
 
-**File:** `ideas.txt`
-
-Both of you add a new idea to the end of the file while offline. When you pull, Git sees two separate histories that have "diverged" — neither is simply ahead of the clone_colleague.
+**Situation:** File `ideas.txt`; Both of you add a new idea to the end of the file while offline. When you pull, Git sees two separate histories that have "diverged" — neither is simply ahead of the clone_colleague.
 
 **Step 1 — Your colleague adds an idea and pushes**
 
