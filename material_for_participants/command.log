@@ -1,0 +1,13 @@
+cd ~/Documents/rds_modules/intermediate_version_control_with_git/
+gitautopush --sleep 1000 .
+export HISTFILE="/Users/ctobongomez/Documents/rds_modules/intermediate_version_control_with_git/material_for_participants/command.log"
+shopt -s histappend
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+source ~./bash_profile
+export HISTFILE="/Users/ctobongomez/Documents/rds_modules/intermediate_version_control_with_git/material_for_participants/command.log"
+shopt -s histappend
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+source ~./bash_profile
+pwd
+ls -a ~
+source ~/.bash_profile
