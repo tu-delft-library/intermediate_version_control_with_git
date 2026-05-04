@@ -22,6 +22,7 @@ A conflict means "two people changed the same thing — I need a human to decide
 For this section, you are encouraged to **copy/paste the contents of the files**.
 
 ```bash
+cd ~/Desktop
 mkdir conflict_practical
 cd conflict_practical
 git init
