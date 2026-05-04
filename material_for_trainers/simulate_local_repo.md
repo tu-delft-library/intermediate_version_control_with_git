@@ -1,0 +1,43 @@
+echo '----Develop on different branches----'
+cd ~/Desktop/
+mkdir sandbox
+cd sandbox/
+git init
+echo 'first line' > lines.txt
+echo 'second line' >> lines.txt 
+git add lines.txt 
+git commit -m 'Add first two lines' lines.txt 
+echo 'third line' >> lines.txt 
+git add lines.txt 
+git commit -m 'Add third line' lines.txt 
+git branch b1
+git switch b1
+git switch -c b2
+git switch main
+echo 'fourth line' >> lines.txt 
+git add lines.txt 
+git commit -m 'Add fourth line' lines.txt 
+git switch b1
+echo 'fourth line' >> lines.txt 
+git add lines.txt 
+git commit -m 'Add fourth line on branch b1' lines.txt 
+git switch main
+git switch b2
+echo 'fourth line' >> lines.txt 
+echo 'fifth line' >> lines.txt 
+git add lines.txt 
+git commit -m 'Add two more lines on b2'
+
+echo '---Differences across branches---'
+git switch main
+echo 'fourth line (duplicate)' >> lines.txt
+git add lines.txt 
+git commit -m 'Add fifth line on main (with mistake)' lines.txt
+git switch b1
+echo 'fifth line' >> lines.txt 
+git add lines.txt 
+git commit -m 'Add fifth line on b1' lines.txt 
+git switch main
+sed -i '' 's/fourth line (duplicate)/fifth line/' lines.txt
+git add lines.txt
+git commit -m 'Correct fifth line on main' lines.txt
