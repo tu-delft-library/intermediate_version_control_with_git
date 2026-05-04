@@ -79,7 +79,7 @@ Solution:
 ```bash
 git branch pa
 git branch pe
-git branch pi
+git switch -c pi
 git branch -m pa po
 git switch po
 git log --oneline
@@ -129,6 +129,8 @@ git status
 ```
 
 ## 10:30 - Break - 10' 
+
+> *START AUTOPUSH* and use run commands in `simulate_local_repo.md` until `echo '---Differences across branches---'`
 
 ## 10:40 - Explore differences across branches - 15' - HALFORD 
 
