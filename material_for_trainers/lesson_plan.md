@@ -95,17 +95,17 @@ git log --oneline
 
 ```bash
 git status
-echo 'forth line' >> lines.txt              # add more lines
+echo 'fourth line' >> lines.txt              # add more lines
 git diff
 git add lines.txt 
-git commit -m 'Add forth line' lines.txt    # commit changes on main
+git commit -m 'Add fourth line' lines.txt    # commit changes on main
 git status
 git switch b1
 git log --oneline
-echo 'forth line' >> lines.txt 
+echo 'fourth line' >> lines.txt 
 git diff
 git add lines.txt
-git commit -m 'Add forth line on branch b1' lines.txt # commit changes on b1
+git commit -m 'Add fourth line on branch b1' lines.txt # commit changes on b1
 git status
 git switch main
 git log --oneline --all                    # show all branches
@@ -120,7 +120,7 @@ Solution:
 ```bash
 git switch b2
 cat lines.txt
-echo 'forth line' >> lines.txt 
+echo 'fourth line' >> lines.txt 
 echo 'fifth line' >> lines.txt
 git diff
 git add lines.txt
@@ -136,7 +136,7 @@ Let's keep adding to our history:
 ```bash
 git switch main
 cat lines.txt
-echo 'forth line (duplicate)' >> lines.txt      # add mistake on main
+echo 'fourth line (duplicate)' >> lines.txt      # add mistake on main
 git diff
 git add lines.txt 
 git commit -m 'Add fifth line on main (with mistake)' lines.txt 
@@ -163,7 +163,7 @@ Let's correct the mistake on `main` branch
 
 ```bash
 git status              # verify
-nano lines.txt          # change "forth line (duplicate)" with "fifth line"
+nano lines.txt          # change "fourth line (duplicate)" with "fifth line"
 cat lines.txt           # verify
 git status              # verify
 git add lines.txt       # routine
@@ -226,7 +226,7 @@ nano lines.txt           # edit the file within the conflict markers
 first line
 second line
 third line
-forth line
+fourth line
 fifth line
 sixth line
 seventh line
