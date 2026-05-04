@@ -52,7 +52,7 @@ When you are finished:
 Follow the steps listed below:
 
 1. Move to branch `b2` (the file `lines.txt` contains three lines)
-1. Append a **forth** line using `echo`
+1. Append a **fourth** line using `echo`
 1. Append a **fifth** line using `echo`
 1. Make a single commit of these two changes. Specify the branch name in the commit message!
 1. Inspect the working tree
