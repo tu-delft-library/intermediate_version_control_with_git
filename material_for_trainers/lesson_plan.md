@@ -12,12 +12,15 @@
 
 ## 9:20 - Icebreaker - 5' - CATA
 🎥 Icebreaker instructions on slides
-
+> *START AUTOPUSH* 
 ## 9:25 - Introduction to branches - 15' - CATA 
 🎥 Use slides
 
+
 ## 9:40 - Make local repo with history - 10' - CATA 
 Use this opportunity to **recap git commands**
+
+Let's open our Terminal: `Git Bash` for Windows, `Terminal` for Mac/Linux
 
 Let's configure our `git` default editor:
 ```bash
