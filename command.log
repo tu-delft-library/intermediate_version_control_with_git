@@ -58,3 +58,4 @@ git log --oneline --all --graph
 git branch
 clear
 git merge bad-merge
+git status
