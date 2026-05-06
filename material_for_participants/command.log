@@ -56,3 +56,6 @@ cd ..
 cd .
 cd ..
 vi reposim.sh 
+rm -rf ~/Desktop/sandbox
+./reposim.sh 
+cd Desktop/sandbox/
