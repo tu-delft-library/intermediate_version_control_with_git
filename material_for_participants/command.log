@@ -124,3 +124,6 @@ git diff
 clear
 ls
 cat lines.txt 
+git switch main
+cat lines.txt 
+git switch b1
