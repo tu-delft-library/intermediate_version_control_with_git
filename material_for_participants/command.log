@@ -77,3 +77,4 @@ cat lines.txt
 echo "fifth line" >> lines.txt 
 cat lines.txt 
 git diff
+git add lines.txt 
