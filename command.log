@@ -61,3 +61,4 @@ git merge bad-merge
 git status
 cat lines.txt 
 git merge --abort
+git status
