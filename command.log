@@ -30,3 +30,4 @@ git add lines.txt
 git commit -m "Add ninth line locally"
 clear
 git push
+git pull
