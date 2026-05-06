@@ -170,3 +170,5 @@ git commit -m "Merged b2 into main"
 git status
 git log --oneline --all --graph
 git branch
+git branch -d b2
+git log --oneline --all --graph
