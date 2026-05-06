@@ -112,3 +112,4 @@ git diff b2 b1 lines.txt
 git diff b2 main lines.txt 
 git diff b2 main~1 lines.txt 
 clear
+git switch b1
