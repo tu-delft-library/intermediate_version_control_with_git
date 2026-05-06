@@ -42,3 +42,5 @@ git status
 clear
 git branch
 git branch bad-merge
+git switch bad-merge
+git branch
