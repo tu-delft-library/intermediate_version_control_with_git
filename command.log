@@ -51,3 +51,5 @@ git commit -m "Add tenth line line on bad-merge"
 cat lines.txt 
 git switch main
 cat lines.txt 
+echo "tenth line - main version" >> lines.txt 
+git add lines.txt 
