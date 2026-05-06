@@ -27,3 +27,4 @@ cat lines.txt
 echo "ninth line - local" >> lines.txt 
 cat lines.txt 
 git add lines.txt 
+git commit -m "Add ninth line locally"
