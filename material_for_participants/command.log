@@ -123,3 +123,4 @@ git commit -m "Added 6th and 7th lines on b1"
 git diff
 clear
 ls
+cat lines.txt 
