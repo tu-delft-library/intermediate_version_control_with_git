@@ -1,3 +1,5 @@
 clear
 cd ~/Desktop
 git clone git@github.com:halfordd/logbook.git
+cd logbook/
+ls
