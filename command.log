@@ -34,3 +34,4 @@ git pull
 git config pull.rebase false
 git pull
 nano lines.txt 
+git add lines.txt 
