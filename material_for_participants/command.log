@@ -64,3 +64,5 @@ git branch
 git log --oneline --all
 git log --oneline --all --graph
 cat lines.txt 
+echo "fourth line (duplicate)" >> lines.txt 
+cat lines.txt 
