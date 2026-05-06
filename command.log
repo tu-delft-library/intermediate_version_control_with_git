@@ -26,3 +26,4 @@ git status
 cat lines.txt 
 echo "ninth line - local" >> lines.txt 
 cat lines.txt 
+git add lines.txt 
