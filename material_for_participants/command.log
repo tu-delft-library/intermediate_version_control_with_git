@@ -52,3 +52,6 @@ git branch
 git log --oneline --all
 git switch main
 cat lines.txt 
+cd ..
+cd .
+cd ..
