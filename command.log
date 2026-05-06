@@ -13,3 +13,4 @@ cat lines.txt
 git status
 git add lines.txt 
 git commit -m "Add lines.txt locally"
+git log
