@@ -165,3 +165,4 @@ clear
 git merge b2
 nano lines.txt 
 git status
+git add lines.txt 
