@@ -151,3 +151,5 @@ git diff :1:lines.txt :0:lines.txt
 git diff :1:lines.txt :2:lines.txt
 clear
 git status
+git commit -m "Merge b1 into main"
+git status
