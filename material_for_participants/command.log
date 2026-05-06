@@ -71,3 +71,5 @@ git add lines.txt
 git commit -m "Add fifth line on main (with mistakes)"
 git log --oneline
 cat lines.txt 
+git switch b1
+git log --oneline
