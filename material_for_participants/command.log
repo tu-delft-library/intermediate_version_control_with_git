@@ -159,3 +159,4 @@ cat lines.txt
 git switch main
 clear
 git diff main b2 lines.txt 
+git diff main b2
