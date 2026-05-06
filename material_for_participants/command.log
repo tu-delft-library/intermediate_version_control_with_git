@@ -86,3 +86,4 @@ clear
 git switch main
 git branch
 git diff HEAD HEAD~1 lines.txt 
+git diff HEAD~1 HEAD lines.txt 
