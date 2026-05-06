@@ -79,3 +79,5 @@ cat lines.txt
 git diff
 git add lines.txt 
 git commit -m "Add fifth line on b1"
+git status
+git log --oneline
