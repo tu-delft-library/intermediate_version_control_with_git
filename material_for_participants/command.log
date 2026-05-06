@@ -162,3 +162,4 @@ git diff main b2 lines.txt
 git diff main b2
 git branch
 clear
+git merge b2
