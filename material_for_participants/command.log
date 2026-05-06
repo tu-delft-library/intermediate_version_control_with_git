@@ -101,3 +101,4 @@ git log --oneline --graph
 clear
 git switch b2
 git diff
+cat lines.txt 
