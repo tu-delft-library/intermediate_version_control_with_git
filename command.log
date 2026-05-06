@@ -35,3 +35,5 @@ git config pull.rebase false
 git pull
 nano lines.txt 
 git add lines.txt 
+git commit -m "Resolved merge conflict"
+git status
