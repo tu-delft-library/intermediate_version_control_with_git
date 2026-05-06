@@ -91,3 +91,4 @@ git diff HEAD~2 HEAD~1 lines.txt
 git diff main b1 lines.txt 
 git diff main b1~1 lines.txt 
 git diff main~1 b1~1 lines.txt 
+cat lines.txt 
