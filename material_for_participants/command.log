@@ -169,3 +169,4 @@ git add lines.txt
 git commit -m "Merged b2 into main"
 git status
 git log --oneline --all --graph
+git branch
