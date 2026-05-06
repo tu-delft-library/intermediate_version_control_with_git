@@ -62,3 +62,4 @@ git status
 cat lines.txt 
 git merge --abort
 git status
+cat lines.txt 
