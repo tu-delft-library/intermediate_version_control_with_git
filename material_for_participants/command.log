@@ -140,3 +140,4 @@ git branch
 git merge -m "Merge b1" lines.txt 
 git merge -m "Merge b1" b1
 ls
+nano lines.txt 
