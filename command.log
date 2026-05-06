@@ -66,3 +66,4 @@ cat lines.txt
 git log --oneline --all --graph
 git branch -d bad-merge
 git branch -D bad-merge
+git log --oneline --all --graph
