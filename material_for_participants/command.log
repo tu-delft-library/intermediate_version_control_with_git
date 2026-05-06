@@ -134,3 +134,4 @@ cat lines.txt
 git diff HEAD b1 lines.txt 
 git diff main b1 lines.txt 
 git log --oneline
+git diff HEAD f02469a
