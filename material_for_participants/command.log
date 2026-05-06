@@ -163,3 +163,4 @@ git diff main b2
 git branch
 clear
 git merge b2
+nano lines.txt 
