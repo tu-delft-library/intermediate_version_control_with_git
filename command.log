@@ -21,3 +21,4 @@ git push
 cat lines.txt 
 git status
 git pull origin main
+cat lines.txt 
