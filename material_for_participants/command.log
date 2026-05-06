@@ -68,3 +68,4 @@ echo "fourth line (duplicate)" >> lines.txt
 cat lines.txt 
 git status
 git add lines.txt 
+git commit -m "Add fifth line on main (with mistakes)"
