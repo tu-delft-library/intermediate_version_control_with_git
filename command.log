@@ -46,3 +46,4 @@ git switch bad-merge
 git branch
 echo "tenth line - bad merge branch" >> lines.txt 
 cat lines.txt 
+git add lines.txt 
