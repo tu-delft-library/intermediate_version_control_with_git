@@ -84,3 +84,4 @@ git log --oneline
 git log --oneline --all --graph
 clear
 git switch main
+git branch
