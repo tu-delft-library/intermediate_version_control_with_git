@@ -74,3 +74,5 @@ cat lines.txt
 git switch b1
 git log --oneline
 cat lines.txt 
+echo "fifth line" >> lines.txt 
+cat lines.txt 
