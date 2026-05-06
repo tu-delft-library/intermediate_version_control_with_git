@@ -153,3 +153,4 @@ clear
 git status
 git commit -m "Merge b1 into main"
 git status
+clear
