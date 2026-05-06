@@ -5,3 +5,4 @@ cd logbook/
 ls
 ls -a
 git status
+git branch
