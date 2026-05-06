@@ -16,3 +16,4 @@ git commit -m "Add lines.txt locally"
 git log
 git status
 git push origin main
+git status
