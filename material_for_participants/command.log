@@ -156,3 +156,5 @@ git status
 clear
 git switch b1
 cat lines.txt 
+git switch main
+clear
