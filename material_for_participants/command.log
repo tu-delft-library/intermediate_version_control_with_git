@@ -49,3 +49,4 @@ pwd
 cd ..
 cd sandbox/
 git branch
+git log --oneline --all
