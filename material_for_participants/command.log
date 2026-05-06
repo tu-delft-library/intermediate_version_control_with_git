@@ -145,3 +145,4 @@ git diff
 cat lines.txt 
 git status
 git add lines.txt 
+git diff
