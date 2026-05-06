@@ -6,3 +6,4 @@ ls
 ls -a
 git status
 git branch
+git log
