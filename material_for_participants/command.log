@@ -46,3 +46,6 @@ clear
 pwd
 git branch
 pwd
+cd ..
+cd sandbox/
+git branch
