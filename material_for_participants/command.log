@@ -118,3 +118,4 @@ echo "seventh line" >> lines.txt
 cat lines.txt 
 git status
 git diff
+git add lines.txt 
