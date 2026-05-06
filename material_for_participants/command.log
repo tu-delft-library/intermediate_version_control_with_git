@@ -138,3 +138,4 @@ git diff HEAD f02469a
 clear
 git branch
 git merge -m "Merge b1" lines.txt 
+git merge -m "Merge b1" b1
