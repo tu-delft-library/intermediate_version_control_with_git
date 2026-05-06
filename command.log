@@ -47,3 +47,4 @@ git branch
 echo "tenth line - bad merge branch" >> lines.txt 
 cat lines.txt 
 git add lines.txt 
+git commit -m "Add tenth line line on bad-merge"
