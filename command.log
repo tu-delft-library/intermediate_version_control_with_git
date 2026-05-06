@@ -40,3 +40,4 @@ git status
 git push origin main
 git status
 clear
+git branch
