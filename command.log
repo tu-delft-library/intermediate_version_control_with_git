@@ -11,3 +11,4 @@ git remote -v
 cp ../sandbox/lines.txt .
 cat lines.txt 
 git status
+git add lines.txt 
