@@ -20,3 +20,4 @@ git status
 git push
 cat lines.txt 
 git status
+git pull origin main
