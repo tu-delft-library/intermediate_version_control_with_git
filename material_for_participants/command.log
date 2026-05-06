@@ -173,3 +173,4 @@ git branch
 git branch -d b2
 git log --oneline --all --graph
 git log
+git log
