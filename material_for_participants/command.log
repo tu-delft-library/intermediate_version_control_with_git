@@ -154,3 +154,5 @@ git status
 git commit -m "Merge b1 into main"
 git status
 clear
+git switch b1
+cat lines.txt 
