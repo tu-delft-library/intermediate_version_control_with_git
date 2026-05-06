@@ -136,3 +136,4 @@ git diff main b1 lines.txt
 git log --oneline
 git diff HEAD f02469a
 clear
+git branch
