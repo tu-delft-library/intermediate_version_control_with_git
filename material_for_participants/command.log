@@ -63,3 +63,4 @@ git log --oneline
 git branch
 git log --oneline --all
 git log --oneline --all --graph
+cat lines.txt 
