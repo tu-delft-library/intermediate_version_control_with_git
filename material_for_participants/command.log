@@ -61,3 +61,5 @@ rm -rf ~/Desktop/sandbox
 cd Desktop/sandbox/
 git log --oneline
 git branch
+git log --oneline --all
+git log --oneline --all --graph
