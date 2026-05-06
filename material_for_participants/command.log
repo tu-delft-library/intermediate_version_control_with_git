@@ -99,3 +99,4 @@ git add lines.txt
 git commit -m "Corrected fifth line on main"
 git log --oneline --graph
 clear
+git switch b2
