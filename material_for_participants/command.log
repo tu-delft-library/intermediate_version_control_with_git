@@ -44,3 +44,5 @@ git add lines.txt
 git commit -m 'Correct fifth line on main' lines.txt
 clear
 pwd
+git branch
+pwd
