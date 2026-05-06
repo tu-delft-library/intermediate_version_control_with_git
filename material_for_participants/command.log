@@ -116,3 +116,5 @@ git switch b1
 echo "sixth line" >> lines.txt 
 echo "seventh line" >> lines.txt 
 cat lines.txt 
+git status
+git diff
