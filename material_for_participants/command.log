@@ -50,3 +50,5 @@ cd ..
 cd sandbox/
 git branch
 git log --oneline --all
+git switch main
+cat lines.txt 
