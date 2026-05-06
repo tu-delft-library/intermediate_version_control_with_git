@@ -43,3 +43,4 @@ sed -i '' 's/fourth line (duplicate)/fifth line/' lines.txt
 git add lines.txt
 git commit -m 'Correct fifth line on main' lines.txt
 clear
+pwd
