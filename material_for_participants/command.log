@@ -161,3 +161,4 @@ clear
 git diff main b2 lines.txt 
 git diff main b2
 git branch
+clear
