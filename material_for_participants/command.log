@@ -55,3 +55,4 @@ cat lines.txt
 cd ..
 cd .
 cd ..
+vi reposim.sh 
