@@ -94,3 +94,4 @@ git diff main~1 b1~1 lines.txt
 cat lines.txt 
 nano lines.txt 
 cat lines.txt 
+git diff lines.txt 
