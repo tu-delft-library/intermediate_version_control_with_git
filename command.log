@@ -31,3 +31,4 @@ git commit -m "Add ninth line locally"
 clear
 git push
 git pull
+git config pull.rebase false
