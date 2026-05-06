@@ -95,3 +95,4 @@ cat lines.txt
 nano lines.txt 
 cat lines.txt 
 git diff lines.txt 
+git add lines.txt 
