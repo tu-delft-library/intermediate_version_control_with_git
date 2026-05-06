@@ -76,3 +76,4 @@ git log --oneline
 cat lines.txt 
 echo "fifth line" >> lines.txt 
 cat lines.txt 
+git diff
