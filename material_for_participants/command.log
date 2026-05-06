@@ -127,3 +127,4 @@ cat lines.txt
 git switch main
 cat lines.txt 
 git switch b1
+git log --oneline  --all --graph
