@@ -132,3 +132,4 @@ clear
 git switch main
 cat lines.txt 
 git diff HEAD b1 lines.txt 
+git diff main b1 lines.txt 
