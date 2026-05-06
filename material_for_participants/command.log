@@ -85,3 +85,4 @@ git log --oneline --all --graph
 clear
 git switch main
 git branch
+git diff HEAD HEAD~1 lines.txt 
