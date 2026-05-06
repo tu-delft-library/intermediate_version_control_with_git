@@ -108,3 +108,4 @@ git diff HEAD HEAD~2 lines.txt
 git diff HEAD HEAD~3 lines.txt 
 git log --oneline
 clear
+git diff b2 b1 lines.txt 
