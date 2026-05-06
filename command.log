@@ -39,3 +39,4 @@ git commit -m "Resolved merge conflict"
 git status
 git push origin main
 git status
+clear
