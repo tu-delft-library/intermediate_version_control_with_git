@@ -104,3 +104,4 @@ git diff
 cat lines.txt 
 git diff HEAD HEAD~1 lines.txt 
 git diff HEAD~1 HEAD~2 lines.txt 
+git diff HEAD HEAD~2 lines.txt 
