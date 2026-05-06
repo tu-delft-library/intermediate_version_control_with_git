@@ -56,3 +56,4 @@ git add lines.txt
 git commit -m "Added tenth line on main"
 git log --oneline --all --graph
 git branch
+clear
