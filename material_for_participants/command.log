@@ -167,3 +167,4 @@ nano lines.txt
 git status
 git add lines.txt 
 git commit -m "Merged b2 into main"
+git status
