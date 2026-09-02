@@ -428,6 +428,33 @@ see `PRACTICAL_remote_conflicts.md`
 
 ## 15:25 - Review PRACTICAL with the group - 10' - CATA
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
+## 15:50 - Demo git operations in VSCode - 10' - CATA
+- Some people prefer to use a GUI to work with Git.
+- Let's explore that using VSCode
+[TODO] add more explanation about VS code --> what it is and why it has a terminal etc
+
+
+### Git by default
+- Open VSCode
+- Open folder -> recipes folder
+- Go to git tab (left)
+- Explain GUI:
+    - log -> hover for details
+    - click on +- icon on the right to show changes
+    - right click for more options
+### Commit changes
+- Open `guacamole.md` from explorer
+- Make a change (e.g. smash avocado, add salt, pepper and lime)
+- Save `guacamole.md` (CTRL + S)
+- Notice badge on git icon
+- Click on `guacamole.md` to see the changes on the right
+    - red deleted
+    - green added
+- Click on plus to stage
+- Write message and click on commit
+- Notice the update on the log
+- Push by clicking "Publish Branch"
+- Confirm in GitHub
 
 ## 15:35 - Break - 10'
 ## 15:45 - Summarize key points - 10' - HALFORD 
