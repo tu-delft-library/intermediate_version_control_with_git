@@ -102,7 +102,6 @@ git commit -m "Initial files: recipe, bio, event, README"
 ## Conflict 1: Same-line edit
 
 
-
 > **Situation** File `recipe.txt`; Alice adds a stirring note; Bob adds a seasoning reminder — to the same line.
 
 <details>
@@ -335,8 +334,6 @@ Make a mistake on purpose, then undo it safely.
 </details>
 
 > Reversing a commit this way is safe when you've already pushed to remote. If you haven't pushed yet, a hard reset to the previous commit removes the commit entirely.
-
-
 
 
 ## Reflection questions
