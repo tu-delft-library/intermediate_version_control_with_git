@@ -29,7 +29,7 @@ When you are finished:
 #### 🚀 Optional challenge — safe delete vs force delete
 
 1. Create a branch called `experiment` and switch to it
-1. Add a new line to `lines.txt`
+1. Add a new line to `notes.txt`
 1. Commit your changes
 1. Switch back to main
 1. Try to delete `experiment` with `git branch -d experiment`
@@ -51,9 +51,10 @@ When you are finished:
 
 Follow the steps listed below:
 
-1. Move to branch `b2` (the file `lines.txt` contains three lines)
-1. Append a **forth** line using `echo`
-1. Append a **fifth** line using `echo`
+1. Move to branch `b2` 
+1. Confirm that the file `notes.txt` contains three lines
+1. Append the line `A dramatic sunset` into `notes.txt` using `echo`
+1. Append the line `The moon was bright` into `notes.txt` using `echo`
 1. Make a single commit of these two changes. Specify the branch name in the commit message!
 1. Inspect the working tree
 
@@ -63,12 +64,13 @@ Follow the steps listed below:
 
 - To switch between branches use `git switch name_of_branch`
 - To inspect the working tree use `git status`
+- To addend a line using echo use `echo "line" >> filename` 
 </details>
 
 
 #### 🚀 Optional challenge
 
-1. Use `nano` to change `second line` to `2nd line`  
+1. Use `nano` to change `fresh` to `cool`  
 1. Use `git diff` to inspect the change before committing 
 1. Think about this: when this branch is eventually merged into `main`, will Git
 be able to resolve this automatically? Why or why not?
@@ -79,10 +81,10 @@ be able to resolve this automatically? Why or why not?
 Follow the steps listed below:
 
 1. Move to branch `b2`
-1. Inspect several previous versions in the history using `git diff` with appropriate arguments
+1. Inspect several previous versions in the history of `b2` using `git diff` with appropriate arguments
 1. How far back in the history of branch `b2` can you go?
-1. Inspect the differences in `lines.txt` between the latest commit of branch `b2` and branch `b1`
-1. Inspect the differences in `lines.txt` between the `main` branch and the parent of the latest commit on branch `b2`
+1. Inspect the differences between the latest commit of branch `b2` and branch `b1`
+1. Inspect the differences between the `main` branch and the parent of the latest commit on branch `b2`
 
 <details>
 <summary>🔍 Click here for a hint! </summary>
@@ -104,9 +106,10 @@ Follow the steps listed below:
 
 Follow the steps listed below:
 
-1. Inspect the differences of `lines.txt` between branches. How many more lines are there in `lines.txt` in `main` than in `b2`? 
+1. Inspect the differences of `notes.txt` between branches. How many more lines are there in `notes.txt` in `main` than in `b2`? 
 1. Merge `b2` into `main`
 1. Solve any conflicts
+1. Keep all lines up to 7th line
 1. Commit the merge
 1. Verify the outcome with a graphed `git log`
 
@@ -145,17 +148,17 @@ Continue on the more advanced exercises
 Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
 
 1. Create a new branch called `bad-merge` and step into it
-1. Add a new line with the text `tenth line - branch` at the bottom of `lines.txt`
-1. Commit your changes
+1. Add a new line with the text `to stay warm at night - branch` at the bottom of `notes.txt`
+1. Commit your changes with the message `Add ninth line on bad-merge`
 1. Switch back to `main`
-1. Add a new line with the text `tenth line - main` at the bottom of `lines.txt`
-1. Commit your changes
+1. Add a new line with the text `to stay warm at night - main` at the bottom of `notes.txt`
+1. Commit your changes with the message `Add ninth line on main`
 1. Merge `bad-merge` branch into `main`
-1. Use `cat` to see the content of `lines.txt`
+1. Use `cat` to see the content of `notes.txt`
 1. Imagine you do not know how to solve this conflict and decide to take a step back
 1. Use the command `git merge --abort` to cancel the merge process
 1. Check the status of git
-1. Use `cat` to see the content of `lines.txt`
+1. Use `cat` to see the content of `notes.txt`
 1. Check the history of git and confirm there was no merge commit created
 1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
 
@@ -179,7 +182,7 @@ Now practice undoing a merge that was **already committed**.
 1. Verify the merge commit appears in `git log --oneline --graph`
 1. Imagine you are not happy with the merge and want to `undo` it
 1. Use `git reset --hard HEAD~1` to undo the merge commit
-1. Verify the merge commit is gone and `lines.txt` is back to its previous state
+1. Verify the merge commit is gone and `notes.txt` is back to its previous state
 1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
 >> **Think about this:** what would happen if you had already pushed the merge
    commit to GitHub before running `git reset --hard`?
@@ -192,8 +195,8 @@ Rebase is an alternative that replays your commits on top of another branch,
 resulting in a cleaner linear history.
 
 1. Create a new branch called `rebase-test` from `main` and switch to it in one step
-1. Add a new line `rebase line` to `lines.txt` and commit it
-1. Switch back to `main` and add a new line `main line` to `lines.txt` and commit it — the two branches have now diverged
+1. Add a new line `rebase line` to `notes.txt` and commit it
+1. Switch back to `main` and add a new line `main line` to `notes.txt` and commit it — the two branches have now diverged
 1. Switch back to `rebase-test` and run `git rebase main`
 1. Inspect the result with `git log --oneline --all --graph`
 
@@ -218,12 +221,12 @@ Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitH
 1. Make sure your local `main` is up to date with the remote
 1. Create a new branch called `gui` and stand on it
 1. Modify the text `second line` to `2nd line`
-1. Add a new line with the text `gui line` at the bottom of `lines.txt`
-1. Visualize the changes in `lines.txt`
+1. Add a new line with the text `gui line` at the bottom of `notes.txt`
+1. Visualize the changes in `notes.txt`
 1. Stage and commit the change with message `Add gui line`
 1. Switch back to `main` 
-1. Add a new line with the text `gui main line` at the bottom of `lines.txt`
-1. Visualize the changes in `lines.txt`
+1. Add a new line with the text `gui main line` at the bottom of `notes.txt`
+1. Visualize the changes in `notes.txt`
 1. Stage and commit with message `Add gui main line`
 1. Merge `gui` into `main` and resolve the conflict that appears — keep both lines in the file
 1. Stage and commit the merge
