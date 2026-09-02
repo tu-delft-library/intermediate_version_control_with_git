@@ -1,20 +1,18 @@
 
-## 9:00 - Land - 5'- CATA
+## 9:30 - Land - 5'
 ☕ Coffee/tea 🫖
 
-## 9:05 - Housekeeping - 15" CATA
+## 9:35 - Housekeeping - 15" CATA
 - ✅ Roll call + 🤝 Code of Conduct
 - 🙋 Getting help (🆘 red  ✅ green stickers)
 
-## 9:20 - Icebreaker - 5'- CATA
+## 9:40 - Icebreaker - 5'
 🎥 Icebreaker instructions on slides
 > *START AUTOPUSH* 
 
-
-## 9:40 - Generate local repo from assignment - 10'- CATA  
+## 9:45 - Solve assignment to create local repo - 10'  
 
 Below is the minimal set of instructions to generate the repository for today.
-
 
 ```bash
 cd Desktop
@@ -64,10 +62,10 @@ Ask if everyone has the `weather-notes` repository with a similar history:
 - 3 commits for editing `notes.txt`
 - 1 `.gitignore` commit
 
-## 9:25 - Introduction to branches - 10'- CATA 
+## 9:55 - Introduction to branches - 10' 
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
-## 9:50 - New commands for branching - 10'- CATA 
+## 10:05 - New commands for branching - 10' 
 
 ```bash
 git branch              # check branches (explain the * pointing to main) 
@@ -100,7 +98,7 @@ Output should look like:
 hash (HEAD -> main, origin/main, b2, b1) Ignore all log and data files
 ```
 
-## 10:05 - 1 💪 Get familiar with branches - 10'- CATA 
+## 10:15 - 1 💪 Get familiar with branches - 10' 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
@@ -118,7 +116,7 @@ git branch -d pe pi po
 git log --oneline
 ```
 
-## 10:15 - Develop on different branches - 10'- CATA 
+## 10:25 - Develop on different branches - 10' 
 
 
 ```bash
@@ -141,7 +139,7 @@ git log --oneline --all --graph            # show graph with all branches
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
-## 10:25 - 2 💪 Commit in a secondary branch - 5'- CATA
+## 10:35 - 2 💪 Commit in a secondary branch - 5'
 See `exercises.md`. There is an optional challenge under each numbered exercise. 
 
 Solution:
@@ -156,10 +154,10 @@ git commit -m "Add two more lines on b2"
 git status
 ```
 
-## 10:30 - Break -10' 
+## 10:40 - Break - 15' 
 
 
-## 10:40 - Explore differences across branches - 15'- HALFORD 
+## 10:55 - Explore differences across branches - 15' 
 
 Let's keep adding to our history:
 ```bash
@@ -189,7 +187,7 @@ git diff main~1 b1~1 # changes between parent of the latest commit on the main b
 # No difference on this one. Both files have 4 lines
 ```
 
-## 10:55 - 3 💪  Explore differences across branches - 10'- HALFORD
+## 11:10 - 3 💪  Explore differences across branches - 10'
 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
@@ -207,7 +205,7 @@ git diff b2 b1
 git diff main b2~1
 ```
 
-## 11:05 - Merging branches and conflict resolution - 15'- HALFORD 
+## 11:20 - Merging branches and conflict resolution - 15' 
 
 Let's develop further on branch `b1`:
 ```bash
@@ -274,10 +272,8 @@ git log --oneline --all --graph                           # see merge visually
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:notes.txt :2:notes.txt`
 
-## 11:20 - 4 💪 A first type for merge - 10'- HALFORD 
+## 11:35 - 4 💪 A first type for merge - 10' 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
-
-
 
 Solution:
 ```bash
@@ -292,21 +288,20 @@ git log --oneline --all --graph # verify
 
 > **Before break:** Turn to a neighbour and compare the output of `git log --oneline --all --graph`. Does it look the same? Different commit hashes? Same shape?
 
-## 11:30 - Break  -10'
+## 11:45 - Break  - 15'
 
-> CONTINUE HERE!
-
-## 11:40 -  💻 PRACTICAL - Understanding merge conflicts - 40'- CATA
+## 12:00 -  💻 PRACTICAL - Understanding merge conflicts - 30'
 see `PRACTICAL_merge_conflicts.md`
 
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
 
-## 12:30 - 	Lunch - 60'		
+## 12:30 - 	Lunch - 60'	
 
-## 13:30 - 5 💪 Interactive Git - 15'- HALFORD 
+## 13:30 - 5 💪 Interactive Git - 15' 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
-## 13:50 - Remote operations revisited - 10'- HALFORD 
+
+## 13:45 - Remote operations revisited - 10' 
 
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
@@ -315,7 +310,12 @@ Explain remote operations:
 - **Pushing**: uploading your local commits to the remote repository.
 - **Pulling**: `git pull` is `git fetch` + `git merge` in one step.
 
-## 14:10 - Solve a conflict when pushing - 15'- HALFORD
+Explain **divergent branches**: both the local and remote `main` have moved forward independently. Git can try to reconcile the branches. 
+
+Explain the two most common options: `merge` and `rebase`.
+
+
+## 13:55 - Solve a conflict when pushing - 10'
 
 Make a small edit directly on GitHub (via the web editor):
 1. Open `notes.txt` on GitHub
@@ -329,8 +329,6 @@ git add notes.txt
 git commit -m "Add eighth line locally'
 git push origin main        # fails! rejected - remote contains work you do not have
 ```
-
-Explain **divergent branches**: both the local and remote `main` have moved forward independently. Git can try to reconcile the branches. The two most common options are: `merge` and `rebase`.
 
 Let's ask Git to use `merge` by default
 ```bash
@@ -351,7 +349,7 @@ Visit GitHub and confirm the resolved file is there.
 
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
-## 14:25 - 6 💪 Undo a Bad Merge - 10'- HALFORD
+## 14:05 - 6 💪 Undo a Bad Merge - 10'
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
@@ -379,18 +377,25 @@ git log --oneline --graph   # back to a clean main
 
 `git merge --abort` is only available **while a merge is in progress** 
 
-## 14:35 - Break -10" 
+## 14:15 - Break -15' 
 
-## 14:45 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40'- CATA 
+## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
 see `PRACTICAL_remote_conflicts.md`
 
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
 
 
-## 15:50 - Demo git operations in VSCode - 10'- CATA
+## 15:15 - Summarize key points - 10' 
+Using VS code
+- **Branches**: create isolated lines of development with `git branch` and `git switch`.
+- **Merging**: bring changes together with `git merge`.
+Git creates a merge commit
+- **Conflicts**: happen when the same lines were changed in both branches. Always: edit → remove markers → `git add` → `git commit`
+- **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way
+- **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit
+
 - Some people prefer to use a GUI to work with Git.
 - Let's explore that using VSCode
-[TODO] add more explanation about VS code --> what it is and why it has a terminal etc
 
 
 ### Git by default
@@ -416,15 +421,7 @@ Do not solve the PRACTICAL live. Just ask questions, share experiences or highli
 - Confirm in GitHub
 
 
-## 15:45 - Summarize key points - 10'- HALFORD 
-- **Branches**: create isolated lines of development with `git branch` and `git switch`.
-- **Merging**: bring changes together with `git merge`.
-Git creates a merge commit
-- **Conflicts**: happen when the same lines were changed in both branches. Always: edit → remove markers → `git add` → `git commit`
-- **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way
-- **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit
-
-## 15:55 - Give feedback about the course  5" 
+## 15:25 - Give feedback about the course  5" 
 Go to the link in `README.md`
 
 
