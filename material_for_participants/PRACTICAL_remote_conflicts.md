@@ -134,19 +134,14 @@ git push origin main
 
 From here on, **avoid copy-pasting**. Typing all the commands helps you build understanding.
 
-**Partner B**, open your terminal and run:
-
-```bash
-cd ~/Desktop
-git clone git@github.com:PARTNER-A-USERNAME/remote_conflicts.git remote_conflicts
-cd remote_conflicts
-```
+**Partner B**, open your terminal and:
+- Move into your `Desktop` directory
+- Clone the repository at `git@github.com:PARTNER-A-USERNAME/remote_conflicts.git` into a folder named `remote_conflicts`
+- Move into the new `remote_conflicts` folder
 
 > **Checkpoint:** Each partner now has their own `remote_conflicts` folder, on their own machine, cloned from the same GitHub repo
 
-```bash
-ls    # both partners should see: ideas.txt  notes.txt  schedule.txt
-```
+- List the folder's contents — both partners should see: `ideas.txt`, `notes.txt`, `schedule.txt`
 
 ---
 
@@ -154,39 +149,37 @@ ls    # both partners should see: ideas.txt  notes.txt  schedule.txt
 
 > **Situation:** File `notes.txt`. Partner B pushes a change while Partner A is also working on the same file. When Partner A tries to push, Git rejects it because their history is behind.
 
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+- To push to remote use `git push origin main`
+- To pull from remote use `git pull origin main`
+- To set your pull strategy to merge use `git config pull.rebase false`
+</details>
+
+
 **Step 1 — Partner B pushes first**
 
 **Partner B**, in your `remote_conflicts` folder:
-```bash
-nano notes.txt
-```
-Change the line `Meeting on Monday at 10am.` to `Meeting on Monday at 10am in the main conference room.`
-
-Commit and push:
-```bash
-git diff notes.txt
-git add notes.txt
-git commit -m "Partner B: add room to Monday meeting"
-git push origin main
-```
+- Open `notes.txt` for editing
+- Change the line `Meeting on Monday at 10am.` to `Meeting on Monday at 10am in the main conference room.`
+- Check the differences in `notes.txt`
+- Stage `notes.txt` and commit with the message `Partner B: add room to Monday meeting`
+- Push changes to remote
 
 🔔 **Tell Partner A you've pushed.**
 
 **Step 2 — Partner A makes a different change and tries to push**
 
 **Partner A**, in your `remote_conflicts` folder (do this only after Partner B tells you they've pushed):
-```bash
-nano notes.txt
-```
-Add a new line that says `Bring snacks to share.`
-
-Save and try to push:
-```bash
-git diff notes.txt
-git add notes.txt
-git commit -m "Partner A: remind people to bring snacks"
-git push origin main
-```
+- Open `notes.txt` for editing
+- Add a new line that says `Bring snacks to share.` and save
+- Check the differences in `notes.txt`
+- Stage `notes.txt` and commit with the message `Partner A: remind people to bring snacks`
+- Push changes to remote
 
 You will see a rejection message like:
 
@@ -201,11 +194,10 @@ error: failed to push some refs to 'github.com:PARTNER-A-USERNAME/remote_conflic
 **Step 3 — Partner A pulls, resolves, then pushes**
 
 **Partner A:**
-```bash
-git pull origin main
-```
+- Pull the latest changes from `origin/main`
+
 Depending on your git settings, you might see a message like:
-```bash
+```
 From github.com:PARTNER-A-USERNAME/remote_conflicts
  * branch            main       -> FETCH_HEAD
    7f80970..c4aa29f  main       -> origin/main
@@ -216,29 +208,23 @@ hint: You have divergent branches and need to specify how to reconcile them.
 Because you are working on the same branch you now have *divergent branches*. Git can try to reconcile them. The two most common options are `merge` and `rebase`.
 
 Ask Git to use `merge` by default:
-```bash
-git config pull.rebase false      # merge
-git pull origin main
-```
+- Set your pull strategy to merge (`pull.rebase` set to `false`)
+- Pull the latest changes from `origin/main` again
 
 Since the changes are on **different lines**, Git will merge automatically and generate a new commit. You need to approve the commit message though! Save the changes and exit nano (`^o + ENTER + ^x`).
 
 Check that both changes are in `notes.txt` and push:
-```bash
-cat notes.txt
-git log --oneline --graph     # shows new merge commit
-git push origin main          # push!
-```
+- View the contents of `notes.txt`
+- View the commit history as a graph
+- Push changes to remote
 
 > **Success:** Partner A's push is accepted. `notes.txt` includes both changes. `git log --oneline --graph` shows a merge commit.
 
 🔔 **Tell Partner B you've pushed the merge.**
 
 **Partner B**, sync up so you're both on the same page:
-```bash
-git pull origin main
-cat notes.txt
-```
+- Pull the latest changes from `origin/main`
+- View the contents of `notes.txt`
 
 ---
 
@@ -249,45 +235,30 @@ cat notes.txt
 **Step 1 — Partner B edits and pushes**
 
 **Partner B:**
-```bash
-git pull origin main
-nano schedule.txt
-```
-Change the line `Wednesday: Free` to `Wednesday: Workshop (morning)`
-
-Commit and push:
-```bash
-git diff schedule.txt
-git add schedule.txt
-git commit -m "Partner B: add workshop to Wednesday"
-git push origin main
-```
+- Pull the latest changes from `origin/main`
+- Open `schedule.txt` for editing
+- Change the line `Wednesday: Free` to `Wednesday: Workshop (morning)`
+- Check the differences in `schedule.txt`
+- Stage `schedule.txt` and commit with the message `Partner B: add workshop to Wednesday`
+- Push changes to remote
 
 🔔 **Don't tell Partner A yet** — the point of this exercise is that Partner A edits the same line without knowing.
 
 **Step 2 — Partner A edits the same line without pulling first**
 
 **Partner A:**
-```bash
-nano schedule.txt
-```
-Change the line `Wednesday: Free` to `Wednesday: Office day`
-
-Save and commit (but do not push yet):
-```bash
-git diff schedule.txt
-git add schedule.txt
-git commit -m "Partner A: mark Wednesday as office day"
-```
+- Open `schedule.txt` for editing
+- Change the line `Wednesday: Free` to `Wednesday: Office day`
+- Check the differences in `schedule.txt`
+- Stage `schedule.txt` and commit with the message `Partner A: mark Wednesday as office day`
+- DO NOT PUSH YET
 
 🔔 **Now tell each other what you each did**, then Partner A continues.
 
 **Step 3 — Partner A pulls and sees the conflict**
 
 **Partner A:**
-```bash
-git pull origin main
-```
+- Pull the latest changes from `origin/main`
 
 Git stops and reports a conflict:
 ```
@@ -295,9 +266,8 @@ CONFLICT (content): Merge conflict in schedule.txt
 ...
 ```
 
-```bash
-nano schedule.txt
-```
+- Open `schedule.txt` for editing
+
 You'll see something like:
 ```
 <<<<<<< HEAD
@@ -321,22 +291,17 @@ Wednesday: Workshop (morning), office day after lunch
 > **Nano tip:** Use `^K` to delete a whole line.
 
 **Partner A** deletes all three marker lines, saves, then:
-```bash
-git diff schedule.txt
-git add schedule.txt
-git commit -m "Resolve: combine Wednesday workshop and office day"
-git push origin main
-```
+- Check the differences in `schedule.txt`
+- Stage `schedule.txt` and commit with the message `Resolve: combine Wednesday workshop and office day`
+- Push changes to remote
 
 > **Success:** `schedule.txt` has no conflict markers. `git push` is accepted. `git log --oneline --graph` shows a merge commit.
 
 🔔 **Tell Partner B to pull.**
 
 **Partner B:**
-```bash
-git pull origin main
-cat schedule.txt
-```
+- Pull the latest changes from `origin/main`
+- View the contents of `schedule.txt`
 
 ---
 
@@ -347,45 +312,30 @@ cat schedule.txt
 **Step 1 — Partner B adds an idea and pushes**
 
 **Partner B:**
-```bash
-git pull origin main
-nano ideas.txt
-```
-Add a new line at the bottom: `Idea 4: Send a monthly newsletter.`
-
-Save and push:
-```bash
-git diff ideas.txt
-git add ideas.txt
-git commit -m "Partner B: add newsletter idea"
-git push origin main
-```
+- Pull the latest changes from `origin/main`
+- Open `ideas.txt` for editing
+- Add a new line at the bottom: `Idea 4: Send a monthly newsletter.`
+- Check the differences in `ideas.txt`
+- Stage `ideas.txt` and commit with the message `Partner B: add newsletter idea`
+- Push changes to remote
 
 🔔 **Again, hold off telling Partner A** until after their commit in Step 2.
 
 **Step 2 — Partner A adds a different idea without pulling first**
 
 **Partner A:**
-```bash
-nano ideas.txt
-```
-Add a new line at the bottom: `Idea 4: Create a blog section.`
+- Open `ideas.txt` for editing
+- Add a new line at the bottom: `Idea 4: Create a blog section.`
 
-Save and commit:
-```bash
-git diff ideas.txt
-git add ideas.txt
-git commit -m "Partner A: add blog idea"
-```
+- Check the differences in `ideas.txt`
+- Stage `ideas.txt` and commit with the message `Partner A: add blog idea`
 
 🔔 **Compare notes with your partner**, then Partner A continues.
 
 **Step 3 — Partner A pulls and sees the conflict**
 
 **Partner A:**
-```bash
-git pull origin main
-```
+- Pull the latest changes from `origin/main`
 
 Git reports:
 ```
@@ -394,9 +344,8 @@ Automatic merge failed; fix conflicts then commit the result.
 ```
 
 Open the file:
-```bash
-nano ideas.txt
-```
+- Open `ideas.txt` for editing
+
 You'll see:
 ```
 <<<<<<< HEAD
@@ -422,20 +371,15 @@ Idea 5: Send a monthly newsletter.
 ```
 
 Delete all conflict markers, save, then:
-```bash
-git diff ideas.txt
-git add ideas.txt
-git commit -m "Resolve: keep both new ideas, renumber to 4 and 5"
-git push origin main
-```
+- Check the differences in `ideas.txt`
+- Stage `ideas.txt` and commit with the message `Resolve: keep both new ideas, renumber to 4 and 5`
+- Push changes to remote
 
 🔔 **Tell Partner B to pull and verify.**
 
 **Partner B:**
-```bash
-git pull origin main
-cat ideas.txt
-```
+- Pull the latest changes from `origin/main`
+- View the contents of `ideas.txt`
 
 > **Success:** Both of you now show five ideas, no conflict markers, and `git log --oneline --graph` shows the full shared history on both machines. You can also open the repository on GitHub and browse `ideas.txt` there to confirm the final version is on the remote.
 
@@ -446,30 +390,18 @@ cat ideas.txt
 Practise pulling before you start work — the habit that prevents most remote conflicts. This time, **swap roles**: Partner B goes first.
 
 **Partner B:**
-```bash
-# Always start your day like this:
-git pull origin main
-```
+- Always start your day by pulling the latest changes from `origin/main`
+
 Now make a change, knowing you're up to date:
-```bash
-nano notes.txt
-```
-Add a new line at the bottom: `Next review: end of month.`
-```bash
-git add notes.txt
-git commit -m "Add next review note"
-git push origin main
-```
+- Open `notes.txt` for editing
+- Add a new line at the bottom: `Next review: end of month.`
+- Stage `notes.txt` and commit with the message `Add next review note`
+- Push changes to remote
 
 🔔 **Tell Partner A to pull.**
 
 **Partner A**, check that you can receive it cleanly:
-```bash
-git pull origin main
-cat notes.txt
-```
+- Pull the latest changes from `origin/main`
+- View the contents of `notes.txt`
 
 > **The habit:** Pull before you start, pull before you push. The shorter the gap between your work and your partner's, the smaller any conflict will be — and the less you need the 🔔 check-ins this exercise forced on you.
-
-
-
