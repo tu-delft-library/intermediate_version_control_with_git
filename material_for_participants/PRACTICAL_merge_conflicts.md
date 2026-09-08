@@ -55,11 +55,11 @@ Add the text below to `bio.txt`
 ```bash
 About Our Team
 -----------
-We are a small team of designers and writers based in Amsterdam.
-We have been working together since 2019.
-Our old office was in Rotterdam.
+We are a small team based in Amsterdam.
+We have been running catering events since 2019.
+Our old office was in Delft.
 We moved to Amsterdam in 2021 for better transport links.
-We specialise in brand identity and editorial design.
+We specialise in traditional italian.
 ```
 Confirm contents of `bio.txt`
 Create a new file `event.txt`
@@ -69,12 +69,12 @@ nano event.txt
 ```
 Add the text below to `event.txt`
 ```bash
-Summer Workshop 2025
+Summer Festival 2025
 -----------------
 Date: Saturday 14 June 2025
 Location: Community Hall, Delft
 Maximum attendees: 40
-Ticket price: 25 euros
+Meal price: 25 euros
 ```
 Confirm contents of `event.txt`
 Create a new file `README.txt`
@@ -87,7 +87,7 @@ Add the text below to `README.txt`
 Event details
 ----------
 Date: 14 June 2025
-Ticket price: 25 euros
+Meal price: 25 euros
 ```
 Confirm contents of `README.txt`
 ```bash
@@ -186,7 +186,7 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 ## Conflict 2: Delete vs edit
 
 
-> **Situation:** File `bio.txt`; One person deletes the Rotterdam paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
+> **Situation:** File `bio.txt`; One person deletes the Delft paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
 
 
 
@@ -210,23 +210,23 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 - Switch to `main`
 - Create a new branch named `remove` and switch to it
 - Open `bio.txt` for editing
-- Remove lines referring to Rotterdam office (i.e. third and fourth lines). The content of `bio.txt` should look like the text below:
+- Remove lines referring to Delft office (i.e. third and fourth lines). The content of `bio.txt` should look like the text below:
 ```bash
 About Our Team
 -----------
-We are a small team of designers and writers based in Amsterdam.
-We have been working together since 2019.
-We specialise in brand identity and editorial design.
+We are a small team based in Amsterdam.
+We have been running catering events since 2019.
+We specialise in traditional italian.
 ```
 - Check the differences of file `bio.txt`
-- Stage `bio.txt` and commit with the message `Remove outdated Rotterdam office paragraph`
+- Stage `bio.txt` and commit with the message `Remove outdated Delft office paragraph`
 - Create a new branch named `rewrite` from `main`. Remember, first switch to `main` before creating the new branch
 - View the commit graph for all branches
 - Create a new branch named `rewrite` and switch to it
 - Open `bio.txt` for editing
-- Modify the line `Our old office was in Rotterdam.` with `We started out in Rotterdam, which we loved.` and save
+- Modify the line `Our old office was in Delft.` with `We started out in Delft, which we loved.` and save
 - Check the differences of file `bio.txt`
-- Stage `bio.txt` and commit with the message `Rewrite Rotterdam history to sound more personal`
+- Stage `bio.txt` and commit with the message `Rewrite Delft history to sound more personal`
 
 **Step 2 — Trigger the conflict**
 
@@ -236,11 +236,11 @@ We specialise in brand identity and editorial design.
 
 **Step 3 — Decide and resolve**
 
-Imagine a client associates the team with Rotterdam, so the history is worth keeping. 
+Imagine a client associates the team with Delft, so the history is worth keeping. 
 
 - Open `bio.txt` for editing
-- Keep `We started out in Rotterdam, which we loved.`, remove conflict markers and save
-- Stage `bio.txt` and commit with the message `Merge: Keep Rotterdam history with warmer wording`
+- Keep `We started out in Delft, which we loved.`, remove conflict markers and save
+- Stage `bio.txt` and commit with the message `Merge: Keep Delft history with warmer wording`
 - View the commit graph for all branches
 
 Now try the opposite — undo and resolve the other way:
@@ -249,8 +249,8 @@ Now try the opposite — undo and resolve the other way:
 - View the commit graph for all branches (confirm the merge commit is gone)
 - Merge `rewrite` again to reproduce the conflict
 - Open `bio.txt` for editing
-- Remove the Rotterdam paragraph entirely, remove conflict markers and save
-- Stage `bio.txt` and commit with the message `Confirm removal of Rotterdam paragraph`
+- Remove the Delft paragraph entirely, remove conflict markers and save
+- Stage `bio.txt` and commit with the message `Confirm removal of Delft paragraph`
 - View the commit graph for all branches
 
 > **Success:** `bio.txt` has no conflict markers, reads naturally, and you can explain in one sentence why you made your choice.
@@ -260,7 +260,7 @@ Now try the opposite — undo and resolve the other way:
 
 ## Conflict 3: Multi-file conflict
 
-> **Situation:** Files `event.txt` + `README.txt`; Two people update the ticket price in `event.txt`, but only one also updates `README.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `README.txt` is a hidden inconsistency.
+> **Situation:** Files `event.txt` + `README.txt`; Two people update the meal price in `event.txt`, but only one also updates `README.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `README.txt` is a hidden inconsistency.
 
 
 <details>
@@ -280,16 +280,16 @@ Now try the opposite — undo and resolve the other way:
 
 - Switch to `main`
 - Create a new branch named `raise` and switch to it
-- Open `event.txt`, modify ticket price from `25 euros` to `35 euros`
+- Open `event.txt`, modify meal price from `25 euros` to `35 euros`
 - Do the same for `README.txt`
 - Check the differences
 - Stage `event.txt` and `README.txt`
-- Commit with the message `Raise ticket price to 35 euros (covers catering)`
+- Commit with the message `Raise meal price to 35 euros (covers drinks)`
 - Switch back to `main`
 - Create a new branch named `lower` and switch to it
-- Open `event.txt`, modify ticket price from `25 euros` to `15 euros`
+- Open `event.txt`, modify meal price from `25 euros` to `15 euros`
 - Check the differences
-- Stage `event.txt` and commit with the message `Lower ticket price to 15 euros (increase accessibility)`
+- Stage `event.txt` and commit with the message `Lower meal price to 15 euros (increase accessibility)`
 
 **Step 2 — Trigger the conflict**
 
@@ -309,10 +309,10 @@ The conflict is only in `event.txt`, but `README.txt` now shows 35 euros. Whatev
 Verify consistency:
 > **New command:** `grep` allows you to search files using text patterns.
 ```bash
-grep 'Ticket price' event.txt README.txt
+grep 'meal price' event.txt README.txt
 ```
 
-Search both `event.txt` and `README.txt` for the line containing `Ticket price` and compare the results.
+Search both `event.txt` and `README.txt` for the line containing `meal price` and compare the results.
 
 > **Success:** No conflict markers in `event.txt`, both files show the same price, the working tree is clean, and the commit graph shows three merge commits.
 
@@ -338,7 +338,7 @@ Make a mistake on purpose, then undo it safely.
 
 ## Reflection questions
 
-- In Conflict 2, how did you decide whether to keep or remove the Rotterdam paragraph? What would make that easier in a real project?
+- In Conflict 2, how did you decide whether to keep or remove the Delft paragraph? What would make that easier in a real project?
 - Why does Git pause and ask you to decide, rather than picking the most recent change?
 - In Conflict 3, why is it a problem if `event.txt` and `README.txt` show different prices?
 - What's the difference between reverting a commit and deleting a commit? When would you use each?
