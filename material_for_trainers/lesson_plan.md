@@ -314,6 +314,11 @@ Explain **divergent branches**: both the local and remote `main` have moved forw
 
 Explain the two most common options: `merge` and `rebase`.
 
+We made some local changes before lunch that are not pushed yet. So let's do that to ensure our remote repo is up to date
+```bash
+git push origin main        
+```
+We confirm in GitHub that we see the changes
 
 ## 13:55 - Solve a conflict when pushing - 10'
 
@@ -326,7 +331,7 @@ Now, back in the terminal, make a **different** local change without pulling:
 ```bash
 echo "or a hot water bottle - local" >> notes.txt
 git add notes.txt
-git commit -m "Add eighth line locally'
+git commit -m "Add eighth line locally"
 git push origin main        # fails! rejected - remote contains work you do not have
 ```
 
@@ -341,7 +346,7 @@ git pull origin main        # fetch + attempt merge → conflict in notes.txt
 git status                  # notes.txt listed as "both modified"
 nano notes.txt              # resolve conflict markers — keep one or combine both lines
 git add notes.txt
-git commit -m "Merge remote and local eighth line'
+git commit -m "Merge remote and local eighth line"
 git push origin main        # now succeeds
 ```
 
@@ -382,10 +387,51 @@ git log --oneline --graph   # back to a clean main
 ## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
 see `PRACTICAL_remote_conflicts.md`
 
-Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
+Share experiences or highlight concepts that you noticed were still a bit confusing.
 
 
-## 15:15 - Summarize key points - 10' 
+## 15:10 - VS Code demo
+
+Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
+
+### Git by default
+- Open VSCode
+- Open folder -> `weather-notes` folder
+- Explain the file browser
+- Open `notes.txt`
+- Go to git tab (left)
+- Explain GUI:
+    - log -> hover for details
+    - click on +- icon on the right to show changes
+    - right click for more options
+### Commit changes
+- Open `notes.md` from explorer
+- Make a change (e.g. add a line `and wake up rested`)
+- Save `notes.txt` (CTRL + S)
+- Notice badge on git icon
+- Click on `notes.txt` to see the changes on the right
+    - red deleted
+    - green added
+- Click on plus to stage
+- Write message and click on commit `Add tenth line locally`
+- Notice the update on the log
+
+### Merge conflict
+Let's generate a similar conflict than we did on the Terminal:
+
+- Open `notes.txt` on GitHub
+- Add a new line at the bottom: `and wake up rested - Github`
+- Commit with message `Add tenth line via GitHub`
+
+- Back VS code
+- Click on `Sync changes` which does a `pull` + `merge`
+- There is a conflict so the editor opens for you to resolve the merge conflicts
+- At the lower right corner there is a button `Resolve in Merge Editor`
+- In the merge editor we can pick one version `Accept incoming`, the other `Accept current` or a manual edit at the bottom
+- Complete the merge and commit
+- Click on `Sync changes` to push the merge to remote
+
+## 15:20 - Summarize key points - 5' 
 Using VS code
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
 - **Merging**: bring changes together with `git merge`.
@@ -394,31 +440,6 @@ Git creates a merge commit
 - **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way
 - **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit
 
-- Some people prefer to use a GUI to work with Git.
-- Let's explore that using VSCode
-
-
-### Git by default
-- Open VSCode
-- Open folder -> recipes folder
-- Go to git tab (left)
-- Explain GUI:
-    - log -> hover for details
-    - click on +- icon on the right to show changes
-    - right click for more options
-### Commit changes
-- Open `guacamole.md` from explorer
-- Make a change (e.g. smash avocado, add salt, pepper and lime)
-- Save `guacamole.md` (CTRL + S)
-- Notice badge on git icon
-- Click on `guacamole.md` to see the changes on the right
-    - red deleted
-    - green added
-- Click on plus to stage
-- Write message and click on commit
-- Notice the update on the log
-- Push by clicking "Publish Branch"
-- Confirm in GitHub
 
 
 ## 15:25 - Give feedback about the course  5" 
