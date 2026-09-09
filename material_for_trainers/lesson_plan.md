@@ -1,3 +1,15 @@
+## Tips for the day
+- Make sure to plug your computer to electricity. Otherwise the display will feed electricity to the laptop and potentially turn itself off.
+- Write the edu.nl link pointing to `material_for_participants/links.md` document on the whiteboard 
+    - Use dark marker on the board (not red)
+- If you are using a mac, make the terminal not transparent: 
+    - Open the terminal
+    - Open settings
+    - Go to background color
+    - Adjust opacity to 100%
+- Set your desktop to a color background instead of an image that can be distracting (e.g. a beach or a mountain)
+- Ask Paula to print a list of the participants so that they can check their name (roll call)
+- Start auto push [TODO] @halfordd step-by-step explanation
 
 ## 9:30 - Land - 5'
 ☕ Coffee/tea 🫖
