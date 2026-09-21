@@ -9,11 +9,10 @@ A conflict means "two people changed the same thing — I need a human to decide
 ## Escape hatches
 
 | Command | What it does |
-|---|---|
-| `git merge --abort` | Cancel the merge entirely — safe at any time |
-| `git switch --ours <file>` | Accept your branch's version of a file |
-| `git switch --theirs <file>` | Accept the incoming branch's version |
-
+|-----------------------|---|
+| `git merge --abort` | Cancel the merge entirely - restores everything to the pre-merge state|
+| `git merge --quit` |  Forgets about the merge in progress but leaves your working tree and index exactly as they are. Afterward, your working tree may be a messy mix of both sides' changes, and Git won't remember that it was a merge. |
+| `git reset --hard HEAD~1` | Equivalent of `undoing` that most recent commit |
 
 
 ## Setup
@@ -77,32 +76,43 @@ Maximum attendees: 40
 Meal price: 25 euros
 ```
 Confirm contents of `event.txt`
-Create a new file `README.txt`
+Create a new file `summary.txt`
 ```bash
 cat event.txt
-nano README.txt
+nano summary.txt
 ```
-Add the text below to `README.txt`
+Add the text below to `summary.txt`
 ```bash
 Event details
 ----------
 Date: 14 June 2025
 Meal price: 25 euros
 ```
-Confirm contents of `README.txt`
+Confirm contents of `summary.txt`
 ```bash
-cat README.txt
+cat summary.txt
 git add .                           # . adds everything (only recommended for a first commit)
-git commit -m "Initial files: recipe, bio, event, README"
+git commit -m "Initial files"
 ```
 
 > **Checkpoint:** `git log --oneline` should show one commit. `ls` should show all four files.
 
 
-## Conflict 1: Same-line edit
+## 💪 Conflict 1: Same-line edit
 
 
 > **Situation** File `recipe.txt`; Alice adds a stirring note; Bob adds a seasoning reminder — to the same line.
+
+
+**Step 1 — Alice's branch**
+
+- Create a new branch named `alice` and switch to it
+- Open `recipe.txt` for editing
+- Modify line `Add tomatoes and stock. Simmer for 25 minutes.` with `Add tomatoes and stock. Simmer for 25 minutes, stirring occasionally.`
+- Check the differences of file `recipe.txt`
+- Stage `recipe.txt` and commit with the message `Alice: add stirring note`
+- View the commit graph for all branches
+
 
 <details>
 <summary>🔍 Click here hints! </summary>
@@ -116,16 +126,6 @@ git commit -m "Initial files: recipe, bio, event, README"
 - To commit a file use `git commit -m "commit message"`
 </details>
 
-**Step 1 — Alice's branch**
-
-- Create a new branch named `alice` and switch to it
-- Open `recipe.txt` for editing
-- Modify line `Add tomatoes and stock. Simmer for 25 minutes.` with `Add tomatoes and stock. Simmer for 25 minutes, stirring occasionally.`
-- Check the differences of file `recipe.txt`
-- Stage `recipe.txt` and commit with the message `Alice: add stirring note to method`
-- View the commit graph for all branches
-
-
 **Step 2 — Bob's branch**
 
 - Bob branches from `main`, not from `alice` branch. So first, switch back to `main`
@@ -134,8 +134,20 @@ git commit -m "Initial files: recipe, bio, event, README"
 - Open `recipe.txt` for editing
 - Modify line `Add tomatoes and stock. Simmer for 25 minutes.` with `Add tomatoes and stock. Season well. Simmer for 25 minutes.`
 - Check the differences of file `recipe.txt`
-- Stage `recipe.txt` and commit with the message `Bob: remind to season before simmering`
+- Stage `recipe.txt` and commit with the message `Bob: remind to season`
 
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+</details>
 
 **Step 3 — Merge and see the conflict**
 
@@ -158,6 +170,19 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes.
 > - `=======` → dividing line
 > - `>>>>>>>` → the incoming branch's version
 
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+</details>
+
 **Step 4 — Resolve**
 
 - Write one line that includes both improvements, e.g.:
@@ -170,25 +195,7 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 > **Nano tip:** You can use `^K` to delete a whole line 
 
 - Check the differences of file `recipe.txt`
-- Stage `recipe.txt` and commit with the message `Merge: combine Alice and Bob recipe improvements`
-
-> **Success:** `recipe.txt` has no conflict markers, includes both the stirring note and seasoning step, and the commit graph shows a merge commit.
-
-```bash
-*   hash (HEAD -> main) Merge: combine Alice and Bob recipe improvements
-|\  
-| * hash (bob) Bob: remind to season before simmering
-* | hash (alice) Alice: add stirring note to method
-|/  
-* hash Initial files: recipe, bio, event, README
-```
-
-## Conflict 2: Delete vs edit
-
-
-> **Situation:** File `bio.txt`; One person deletes the Delft paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
-
-
+- Stage `recipe.txt` and commit with the message `Merge: combine Alice and Bob`
 
 
 <details>
@@ -201,8 +208,25 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 - To see the changes in a file use `git diff name_of_file`
 - To stage a file use `git add name_of_file`
 - To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
 </details>
+
+> **Success:** `recipe.txt` has no conflict markers, includes both the stirring note and seasoning step, and the commit graph shows a merge commit.
+
+```bash
+*   hash (HEAD -> main) Merge: combine Alice and Bob
+|\  
+| * hash (bob) Bob: remind to season
+* | hash (alice) Alice: add stirring note
+|/  
+* hash Initial files
+```
+
+## 💪 Conflict 2: Delete vs edit
+
+
+> **Situation:** File `bio.txt`; One person deletes the Delft paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
+
+
 
 
 **Step 1 — Create the two branches**
@@ -219,20 +243,50 @@ We have been running catering events since 2019.
 We specialise in traditional italian.
 ```
 - Check the differences of file `bio.txt`
-- Stage `bio.txt` and commit with the message `Remove outdated Delft office paragraph`
-- Create a new branch named `rewrite` from `main`. Remember, first switch to `main` before creating the new branch
-- View the commit graph for all branches
+- Stage `bio.txt` and commit with the message `Remove Delft office paragraph`
+- Switch to `main` to create a new branch
 - Create a new branch named `rewrite` and switch to it
 - Open `bio.txt` for editing
 - Modify the line `Our old office was in Delft.` with `We started out in Delft, which we loved.` and save
 - Check the differences of file `bio.txt`
 - Stage `bio.txt` and commit with the message `Rewrite Delft history to sound more personal`
+- View the commit graph for all branches
+
+
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+</details>
 
 **Step 2 — Trigger the conflict**
 
 - Switch to `main`
 - Merge `remove` into `main` (this should be clean)
 - Merge `rewrite` into `main` (this should create a conflict)
+
+
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+</details>
 
 **Step 3 — Decide and resolve**
 
@@ -250,17 +304,9 @@ Now try the opposite — undo and resolve the other way:
 - Merge `rewrite` again to reproduce the conflict
 - Open `bio.txt` for editing
 - Remove the Delft paragraph entirely, remove conflict markers and save
-- Stage `bio.txt` and commit with the message `Confirm removal of Delft paragraph`
+- Stage `bio.txt` and commit with the message `Merge: Confirm removal of Delft paragraph`
 - View the commit graph for all branches
 
-> **Success:** `bio.txt` has no conflict markers, reads naturally, and you can explain in one sentence why you made your choice.
-
-
-> **Warning:** If you resolve this without thinking, you might permanently delete someone's work. In a real project, always ask why something was deleted before accepting "theirs."
-
-## Conflict 3: Multi-file conflict
-
-> **Situation:** Files `event.txt` + `README.txt`; Two people update the meal price in `event.txt`, but only one also updates `README.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `README.txt` is a hidden inconsistency.
 
 
 <details>
@@ -276,20 +322,45 @@ Now try the opposite — undo and resolve the other way:
 - To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
 </details>
 
+
+> **Success:** `bio.txt` has no conflict markers, reads naturally, and you can explain in one sentence why you made your choice.
+
+
+> **Warning:** If you resolve this without thinking, you might permanently delete someone's work. In a real project, always ask why something was deleted before accepting "theirs."
+
+## 💪 Conflict 3: Multi-file conflict
+
+> **Situation:** Files `event.txt` + `summary.txt`; Two people update the meal price in `event.txt`, but only one also updates `summary.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `summary.txt` is a hidden inconsistency.
+
 **Step 1 — Create the two branches**
 
 - Switch to `main`
 - Create a new branch named `raise` and switch to it
 - Open `event.txt`, modify meal price from `25 euros` to `35 euros`
-- Do the same for `README.txt`
+- Do the same for `summary.txt`
 - Check the differences
-- Stage `event.txt` and `README.txt`
-- Commit with the message `Raise meal price to 35 euros (covers drinks)`
+- Stage `event.txt` and `summary.txt`
+- Commit with the message `Raise meal price to cover drinks`
 - Switch back to `main`
 - Create a new branch named `lower` and switch to it
 - Open `event.txt`, modify meal price from `25 euros` to `15 euros`
 - Check the differences
-- Stage `event.txt` and commit with the message `Lower meal price to 15 euros (increase accessibility)`
+- Stage `event.txt` and commit with the message `Lower meal price for accessibility`
+
+
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+</details>
 
 **Step 2 — Trigger the conflict**
 
@@ -297,27 +368,58 @@ Now try the opposite — undo and resolve the other way:
 - Merge `raise` into `main` (this should be clean)
 - Merge `lower` into `main` (this should create a conflict in `event.txt`)
 
+
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+</details>
+
 **Step 3 — Resolve, then check consistency**
 
-The conflict is only in `event.txt`, but `README.txt` now shows 35 euros. Whatever price you choose, **both files must match**.
+The conflict is only in `event.txt`, but `summary.txt` now shows 35 euros. Whatever price you choose, **both files must match**.
 
 - Open `event.txt`, choose a compromise price of 20 euros, remove all conflict markers, save
-- Open `README.txt`, update the price to match exactly
+- Open `summary.txt`, update the price to match exactly
 - Check the differences
 - Stage both files and commit with the message `Merge: Set to 20 euros in both files`
 
+
+
+<details>
+<summary>🔍 Click here hints! </summary>
+
+- To create use `git branch name_of_branch`
+- To switch between branches use `git switch name_of_branch`
+- To create and switch in one step, add the flag `-c` to `git switch`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+- To see the changes in a file use `git diff name_of_file`
+- To stage a file use `git add name_of_file`
+- To commit a file use `git commit -m "commit message"`
+- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+</details>
+
+
 Verify consistency:
+Search both `event.txt` and `summary.txt` for the line containing `Meal price` and compare the results.
+
 > **New command:** `grep` allows you to search files using text patterns.
 ```bash
-grep 'meal price' event.txt README.txt
+grep 'Meal price' *.txt
 ```
-
-Search both `event.txt` and `README.txt` for the line containing `meal price` and compare the results.
 
 > **Success:** No conflict markers in `event.txt`, both files show the same price, the working tree is clean, and the commit graph shows three merge commits.
 
 
-## Bonus challenge
+## 🚀 Optional challenge
 
 Make a mistake on purpose, then undo it safely.
 
@@ -340,7 +442,7 @@ Make a mistake on purpose, then undo it safely.
 
 - In Conflict 2, how did you decide whether to keep or remove the Delft paragraph? What would make that easier in a real project?
 - Why does Git pause and ask you to decide, rather than picking the most recent change?
-- In Conflict 3, why is it a problem if `event.txt` and `README.txt` show different prices?
+- In Conflict 3, why is it a problem if `event.txt` and `summary.txt` show different prices?
 - What's the difference between reverting a commit and deleting a commit? When would you use each?
 
 
