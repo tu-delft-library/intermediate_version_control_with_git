@@ -127,25 +127,16 @@ Then verify your answers by inspecting the commits directly with
 `git diff <hash1> <hash2>`.
 
 
-## 5 💪 Interactive Git 
-
-1. Go to this link https://learngitbranching.js.org/
-1. Complete **Introduction episodes 1, 2, 3**
-
-#### 🚀 Optional challenge
-Continue on the more advanced exercises
-
-
-## 6 💪 Undo a bad merge
+## 5 💪 Undo a bad merge
 
 Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
 
 1. Create a new branch called `bad-merge` and step into it
-1. Add a new line with the text `to stay warm at night - branch` at the bottom of `notes.txt`
-1. Commit your changes with the message `Add ninth line on bad-merge`
+1. Add a new line with the text `or a hot water bottle - branch` at the bottom of `notes.txt`
+1. Commit your changes with the message `Add eighth line on bad-merge`
 1. Switch back to `main`
-1. Add a new line with the text `to stay warm at night - main` at the bottom of `notes.txt`
-1. Commit your changes with the message `Add ninth line on main`
+1. Add a new line with the text `or a hot water bottle - main` at the bottom of `notes.txt`
+1. Commit your changes with the message `Add eighth line on main`
 1. Merge `bad-merge` branch into `main`
 1. Use `cat` to see the content of `notes.txt`
 1. Imagine you do not know how to solve this conflict and decide to take a step back
@@ -165,23 +156,18 @@ Merges don't always go as planned. In this exercise you will practice how to can
 - To check the history of a branch use `git log --oneline --all --graph`
 </details>
 
+
+
+## 6 💪 Interactive Git 
+
+1. Go to this link https://learngitbranching.js.org/
+1. Complete **Introduction episodes 1, 2, 3**
+
 #### 🚀 Optional challenge
-
-Now practice undoing a merge that was **already committed**.
-
-1. Recreate steps above until you execute the merge of `bad-merge` into `main`
-1. Instead of cancelling the merge, resolve the conflict
-1. Commit the merge
-1. Verify the merge commit appears in `git log --oneline --graph`
-1. Imagine you are not happy with the merge and want to `undo` it
-1. Use `git reset --hard HEAD~1` to undo the merge commit
-1. Verify the merge commit is gone and `notes.txt` is back to its previous state
-1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
->> **Think about this:** what would happen if you had already pushed the merge
-   commit to GitHub before running `git reset --hard`?
+Continue on the more advanced exercises
 
 
-## 7 🚀 Optional challenge — rebase instead of merge
+## 8 🚀 Optional challenge — rebase instead of merge
 
 You have been merging branches, which creates a merge commit with two parents.
 Rebase is an alternative that replays your commits on top of another branch,
