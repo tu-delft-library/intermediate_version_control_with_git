@@ -16,7 +16,7 @@ When you are finished:
 1. Delete all other branches
 
 <details>
-<summary>🔍 Click here for a hint! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To create use `git branch name_of_branch`
 - To create and switch in one step, add the flag `-c` to `git switch`
@@ -43,7 +43,7 @@ When you are finished:
 - `-d` is a safe delete — Git refuses if the branch has commits that have not been merged into the current branch. It is protecting you from losing work.
 - `-D` is a force delete — Git deletes it regardless. The commits are not immediately gone but they are hard to recover.
 
->**As a rule of thumb:** if `-d` refuses, pause and ask yourself whether those commits are actually needed before reaching for `-D`.
+>**As a rule of thumb:** if `-d` refuses, pause and ask yourself whether those commits are actually needed before forcing with `-D`
 </details>
 
 
@@ -55,25 +55,19 @@ Follow the steps listed below:
 1. Confirm that the file `notes.txt` contains three lines
 1. Append the line `A dramatic sunset` into `notes.txt` using `echo`
 1. Append the line `The moon was bright` into `notes.txt` using `echo`
+1. Inspect the differences
 1. Make a single commit of these two changes. Specify the branch name in the commit message!
 1. Inspect the working tree
 
 
 <details>
-<summary>🔍 Click here for a hint! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To switch between branches use `git switch name_of_branch`
+- To inspect the differences use `git diff`
 - To inspect the working tree use `git status`
-- To addend a line using echo use `echo "line" >> filename` 
+- To append a line using echo use `echo "line" >> filename` 
 </details>
-
-
-#### 🚀 Optional challenge
-
-1. Use `nano` to change `fresh` to `cool`  
-1. Use `git diff` to inspect the change before committing 
-1. Think about this: when this branch is eventually merged into `main`, will Git
-be able to resolve this automatically? Why or why not?
 
 
 ## 3 💪 Explore differences across branches
@@ -87,7 +81,7 @@ Follow the steps listed below:
 1. Inspect the differences between the `main` branch and the parent of the latest commit on branch `b2`
 
 <details>
-<summary>🔍 Click here for a hint! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To switch between branches use `git switch name_of_branch`
 - To inspect different versions in the history use in the current branch use `git diff HEAD~1`
@@ -114,7 +108,7 @@ Follow the steps listed below:
 1. Verify the outcome with a graphed `git log`
 
 <details>
-<summary>🔍 Click here for a hint! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To inspect differences between branches `git diff name_of_branch name_of_another_branch`
 - To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
@@ -128,7 +122,6 @@ Now try to answer these questions just by reading the graph — without using `c
 
 - Which commit introduced the conflict?
 - Which branch was ahead before the merge?
-- How many parent commits does the merge commit have, and why?
 
 Then verify your answers by inspecting the commits directly with
 `git diff <hash1> <hash2>`.
@@ -163,7 +156,7 @@ Merges don't always go as planned. In this exercise you will practice how to can
 1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
 
 <details>
-<summary>🔍 Click here for a hint! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
@@ -217,10 +210,10 @@ Compare what you see with the graph from the merge exercise above:
 Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitHub Desktop, R Studio)
 
 1. Open your GUI of choice
-1. Open the folder with your local repository `logbook`
+1. Open the folder with your local repository `weather-notes`
 1. Make sure your local `main` is up to date with the remote
 1. Create a new branch called `gui` and stand on it
-1. Modify the text `second line` to `2nd line`
+1. Modify the text `The air was fresh` to `the air was fresh` (lower case `the`)
 1. Add a new line with the text `gui line` at the bottom of `notes.txt`
 1. Visualize the changes in `notes.txt`
 1. Stage and commit the change with message `Add gui line`
