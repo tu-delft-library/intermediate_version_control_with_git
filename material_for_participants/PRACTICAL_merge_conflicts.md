@@ -174,13 +174,9 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes.
 <details>
 <summary>🔍 Click here hints! </summary>
 
-- To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
-- To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
+- To merge a branch into the current branch use `git merge incoming_branch`
+
 </details>
 
 **Step 4 — Resolve**
@@ -198,18 +194,6 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 - Stage `recipe.txt` and commit with the message `Merge: combine Alice and Bob`
 
 
-<details>
-<summary>🔍 Click here hints! </summary>
-
-- To create use `git branch name_of_branch`
-- To switch between branches use `git switch name_of_branch`
-- To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-</details>
-
 > **Success:** `recipe.txt` has no conflict markers, includes both the stirring note and seasoning step, and the commit graph shows a merge commit.
 
 ```bash
@@ -225,8 +209,6 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 
 
 > **Situation:** File `bio.txt`; One person deletes the Delft paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
-
-
 
 
 **Step 1 — Create the two branches**
@@ -253,18 +235,15 @@ We specialise in traditional italian.
 - View the commit graph for all branches
 
 
-
 <details>
 <summary>🔍 Click here hints! </summary>
 
-- To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
+- To create use `git branch name_of_branch`
 - To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
 - To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+- To see the commit graph for all branches use `git log --oneline --all --graph`
+
 </details>
 
 **Step 2 — Trigger the conflict**
@@ -274,18 +253,12 @@ We specialise in traditional italian.
 - Merge `rewrite` into `main` (this should create a conflict)
 
 
-
 <details>
 <summary>🔍 Click here hints! </summary>
 
-- To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
-- To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+- To merge a branch into the current branch use `git merge incoming_branch`
+
 </details>
 
 **Step 3 — Decide and resolve**
@@ -312,14 +285,10 @@ Now try the opposite — undo and resolve the other way:
 <details>
 <summary>🔍 Click here hints! </summary>
 
-- To create use `git branch name_of_branch`
+- To undo the latest commit (perform a hard reset) use `git reset --hard HEAD~1`
 - To switch between branches use `git switch name_of_branch`
-- To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+- To merge a branch into the current branch use `git merge incoming_branch`
+
 </details>
 
 
@@ -352,14 +321,11 @@ Now try the opposite — undo and resolve the other way:
 <details>
 <summary>🔍 Click here hints! </summary>
 
-- To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
+- To create use `git branch name_of_branch`
 - To create and switch in one step, add the flag `-c` to `git switch`
 - To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+
 </details>
 
 **Step 2 — Trigger the conflict**
@@ -373,14 +339,9 @@ Now try the opposite — undo and resolve the other way:
 <details>
 <summary>🔍 Click here hints! </summary>
 
-- To create use `git branch name_of_branch`
 - To switch between branches use `git switch name_of_branch`
-- To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
+- To merge a branch into the current branch use `git merge incoming_branch`
+
 </details>
 
 **Step 3 — Resolve, then check consistency**
@@ -391,21 +352,6 @@ The conflict is only in `event.txt`, but `summary.txt` now shows 35 euros. Whate
 - Open `summary.txt`, update the price to match exactly
 - Check the differences
 - Stage both files and commit with the message `Merge: Set to 20 euros in both files`
-
-
-
-<details>
-<summary>🔍 Click here hints! </summary>
-
-- To create use `git branch name_of_branch`
-- To switch between branches use `git switch name_of_branch`
-- To create and switch in one step, add the flag `-c` to `git switch`
-- To see the commit graph for all branches use `git log --oneline --all --graph`
-- To see the changes in a file use `git diff name_of_file`
-- To stage a file use `git add name_of_file`
-- To commit a file use `git commit -m "commit message"`
-- To undo a merge commit (perform a hard reset) use `git reset --hard HEAD~1`
-</details>
 
 
 Verify consistency:
