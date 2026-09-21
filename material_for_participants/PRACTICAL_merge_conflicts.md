@@ -257,7 +257,7 @@ We specialise in traditional italian.
 <summary>🔍 Click here hints! </summary>
 
 - To switch between branches use `git switch name_of_branch`
-- To merge a branch into the current branch use `git merge incoming_branch`
+- To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 
 </details>
 
@@ -286,8 +286,7 @@ Now try the opposite — undo and resolve the other way:
 <summary>🔍 Click here hints! </summary>
 
 - To undo the latest commit (perform a hard reset) use `git reset --hard HEAD~1`
-- To switch between branches use `git switch name_of_branch`
-- To merge a branch into the current branch use `git merge incoming_branch`
+- To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 
 </details>
 
@@ -340,7 +339,7 @@ Now try the opposite — undo and resolve the other way:
 <summary>🔍 Click here hints! </summary>
 
 - To switch between branches use `git switch name_of_branch`
-- To merge a branch into the current branch use `git merge incoming_branch`
+- To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 
 </details>
 
