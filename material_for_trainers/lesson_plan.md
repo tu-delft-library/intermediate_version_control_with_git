@@ -133,6 +133,7 @@ git log --oneline
 
 ```bash
 git status
+cat notes.txt               # three lines: The sun ... the air ... A cloudy ..
 echo "A dramatic sunset" >> notes.txt              # add more lines
 git diff
 git add notes.txt 
@@ -140,13 +141,13 @@ git commit -m "Add fourth line"    # commit changes on main
 git status
 git switch b1
 git log --oneline
-echo "A dramatic sunset" >> notes.txt 
+echo "A dramatic sunset" >> notes.txt   # exact same change but on a different branch
 git diff
 git add notes.txt
 git commit -m "Add fourth line on branch b1" # commit changes on b1
-git status
+git status                                  # nothing to commit
 git switch main
-git log --oneline --all                    # show all branches
+git log --oneline --all                    # show all branches - note change on both branches
 git log --oneline --all --graph            # show graph with all branches
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
@@ -169,7 +170,7 @@ git status
 ## 10:40 - Break - 15' 
 
 
-## 10:55 - Explore differences across branches - 15' 
+## 10:55 - Explore differences across branches - 10' 
 
 Let's keep adding to our history:
 ```bash
@@ -199,7 +200,7 @@ git diff main~1 b1~1 # changes between parent of the latest commit on the main b
 # No difference on this one. Both files have 4 lines
 ```
 
-## 11:10 - 3 💪  Explore differences across branches - 10'
+## 11:05 - 3 💪  Explore differences across branches - 10'
 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
@@ -217,7 +218,7 @@ git diff b2 b1
 git diff main b2~1
 ```
 
-## 11:20 - Merging branches and conflict resolution - 15' 
+## 11:15 - Merging branches and conflict resolution - 15' 
 
 Let's develop further on branch `b1`:
 ```bash
@@ -284,7 +285,7 @@ git log --oneline --all --graph                           # see merge visually
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:notes.txt :2:notes.txt`
 
-## 11:35 - 4 💪 A first type for merge - 10' 
+## 11:30 - 4 💪 A first type for merge  and 5 💪 Undo a Bad Merge  - 15' 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
 
 Solution:
@@ -298,6 +299,32 @@ git commit -m "Merge b2 into main"
 git log --oneline --all --graph # verify
 ```
 
+
+Solution:
+```bash
+git switch main
+git branch bad-merge
+git switch bad-merge
+echo "or a hot water bottle - branch" >> notes.txt
+git add notes.txt
+git commit -m "Add eighth line on bad-merge"
+git switch main
+echo "or a hot water bottle - main" >> notes.txt
+git add notes.txt
+git commit -m "Add eighth line on main"
+git merge bad-merge         # conflict! both branches changed the last line
+git status                  # notes.txt listed as "both modified"
+cat notes.txt               # conflict markers are visible
+git merge --abort
+git status                  # clean — back to where you were before the merge
+cat notes.txt               # conflict markers are gone, file is as it was on main
+git log --oneline --graph   # no merge commit was created
+git branch -D bad-merge     # force-delete (it was never cleanly merged)
+git log --oneline --graph   # back to a clean main
+```
+
+`git merge --abort` is only available **while a merge is in progress** 
+
 > **Before break:** Turn to a neighbour and compare the output of `git log --oneline --all --graph`. Does it look the same? Different commit hashes? Same shape?
 
 ## 11:45 - Break  - 15'
@@ -309,9 +336,8 @@ Do not solve the PRACTICAL live. Just ask questions, share experiences or highli
 
 ## 12:30 - 	Lunch - 60'	
 
-## 13:30 - 5 💪 Interactive Git - 15' 
+## 13:30 - 6 💪 Interactive Git - 15' 
 See `exercises.md`. There is an optional challenge under each numbered exercise.
-
 
 ## 13:45 - Remote operations revisited - 10' 
 
@@ -336,14 +362,14 @@ We confirm in GitHub that we see the changes
 
 Make a small edit directly on GitHub (via the web editor):
 1. Open `notes.txt` on GitHub
-2. Add a new line at the bottom: `or a hot water bottle - GitHub`
-3. Commit with message `Add eighth line via GitHub`
+2. Add a new line at the bottom: `to stay warm at night - GitHub`
+3. Commit with message `Add ninth line via GitHub`
 
 Now, back in the terminal, make a **different** local change without pulling:
 ```bash
-echo "or a hot water bottle - local" >> notes.txt
+echo "to stay warm at night - local" >> notes.txt
 git add notes.txt
-git commit -m "Add eighth line locally"
+git commit -m "Add ninth line locally"
 git push origin main        # fails! rejected - remote contains work you do not have
 ```
 
@@ -357,8 +383,9 @@ Resolve it:
 git pull origin main        # fetch + attempt merge → conflict in notes.txt
 git status                  # notes.txt listed as "both modified"
 nano notes.txt              # resolve conflict markers — keep one or combine both lines
+git diff
 git add notes.txt
-git commit -m "Merge remote and local eighth line"
+git commit -m "Merge remote and local ninth line"
 git push origin main        # now succeeds
 ```
 
@@ -366,43 +393,8 @@ Visit GitHub and confirm the resolved file is there.
 
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
-## 14:05 - 6 💪 Undo a Bad Merge - 10'
-See `exercises.md`. There is an optional challenge under each numbered exercise.
 
-Solution:
-```bash
-git switch main
-git branch bad-merge
-git switch bad-merge
-echo "to stay warm at night - branch version" >> notes.txt
-git add notes.txt
-git commit -m "Add ninth line on bad-merge"
-git switch main
-echo "to stay warm at night - main version" >> notes.txt
-git add notes.txt
-git commit -m "Add ninth line on main"
-git merge bad-merge         # conflict! both branches changed the last line
-git status                  # notes.txt listed as "both modified"
-cat notes.txt               # conflict markers are visible
-git merge --abort
-git status                  # clean — back to where you were before the merge
-cat notes.txt               # conflict markers are gone, file is as it was on main
-git log --oneline --graph   # no merge commit was created
-git branch -D bad-merge     # force-delete (it was never cleanly merged)
-git log --oneline --graph   # back to a clean main
-```
-
-`git merge --abort` is only available **while a merge is in progress** 
-
-## 14:15 - Break -15' 
-
-## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
-see `PRACTICAL_remote_conflicts.md`
-
-Share experiences or highlight concepts that you noticed were still a bit confusing.
-
-
-## 15:10 - VS Code demo
+## 14:05 - VS Code demo
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
 
@@ -443,7 +435,15 @@ Let's generate a similar conflict than we did on the Terminal:
 - Complete the merge and commit
 - Click on `Sync changes` to push the merge to remote
 
-## 15:20 - Summarize key points - 5' 
+## 14:15 - Break -15' 
+
+## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
+see `PRACTICAL_remote_conflicts.md`
+
+Share experiences or highlight concepts that you noticed were still a bit confusing.
+
+
+## 15:10 - Summarize key points - 5' 
 Using VS code
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
 - **Merging**: bring changes together with `git merge`.
@@ -454,7 +454,7 @@ Git creates a merge commit
 
 
 
-## 15:25 - Give feedback about the course  5" 
-Go to the link in `README.md`
+## 15:15 - Give feedback about the course  5" 
+Go to the link in `links.md`
 
 
