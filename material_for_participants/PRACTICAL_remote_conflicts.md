@@ -1,6 +1,6 @@
 # PRACTICAL | Conflicts with Remote Repositories (Pair Exercise)
 
-This version is done with a real partner instead of two clones on one machine. You'll play the roles **Partner A** and **Partner B**. Decide now who is who — Partner A owns the repository, Partner B is invited as a collaborator.
+You'll play the roles **Partner A** and **Partner One**. Decide now who is who — Partner A owns the repository, Partner One is invited as a collaborator.
 
 At several points you must **wait for your partner** before continuing — these are marked with 🔔.
 
@@ -48,23 +48,23 @@ Click on the `SSH` tab and copy the clone URL. It will look like:
 git@github.com:PARTNER-A-USERNAME/remote_conflicts.git
 ```
 
-### Step 2 — Partner A adds Partner B as a collaborator
+### Step 2 — Partner A adds Partner One as a collaborator
 
 **Partner A:**
 
 - In the new repository, go to **Settings → Collaborators**
 - Click **Add people**
-- Enter Partner B's GitHub username or the email tied to their GitHub account
+- Enter Partner One's GitHub username or the email tied to their GitHub account
 - Send the invite
 
-🔔 **Tell Partner B their GitHub invite has been sent**
+🔔 **Tell Partner One their GitHub invite has been sent**
 
-**Partner B:**
+**Partner One:**
 
 - Check your email or your GitHub notifications for the invite
 - Accept it
 
-🔔 **Partner B confirms to Partner A** that the invite has been accepted
+🔔 **Partner One confirms to Partner A** that the invite has been accepted
 
 ### Step 3 — Partner A clones it and adds the starting files
 
@@ -126,15 +126,15 @@ git commit -m "Initial files: notes, schedule, ideas"
 git push origin main
 ```
 
-> **Checkpoint:** `git log --oneline` should show one commit. Go to GitHub and view the `remote_conflicts` repository. You should see the three new files, and Partner B listed under Settings → Collaborators
+> **Checkpoint:** `git log --oneline` should show one commit. Go to GitHub and view the `remote_conflicts` repository. You should see the three new files, and Partner One listed under Settings → Collaborators
 
-🔔 **Tell Partner B the initial files are pushed and they can clone**
+🔔 **Tell Partner One the initial files are pushed and they can clone**
 
-### Step 4 — Partner B clones the same repository
+### Step 4 — Partner One clones the same repository
 
 From here on, **avoid copy-pasting**. Typing all the commands helps you build understanding.
 
-**Partner B**, open your terminal and:
+**Partner One**, open your terminal and:
 - Move into your `Desktop` directory
 - Clone the repository at `git@github.com:PARTNER-A-USERNAME/remote_conflicts.git` into a folder named `remote_conflicts`
 - Move into the new `remote_conflicts` folder
@@ -147,7 +147,7 @@ From here on, **avoid copy-pasting**. Typing all the commands helps you build un
 
 ## Conflict 1: Push rejected
 
-> **Situation:** File `notes.txt`. Partner B pushes a change while Partner A is also working on the same file. When Partner A tries to push, Git rejects it because their history is behind.
+> **Situation:** File `notes.txt`. Partner One pushes a change while Partner A is also working on the same file. When Partner A tries to push, Git rejects it because their history is behind.
 
 <details>
 <summary>🔍 Click here hints! </summary>
@@ -161,20 +161,20 @@ From here on, **avoid copy-pasting**. Typing all the commands helps you build un
 </details>
 
 
-**Step 1 — Partner B pushes first**
+**Step 1 — Partner One pushes first**
 
-**Partner B**, in your `remote_conflicts` folder:
+**Partner One**, in your `remote_conflicts` folder:
 - Open `notes.txt` for editing
 - Change the line `Meeting on Monday at 10am.` to `Meeting on Monday at 10am in the main conference room.`
 - Check the differences in `notes.txt`
-- Stage `notes.txt` and commit with the message `Partner B: add room to Monday meeting`
+- Stage `notes.txt` and commit with the message `Partner One: add room to Monday meeting`
 - Push changes to remote
 
 🔔 **Tell Partner A you've pushed.**
 
 **Step 2 — Partner A makes a different change and tries to push**
 
-**Partner A**, in your `remote_conflicts` folder (do this only after Partner B tells you they've pushed):
+**Partner A**, in your `remote_conflicts` folder (do this only after Partner One tells you they've pushed):
 - Open `notes.txt` for editing
 - Add a new line that says `Bring snacks to share.` and save
 - Check the differences in `notes.txt`
@@ -220,9 +220,9 @@ Check that both changes are in `notes.txt` and push:
 
 > **Success:** Partner A's push is accepted. `notes.txt` includes both changes. `git log --oneline --graph` shows a merge commit.
 
-🔔 **Tell Partner B you've pushed the merge.**
+🔔 **Tell Partner One you've pushed the merge.**
 
-**Partner B**, sync up so you're both on the same page:
+**Partner One**, sync up so you're both on the same page:
 - Pull the latest changes from `origin/main`
 - View the contents of `notes.txt`
 
@@ -232,14 +232,14 @@ Check that both changes are in `notes.txt` and push:
 
 > **Situation:** File `schedule.txt`. This time, both partners edit the **same line** before either of you pulls. When you pull, Git can't merge automatically and stops to ask you to decide.
 
-**Step 1 — Partner B edits and pushes**
+**Step 1 — Partner One edits and pushes**
 
-**Partner B:**
+**Partner One:**
 - Pull the latest changes from `origin/main`
 - Open `schedule.txt` for editing
 - Change the line `Wednesday: Free` to `Wednesday: Workshop (morning)`
 - Check the differences in `schedule.txt`
-- Stage `schedule.txt` and commit with the message `Partner B: add workshop to Wednesday`
+- Stage `schedule.txt` and commit with the message `Partner One: add workshop to Wednesday`
 - Push changes to remote
 
 🔔 **Don't tell Partner A yet** — the point of this exercise is that Partner A edits the same line without knowing.
@@ -297,9 +297,9 @@ Wednesday: Workshop (morning), office day after lunch
 
 > **Success:** `schedule.txt` has no conflict markers. `git push` is accepted. `git log --oneline --graph` shows a merge commit.
 
-🔔 **Tell Partner B to pull.**
+🔔 **Tell Partner One to pull.**
 
-**Partner B:**
+**Partner One:**
 - Pull the latest changes from `origin/main`
 - View the contents of `schedule.txt`
 
@@ -309,14 +309,14 @@ Wednesday: Workshop (morning), office day after lunch
 
 > **Situation:** File `ideas.txt`. Both of you add a new idea to the end of the file while "offline" (i.e. without checking in with each other or pulling). When you pull, Git sees two separate histories that have "diverged" — neither partner is simply ahead of the other.
 
-**Step 1 — Partner B adds an idea and pushes**
+**Step 1 — Partner One adds an idea and pushes**
 
-**Partner B:**
+**Partner One:**
 - Pull the latest changes from `origin/main`
 - Open `ideas.txt` for editing
 - Add a new line at the bottom: `Idea 4: Send a monthly newsletter.`
 - Check the differences in `ideas.txt`
-- Stage `ideas.txt` and commit with the message `Partner B: add newsletter idea`
+- Stage `ideas.txt` and commit with the message `Partner One: add newsletter idea`
 - Push changes to remote
 
 🔔 **Again, hold off telling Partner A** until after their commit in Step 2.
@@ -375,9 +375,9 @@ Delete all conflict markers, save, then:
 - Stage `ideas.txt` and commit with the message `Resolve: keep both new ideas, renumber to 4 and 5`
 - Push changes to remote
 
-🔔 **Tell Partner B to pull and verify.**
+🔔 **Tell Partner One to pull and verify.**
 
-**Partner B:**
+**Partner One:**
 - Pull the latest changes from `origin/main`
 - View the contents of `ideas.txt`
 
@@ -387,9 +387,9 @@ Delete all conflict markers, save, then:
 
 ## Bonus challenge — swap roles
 
-Practise pulling before you start work — the habit that prevents most remote conflicts. This time, **swap roles**: Partner B goes first.
+Practise pulling before you start work — the habit that prevents most remote conflicts. This time, **swap roles**: Partner One goes first.
 
-**Partner B:**
+**Partner One:**
 - Always start your day by pulling the latest changes from `origin/main`
 
 Now make a change, knowing you're up to date:
