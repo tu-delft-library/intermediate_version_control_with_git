@@ -184,8 +184,8 @@ Compare what you see with the graph from the previous merges:
 - Where does `rebase-test` sit relative to `main`?
 - What happened to the original commit on `rebase-test`?
 
-6. Switch to `main` and merge `rebase-test` with `git merge rebase-test`
-7. Check the graph again — notice the merge is a fast-forward this time. Why?
+1. Switch to `main` and merge `rebase-test` with `git merge rebase-test`
+1. Check the graph again — notice the merge is a fast-forward this time. Why?
 
 > ⚠️ Rebase rewrites commit history. It is safe on a local branch that you
 > have not shared with anyone. Avoid rebasing branches that have already been pushed.
