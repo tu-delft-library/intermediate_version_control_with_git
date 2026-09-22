@@ -158,40 +158,39 @@ Merges don't always go as planned. In this exercise you will practice how to can
 
 
 
-## 6 💪 Interactive Git 
+## 6 💪 Rebase instead of merge
+We can use rebase when the changes touch different files or clearly separate parts of a file. This way the rebase is a clean, non-conflicting replay of `history`.
 
-1. Go to this link https://learngitbranching.js.org/
-1. Complete **Introduction episodes 1, 2, 3**
+1. Pull the latest `main` from remote
+1. Create a new branch called `cool` from `main` and switch to it in one step
+1. Open `notes.txt` and modify line 2 to `The air was cool`
+1. Stage and commit it
+1. Switch back to `main` 
+1. Open `notes.txt` and add a new line `and wake up rested` to `notes.txt` 
+1. Stage and commit it 
+1. Inspect the history with `git log --oneline --all --graph`
 
-#### 🚀 Optional challenge
-Continue on the more advanced exercises
-
-
-## 7 🚀 Optional challenge — rebase instead of merge
-
-You have been merging branches, which creates a merge commit with two parents.
-Rebase is an alternative that replays your commits on top of another branch,
-resulting in a cleaner linear history.
-
-1. Create a new branch called `rebase-test` from `main` and switch to it in one step
-1. Add a new line `rebase line` to `notes.txt` and commit it
-1. Switch back to `main` and add a new line `main line` to `notes.txt` and commit it — the two branches have now diverged
-1. Switch back to `rebase-test` and run `git rebase main`
+Notice that the two branches (`main` and `cool`) have now diverged
+1. Switch back to `cool` and run `git rebase main`
 1. Inspect the result with `git log --oneline --all --graph`
 
     Compare what you see with the graph from the previous merges:
-    - Is there a merge commit?
-    - Where does `rebase-test` sit relative to `main`?
-    - What happened to the original commit on `rebase-test`?
+    - Where does `cool` sit relative to `main`?
+    - What happened to the original commit on `cool`?
 
-1. Switch to `main` and merge `rebase-test` with `git merge rebase-test`
-1. Check the graph again — notice the merge is a fast-forward this time. Why?
+1. Switch to `main` and merge `cool` with `git merge cool`
+1. Check the graph again — notice that instead of a merge, Git just slides the `main` pointer up to match, like `fast-forwarding` a video to where you already know it ends.
 
 > ⚠️ Rebase rewrites commit history. It is safe on a local branch that you
 > have not shared with anyone. Avoid rebasing branches that have already been pushed.
 
 
-## 8 🚀 Optional challenge: Full workflow in a GUI
+## 7 🚀 Optional: Interactive Git 
+
+1. Go to this link https://learngitbranching.js.org/
+1. Play with your favorite episode
+
+## 8 🚀 Optional: Full workflow in a GUI
 
 Complete the following tasks using your GUI of choice (eg VS Code, PyCharm, GitHub Desktop, R Studio)
 
