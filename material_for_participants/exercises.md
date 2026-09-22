@@ -167,7 +167,7 @@ Merges don't always go as planned. In this exercise you will practice how to can
 Continue on the more advanced exercises
 
 
-## 8 🚀 Optional challenge — rebase instead of merge
+## 7 🚀 Optional challenge — rebase instead of merge
 
 You have been merging branches, which creates a merge commit with two parents.
 Rebase is an alternative that replays your commits on top of another branch,
