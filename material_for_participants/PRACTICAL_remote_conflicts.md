@@ -95,7 +95,7 @@ You are **encouraged to copy/paste** the contents of the files for this section.
 
 
 <details>
-<summary>🔍 Click here hints! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To create a new file with nano use `nano name_of_file`
 - To stage files use `git add name_of_file another_file`
@@ -134,7 +134,7 @@ From here on, **avoid copy-pasting**. Typing all the commands helps you build un
 - Push changes to remote
 
 <details>
-<summary>🔍 Click here hints! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To see the changes in a file use `git diff name_of_file`
 - To stage files use `git add name_of_file another_file`
@@ -161,7 +161,7 @@ error: failed to push some refs to 'github.com:PARTNER-A-USERNAME/remote_conflic
 ...
 ```
 <details>
-<summary>🔍 Click here hints! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To see the changes in a file use `git diff name_of_file`
 - To stage files use `git add name_of_file another_file`
@@ -197,7 +197,7 @@ Check that both changes are in `notes.txt` and push:
 - Push changes to remote
 
 <details>
-<summary>🔍 Click here hints! </summary>
+<summary>🔍 Click here for hints! </summary>
 
 - To pull from remote use `git pull origin main`
 - To set your pull strategy to merge use `git config pull.rebase false`
@@ -292,59 +292,85 @@ Wednesday: Workshop (morning), office day after lunch
 > **Success:** `schedule.txt` has no conflict markers. `git push` is accepted. `git log --oneline --graph` shows a merge commit.
 ---
 
-## 💪 Conflict 3: Diverged history
+## 🚀 Optional challenge: Diverged history (branches + Pull Request on GitHub)
 
-**Step 1 — Partner One adds an idea and pushes**
+This time you'll each work on a **branch** and merge using a **Pull Request (PR)** in GitHub. PR are a tool to merge the changes from `branches` into `main`. 
+
+**Step 1 — Partner One branches, adds an idea, opens a PR**
 
 **Partner One:**
 - Pull the latest changes from `origin/main`
+- Create and switch to a new branch called `newsletter`
 - Open `ideas.txt` for editing
 - Add a new line at the bottom: `Idea 4: Send a monthly newsletter.`
 - Check the differences in `ideas.txt`
 - Stage `ideas.txt` and commit with the message `One: add newsletter idea`
-- Push changes to remote
+- Push the branch to remote
 
-🔔 **Again, hold off telling Partner A** until after their commit in Step 2.
+<details>
+<summary>🔍 Click here for hints! </summary>
 
-**Step 2 — Partner A adds a different idea without pulling first**
+- Create and switch to a branch: `git switch -c branch-name`
+- Push a new branch: `git push origin branch-name`
+</details>
 
-**Partner A:**
-- Open `ideas.txt` for editing
-- Add a new line at the bottom: `Idea 4: Create a blog section.`
+- Go to GitHub
+- Since a new branch was pushed, GitHub automatically offers to `Compare & pull request` 
+- Click on the `Compare & pull request` icon
+- A `Comparing changes` window will show. Browse down to see the changes at the bottom
+- Add a mini description like `Add newsletter idea` and click on `Create pull request`
+- **Do not merge it yet.**
 
-- Check the differences in `ideas.txt`
-- Stage `ideas.txt` and commit with the message `A: add blog idea`
+🔔 **Tell Partner A you've opened a PR — don't merge yet.**
 
-🔔 **Compare notes with your partner**, then Partner A continues.
-
-**Step 3 — Partner A pulls and sees the conflict**
+**Step 2 — Partner A branches, adds a different idea, opens a PR**
 
 **Partner A:**
 - Pull the latest changes from `origin/main`
-
-Git reports:
-```
-CONFLICT (content): Merge conflict in ideas.txt
-Automatic merge failed; fix conflicts then commit the result.
-```
-
-Open the file:
+- Create and switch to a new branch called `blog`
 - Open `ideas.txt` for editing
+- Add a new line at the bottom: `Idea 4: Create a blog section.`
+- Check the differences in `ideas.txt`
+- Stage `ideas.txt` and commit with the message `A: add blog idea`
+- Push the branch to remote
 
-You'll see:
+<details>
+<summary>🔍 Click here for hints! </summary>
+
+- Create and switch to a branch: `git switch -c branch-name`
+- Push a new branch: `git push origin branch-name`
+</details>
+
+
+- Go to GitHub
+- Since a new branch was pushed, GitHub automatically offers to `Compare & pull request` 
+- Click on the `Compare & pull request` icon
+- A `Comparing changes` window will show. Browse down to see the changes at the bottom
+- Add a mini description like `Add blog idea` and click on `Create pull request`
+- **Do not merge it yet.**
+
+> Both PRs target `main`. Neither branch has been merged yet, so GitHub will happily let you open both.
+
+**Step 3 — Merge the first PR (clean)**
+
+**Whoever opened first (Partner One)** merges their PR on GitHub. Since `main` hasn't changed, this merges cleanly.
+
+🔔 **Tell your partner the first PR is merged.**
+
+**Step 4 — See the conflict on the second PR**
+
+**Partner A**, go back to your open PR on GitHub. It now shows:
 ```
-<<<<<<< HEAD
-Idea 4: Create a blog section.
-=======
-Idea 4: Send a monthly newsletter.
->>>>>>> origin/main
+This branch has conflicts that must be resolved
 ```
+because `main` moved on (Partner One's merge) since you branched.
 
-Both ideas are good — the problem is only that they share the same line number. You want to **keep both**.
+- Click **Resolve conflicts** in the GitHub interface
+- You'll see the same `<<<<<<<` / `=======` / `>>>>>>>` markers, but editable in the browser
 
-**Step 4 — Keep both, renumber, and push**
+**Step 5 — Resolve in the GitHub editor and merge**
 
-**Partner A**, edit the file so it reads:
+Both ideas are good — the problem is only that they share the same line number. Edit the web editor so the file reads:
 ```
 Project Ideas
 =============
@@ -354,39 +380,20 @@ Idea 3: Improve mobile layout.
 Idea 4: Create a blog section.
 Idea 5: Send a monthly newsletter.
 ```
+- Delete all conflict markers
+- Click **Mark as resolved**, then **Commit merge**
+- Merge the Pull Request
 
-Delete all conflict markers, save, then:
-- Check the differences in `ideas.txt`
-- Stage `ideas.txt` and commit with the message `Resolve: keep both new ideas, renumber to 4 and 5`
-- Push changes to remote
+🔔 **Tell Partner One the PR is merged — time to pull.**
 
-🔔 **Tell Partner One to pull and verify.**
+**Step 6 — Both partners sync locally**
 
-**Partner One:**
+**Partner A and Partner One:**
+- Switch back to your local `main` branch
 - Pull the latest changes from `origin/main`
 - View the contents of `ideas.txt`
 
-> **Success:** Both of you now show five ideas, no conflict markers, and `git log --oneline --graph` shows the full shared history on both machines. You can also open the repository on GitHub and browse `ideas.txt` there to confirm the final version is on the remote.
+
+> **Success:** Both of you now show five ideas, no conflict markers, and both PRs appear as **Merged** on GitHub. `git log --oneline --graph` shows two merge commits on `main`.
 
 ---
-
-## 🚀 Optional challenge — swap roles
-
-Practise pulling before you start work — the habit that prevents most remote conflicts. This time, **swap roles**: Partner One goes first.
-
-**Partner One:**
-- Always start your day by pulling the latest changes from `origin/main`
-
-Now make a change, knowing you're up to date:
-- Open `notes.txt` for editing
-- Add a new line at the bottom: `Next review: end of month.`
-- Stage `notes.txt` and commit with the message `Add next review note`
-- Push changes to remote
-
-🔔 **Tell Partner A to pull.**
-
-**Partner A**, check that you can receive it cleanly:
-- Pull the latest changes from `origin/main`
-- View the contents of `notes.txt`
-
-> **The habit:** Pull before you start, pull before you push. The shorter the gap between your work and your partner's, the smaller any conflict will be — and the less you need the 🔔 check-ins this exercise forced on you.
