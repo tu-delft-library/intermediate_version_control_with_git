@@ -294,7 +294,7 @@ Wednesday: Workshop (morning), office day after lunch
 
 ## 🚀 Optional challenge: Diverged history (branches + Pull Request on GitHub)
 
-This time you'll each work on a **branch** and merge using a **Pull Request (PR)** in GitHub. PR are a tool to merge the changes from `branches` into `main`. 
+This time you'll each work on a **branch** and merge using a **Pull Request (PR)** in GitHub. A PR is a tool to merge the changes from `branches` into `main`. 
 
 **Step 1 — Partner One branches, adds an idea, opens a PR**
 
