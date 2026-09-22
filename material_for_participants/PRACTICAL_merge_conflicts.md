@@ -6,7 +6,7 @@ When two branches change the same part of the same file, Git can't guess which v
 
 A conflict means "two people changed the same thing — I need a human to decide." Git will never silently overwrite someone's work. That's a feature, not a bug.
 
-## Escape hatches
+## Cheat sheet
 
 | Command | What it does |
 |-----------------------|---|
@@ -99,10 +99,6 @@ git commit -m "Initial files"
 
 
 ## 💪 Conflict 1: Same-line edit
-
-
-> **Situation** File `recipe.txt`; Alice adds a stirring note; Bob adds a seasoning reminder — to the same line.
-
 
 **Step 1 — Alice's branch**
 
@@ -208,9 +204,6 @@ Add tomatoes and stock. Season well. Simmer for 25 minutes, stirring occasionall
 ## 💪 Conflict 2: Delete vs edit
 
 
-> **Situation:** File `bio.txt`; One person deletes the Delft paragraph (outdated); another rewrites it to sound warmer — without knowing it was deleted.
-
-
 **Step 1 — Create the two branches**
 
 - Switch to `main`
@@ -297,8 +290,6 @@ Now try the opposite — undo and resolve the other way:
 > **Warning:** If you resolve this without thinking, you might permanently delete someone's work. In a real project, always ask why something was deleted before accepting "theirs."
 
 ## 💪 Conflict 3: Multi-file conflict
-
-> **Situation:** Files `event.txt` + `summary.txt`; Two people update the meal price in `event.txt`, but only one also updates `summary.txt`. After merging, the conflict in `event.txt` is visible — but the stale price in `summary.txt` is a hidden inconsistency.
 
 **Step 1 — Create the two branches**
 
