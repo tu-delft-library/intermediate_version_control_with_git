@@ -179,7 +179,7 @@ resulting in a cleaner linear history.
 1. Switch back to `rebase-test` and run `git rebase main`
 1. Inspect the result with `git log --oneline --all --graph`
 
-Compare what you see with the graph from the merge exercise above:
+Compare what you see with the graph from the previous merges:
 - Is there a merge commit?
 - Where does `rebase-test` sit relative to `main`?
 - What happened to the original commit on `rebase-test`?
