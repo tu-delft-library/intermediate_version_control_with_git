@@ -336,10 +336,8 @@ Do not solve the PRACTICAL live. Just ask questions, share experiences or highli
 
 ## 12:30 - 	Lunch - 60'	
 
-## 13:30 - 6 💪 Interactive Git - 15' 
-See `exercises.md`. There is an optional challenge under each numbered exercise.
 
-## 13:45 - Remote operations revisited - 10' 
+## 13:30 - Remote operations revisited - 10' 
 
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
@@ -352,13 +350,32 @@ Explain **divergent branches**: both the local and remote `main` have moved forw
 
 Explain the two most common options: `merge` and `rebase`.
 
+## 13:40 - Remote operations live coding - 10' 
+
 We made some local changes before lunch that are not pushed yet. So let's do that to ensure our remote repo is up to date
 ```bash
 git push origin main        
 ```
-We confirm in GitHub that we see the changes
+We confirm in GitHub that we see the changes. Notice that only the `main` branch was pushed. 
+You can push other branches by specifying the branch name or by using the flag `--all`
 
-## 13:55 - Solve a conflict when pushing - 10'
+```bash
+git push origin b1
+git push origin --all
+```
+Check in GitHub that you can see the branches.
+
+Similarly, you can pull from a specific branch
+```bash
+git pull origin b1
+```
+
+If you want to sync all the branches from the remote to your local repo, you need to use `fetch`. Remember that `fetch` downloads the data but does not modify your files. It does not attempt to merge.
+```bash
+git fetch --all
+```
+
+## 13:50 - Solve a conflict when pushing - 10'
 
 Make a small edit directly on GitHub (via the web editor):
 1. Open `notes.txt` on GitHub
@@ -394,7 +411,39 @@ Visit GitHub and confirm the resolved file is there.
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
 
-## 14:05 - VS Code demo
+## 14:00 - 6 💪 Rebase instead of merge - 15' 
+Solution:
+```bash
+git pull origin main
+git switch -c cool
+nano notes.txt      # modify line 2 to `The air was cool`    
+git add notes.txt
+git commit -m "Modify line 2"
+git switch main
+nano notes.txt          # new line `and wake up rested`
+git diff
+git add notes.txt
+git commit -m "Add new line"
+git switch cool          
+git rebase main     # Successfully rebased and updated refs/heads/cool
+git log --oneline --all --graph # cool sits in front of main
+git switch main
+git merge cool          # Fast-forward
+git log --oneline --all --graph
+```
+Notice that instead of a merge, Git just slides the `main` pointer up to match, like `fast-forwarding` a video to where you already know it ends.
+
+> ⚠️ Rebase rewrites commit history. It is safe on a local branch that you
+> have not shared with anyone. Avoid rebasing branches that have already been pushed.
+
+## 14:15 - Break -15' 
+
+## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
+see `PRACTICAL_remote_conflicts.md`
+
+Share experiences or highlight concepts that you noticed were still a bit confusing.
+
+## 15:10 - VS Code demo - 10'
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
 
@@ -410,7 +459,7 @@ Some people prefer to use a GUI to work with Git. Let's explore that using VSCod
     - right click for more options
 ### Commit changes
 - Open `notes.md` from explorer
-- Make a change (e.g. add a line `and wake up rested`)
+- Make a change (e.g. add a line `for a new day`)
 - Save `notes.txt` (CTRL + S)
 - Notice badge on git icon
 - Click on `notes.txt` to see the changes on the right
@@ -424,7 +473,7 @@ Some people prefer to use a GUI to work with Git. Let's explore that using VSCod
 Let's generate a similar conflict than we did on the Terminal:
 
 - Open `notes.txt` on GitHub
-- Add a new line at the bottom: `and wake up rested - Github`
+- Add a new line at the bottom: `for a new day - Github`
 - Commit with message `Add tenth line via GitHub`
 
 - Back VS code
@@ -435,15 +484,7 @@ Let's generate a similar conflict than we did on the Terminal:
 - Complete the merge and commit
 - Click on `Sync changes` to push the merge to remote
 
-## 14:15 - Break -15' 
-
-## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
-see `PRACTICAL_remote_conflicts.md`
-
-Share experiences or highlight concepts that you noticed were still a bit confusing.
-
-
-## 15:10 - Summarize key points - 5' 
+## 15:20 - Summarize key points - 5' 
 Using VS code
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
 - **Merging**: bring changes together with `git merge`.
@@ -454,7 +495,7 @@ Git creates a merge commit
 
 
 
-## 15:15 - Give feedback about the course  5" 
+## 15:25 - Give feedback about the course  5" 
 Go to the link in `links.md`
 
 
