@@ -382,7 +382,7 @@ Idea 5: Send a monthly newsletter.
 ```
 - Delete all conflict markers
 - Click **Mark as resolved**, then **Commit merge**
-- Merge the Pull Request
+- Merge the Pull Request. GitHub might need a moment enable the merge. Patience 🧘
 
 🔔 **Tell Partner One the PR is merged — time to pull.**
 
