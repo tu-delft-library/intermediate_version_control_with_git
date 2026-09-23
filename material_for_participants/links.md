@@ -1,5 +1,5 @@
 # Live code documentation 
-If you are running behind, visit the [material_for_participants/command.log](material_for_participants/command.log)
+If you are running behind, visit the [material_for_participants/command.log](command.log)
 
 # Feedback
 
