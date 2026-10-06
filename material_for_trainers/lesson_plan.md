@@ -1,20 +1,35 @@
-## Tips for the day
+## 9:00 🚀 Prepare for take off - 20'
+### Room setup
 - Make sure to plug your computer to electricity. Otherwise the display will feed electricity to the laptop and potentially turn itself off.
+- Test the microphone
 - Write the edu.nl link pointing to `material_for_participants/links.md` document on the whiteboard 
     - Use dark marker on the board (not red)
-- If you are using a mac, make the terminal not transparent: 
-    - Open the terminal
-    - Open settings
-    - Go to background color
-    - Adjust opacity to 100%
-- Set your desktop to a color background instead of an image that can be distracting (e.g. a beach or a mountain)
-- Ask Paula to print a list of the participants so that they can check their name (roll call)
-- Start auto push [TODO] @halfordd step-by-step explanation
+- Place the list of the participants on a table at the entrance so that they can check their name (roll call)
+- [Optional] bring jugs with water and snacks (if you brought any)
 
-## 9:30 - Land - 5'- CATA
-☕ Coffee/tea 🫖
+### Laptop setup
 
-## 9:35 - Housekeeping - 15" - CATA
+#### start autopush
+Make sure to set up the bash history forwarding before workshop day as explained in `materials_for_trainers/pre_workshop_checklist.md`
+
+Open another Terminal window. Let's call this the `hidden terminal` i.e. NOT to be shown during the workshop.
+
+On the `hidden terminal` forward only the last line of the history to `command.log`
+```bash
+tail -n 0 -f ~/.bash_history | tee -a <local-repo-directory>/material_for_participants/command.log
+```
+Open another tab in the `hidden terminal`, `cd` to `<local-repo-directory>` and run autopush every 2-5 seconds
+```bash
+gitautopush --sleep 5 .
+```
+#### Open slides
+
+Slides work better if you open them in your device: [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0) 
+
+## 9:30 - Participants land - 5' - CATA
+☕ Reminder them about coffee at the entrance of library
+
+## 9:35 - Housekeeping - 15' - CATA
 - ✅ Roll call + 🤝 Code of Conduct
 - 🙋 Getting help (🆘 red  ✅ green stickers)
 
