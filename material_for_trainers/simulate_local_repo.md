@@ -22,8 +22,7 @@ echo "*.log" > .gitignore
 echo "data/" >> .gitignore
 git add .gitignore
 git commit -m "Ignore all log and data files"
-git add remote origin git@github.com:[your-user-name]/weather-notes.git
-git remote add origin git@github.com:[your-user-name]/weather-notes.git
+git remote add origin git@github.com:catactg/weather-notes.git
 git push origin main
 
 echo "--- New commands for branching ---"
@@ -66,6 +65,11 @@ git commit -m "Add sixth and seventh lines on b1"
 git switch main
 git merge -X theirs b1 -m "Merge changes from b1 into main"
 
-echo "--- A first type for merge ---"
+echo "--- A first type for merge + Undo a bad merge---"
 git switch main
 git merge -X ours b2 -m "Merge b2 into main"
+git switch main
+echo "or a hot water bottle - main" >> notes.txt
+git add notes.txt
+git commit -m "Add eighth line on main"
+

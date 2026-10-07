@@ -38,6 +38,7 @@ Slides work better if you open them in your device: [slides](https://tud365.shar
 > *START AUTOPUSH* 
 
 ## 9:45 - Solve assignment to create local repo - 10' - CATA
+> Because we are doing trainer split today, it is easier to create the clone in github before hand and add the other trainer as collaborator.
 
 Below is the minimal set of instructions to generate the repository for today.
 
@@ -75,6 +76,7 @@ Ask if everyone has the `weather-notes` repository with a similar history:
 - 3 commits for editing `notes.txt`
 - 1 `.gitignore` commit
 
+
 This should generate a local repository with a commit history. But we still need to add the remote repository:
 
 - Create a new empty repository on GitHub (no README/license — you already have those).
@@ -85,6 +87,7 @@ git push origin main
 ```
 - Refresh the GitHub page and confirm every file and all commits made it across.
 - Confirm locally that we have all the changes 
+> 🆘 red  ✅ green stickers
 
 
 ## 9:55 - Introduction to branches - 10' - CATA
@@ -181,9 +184,11 @@ git status
 ```
 
 ## 10:40 - Break - 15' 
+> **Trainer change** push and pull git@github.com:catactg/weather-notes.git
 
 
 ## 10:55 - Explore differences across branches - 10' - HALFORD 
+> *START AUTOPUSH*
 
 Let's keep adding to our history:
 ```bash
@@ -340,6 +345,27 @@ git log --oneline --graph   # back to a clean main
 
 > **Before break:** Turn to a neighbour and compare the output of `git log --oneline --all --graph`. Does it look the same? Different commit hashes? Same shape?
 
+By now the history should like this:
+```bash
+* d3d5133 (HEAD -> main) Add eighth line on main
+*   717c1b7 (origin/main) Merge b2 into main
+|\  
+| * 5e37bdc (origin/b2, b2) Add two more lines on b2
+* |   fde8912 Merge changes from b1 into main
+|\ \  
+| * | 8eae382 (origin/b1, b1) Add sixth and seventh lines on b1
+| * | 8f1a9f8 Add fifth line on b1
+| * | 9356a1a Add fourth line on branch b1
+| |/  
+* | 6cfb0e0 Add fifth line on main (with mistake)
+* | 2dbbcf3 Add fourth line
+|/  
+* f80ded4 Ignore all log and data files
+* 093db52 Add third line
+* 3af1db1 Add second line
+* b24172e Add first line
+* e29bfcd Initial commit: add README and LICENSE
+```
 ## 11:45 - Break  - 15'
 
 ## 12:00 -  💻 PRACTICAL - Understanding merge conflicts - 30' - CATA
@@ -440,6 +466,9 @@ git commit -m "Add new line"
 git switch cool          
 git rebase main     # Successfully rebased and updated refs/heads/cool
 git log --oneline --all --graph # cool sits in front of main
+```
+> *DO NOT* clear screen here. So that participants can see the effect of rebase
+```bash
 git switch main
 git merge cool          # Fast-forward
 git log --oneline --all --graph
@@ -457,6 +486,7 @@ see `PRACTICAL_remote_conflicts.md`
 Share experiences or highlight concepts that you noticed were still a bit confusing.
 
 ## 15:10 - VS Code demo - 10' - CATA
+> **Trainer change** push and pull git@github.com:catactg/weather-notes.git
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
 
@@ -470,8 +500,11 @@ Some people prefer to use a GUI to work with Git. Let's explore that using VSCod
     - log -> hover for details
     - click on +- icon on the right to show changes
     - right click for more options
+- Notice the `branches` at the lower left corner
+   - Switch to main branch
+   
 ### Commit changes
-- Open `notes.md` from explorer
+- Open `notes.txt` from explorer
 - Make a change (e.g. add a line `for a new day`)
 - Save `notes.txt` (CTRL + S)
 - Notice badge on git icon
