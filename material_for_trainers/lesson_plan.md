@@ -59,15 +59,22 @@ git commit -m "Add second line"
 echo "A cloudy afternoon" >> notes.txt 
 git add notes.txt 
 git commit -m "Add third line"
-touch debug.log
-mkdir data
-touch data/raw_dump.csv
-touch data/temperatures.csv
+cat notes.txt
+git log --oneline
 echo "*.log" > .gitignore
 echo "data/*" >> .gitignore
+cat .gitignore
 git add .gitignore
 git commit -m "Ignore all log and data files"
+git log --oneline
 ```
+> 🆘 red  ✅ green stickers
+
+Ask if everyone has the `weather-notes` repository with a similar history:
+- 1 initial commit
+- 3 commits for editing `notes.txt`
+- 1 `.gitignore` commit
+
 This should generate a local repository with a commit history. But we still need to add the remote repository:
 
 - Create a new empty repository on GitHub (no README/license — you already have those).
@@ -79,15 +86,6 @@ git push origin main
 - Refresh the GitHub page and confirm every file and all commits made it across.
 - Confirm locally that we have all the changes 
 
-```bash
-git log --oneline
-```
-> 🆘 red  ✅ green stickers
-
-Ask if everyone has the `weather-notes` repository with a similar history:
-- 1 initial commit
-- 3 commits for editing `notes.txt`
-- 1 `.gitignore` commit
 
 ## 9:55 - Introduction to branches - 10' - CATA
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
@@ -103,11 +101,11 @@ git branch              # verify branch was created (output: b1, *main)
 ```bash
 git status              # on branch main / nothing to commit
 cat notes.txt           # three lines
-git log --oneline       # explain (HEAD -> main, b1)
+git log --oneline       # explain (HEAD -> main, origin/main, b1)
 git branch -m b1 b2     # rename branch (-m for move)
-git log --oneline       # branch b1 was renamed to b2 (HEAD -> main, b2)
+git log --oneline       # branch b1 was renamed to b2 (HEAD -> main, origin/main, b2)
 git branch -d b2        # delete branch
-git log --oneline       # verify main is the only branch
+git log --oneline       # verify main is the only branch (local and remote)
 git branch -d main      # fails - can't delete current branch
 git branch b1           # create again branch b1
 git log --oneline       # verify
@@ -126,7 +124,7 @@ hash (HEAD -> main, origin/main, b2, b1) Ignore all log and data files
 ```
 
 ## 10:15 - 1 💪 Get familiar with branches - 10' - CATA
-See `exercises.md`. There is an optional challenge under each numbered exercise.
+See `exercises.md`. There is an optional challenge.
 
 Solution:
 ```bash
@@ -168,7 +166,7 @@ git log --oneline --all --graph            # show graph with all branches
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
 ## 10:35 - 2 💪 Commit in a secondary branch - 5' - CATA
-See `exercises.md`. There is an optional challenge under each numbered exercise. 
+See `exercises.md`. 
 
 Solution:
 ```bash
@@ -217,7 +215,7 @@ git diff main~1 b1~1 # changes between parent of the latest commit on the main b
 
 ## 11:05 - 3 💪  Explore differences across branches - 10' - HALFORD 
 
-See `exercises.md`. There is an optional challenge under each numbered exercise.
+See `exercises.md`. There is an optional challenge.
 
 Solution:
 ```bash
@@ -237,7 +235,7 @@ git diff main b2~1
 
 Let's develop further on branch `b1`:
 ```bash
-git switch b1                                             # on branch b1
+git switch b1                                     # on branch b1
 echo "It rained at night" >> notes.txt            # routine
 echo "Give me my thick blanket" >> notes.txt      # routine
 git diff                                                  # routine
@@ -301,7 +299,7 @@ git log --oneline --all --graph                           # see merge visually
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:notes.txt :2:notes.txt`
 
 ## 11:30 - 4 💪 A first type for merge  and 5 💪 Undo a Bad Merge  - 15' - HALFORD  
-See `exercises.md`. There is an optional challenge under each numbered exercise.
+See `exercises.md`. There is an optional challenge under exercise 4.
 
 Solution:
 ```bash
