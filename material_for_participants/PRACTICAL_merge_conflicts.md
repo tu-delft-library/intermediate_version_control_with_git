@@ -28,7 +28,8 @@ nano recipe.txt
 Add the text below to `recipe.txt`
 ```bash
 Grandma's Tomato Soup
-------------------Serves: 4
+------------------
+Serves: 4
 Prep time: 10 minutes
 Cook time: 30 minutes
 
