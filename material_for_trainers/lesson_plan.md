@@ -486,49 +486,34 @@ see `PRACTICAL_remote_conflicts.md`
 Share experiences or highlight concepts that you noticed were still a bit confusing.
 
 ## 15:10 - VS Code demo - 10' - CATA
-> **Trainer change** push and pull git@github.com:catactg/weather-notes.git
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
+I will demo VS code using the `PRACTICAL | Understanding Merge Conflicts`
 
-### Git by default
+### Initialize repo
 - Open VSCode
-- Open folder -> `weather-notes` folder
-- Explain the file browser
-- Open `notes.txt`
-- Go to git tab (left)
-- Explain GUI:
-    - log -> hover for details
-    - click on +- icon on the right to show changes
-    - right click for more options
-- Notice the `branches` at the lower left corner
-   - Switch to main branch
-   
-### Commit changes
-- Open `notes.txt` from explorer
-- Make a change (e.g. add a line `for a new day`)
-- Save `notes.txt` (CTRL + S)
-- Notice badge on git icon
-- Click on `notes.txt` to see the changes on the right
+- Open folder -> make a new folder inside `Desktop` -> `conflict_practical`
+- Explain the left tab to find the git menu
+- Click on `Initialize Repository`
+- Go to the file browser
+- Make a new file `recipe.txt` and enter text from `PRACTICAL | Understanding Merge Conflicts`
+    - You only need one file for this demo
+    - Click on `recipe.txt` to see the changes on the right
     - red deleted
     - green added
-- Click on plus to stage
-- Write message and click on commit `Add tenth line locally`
+    - Click on plus to stage
+    - Write message and click on commit `Initial files`
 - Notice the update on the log
 
-### Merge conflict
-Let's generate a similar conflict than we did on the Terminal:
+### Branches and merge
+- Follow the instruction to solve `💪 Conflict 1: Same-line edit`
+    - Show how to switch branch + check out
+    - When merging the first time select "no commit" to recreate the same as in the terminal
+- Solve merge conflict
+    - Explain incoming and current branch
+    - Show the out of "Accept combination"
+    - Show it can also be edited manually
 
-- Open `notes.txt` on GitHub
-- Add a new line at the bottom: `for a new day - Github`
-- Commit with message `Add tenth line via GitHub`
-
-- Back VS code
-- Click on `Sync changes` which does a `pull` + `merge`
-- There is a conflict so the editor opens for you to resolve the merge conflicts
-- At the lower right corner there is a button `Resolve in Merge Editor`
-- In the merge editor we can pick one version `Accept incoming`, the other `Accept current` or a manual edit at the bottom
-- Complete the merge and commit
-- Click on `Sync changes` to push the merge to remote
 
 ## 15:20 - Summarize key points - 5' - CATA
 Using VS code
