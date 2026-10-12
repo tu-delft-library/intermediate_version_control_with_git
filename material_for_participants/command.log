@@ -196,3 +196,5 @@ cat notes.txt
 echo "or a hot water bottle - main" >> notes.txt 
 cat notes.txt 
 git add notes.txt 
+git commit -m "Add eighth line in main"
+clear
