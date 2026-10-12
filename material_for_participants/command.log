@@ -264,3 +264,503 @@ git switch main
 git merge cool
 git log --oneline --all --graph
 clear
+nano notes.txt 
+sed -i "" "s/A dramatic sunset (duplicate)/The moon was bright/" notes.txt
+cat notes.txt 
+git merge --abort
+git status
+cat notes.txt 
+git log --oneline --all --graph
+git merge -X theirs b1
+git log --oneline --all --graph
+git drop git reset --hard HEAD
+git reset --hard HEAD
+git log --oneline --all --graph
+git reset --hard HEAD~1
+git log --oneline --all --graph
+git merge -X theirs b1 -m "Merge changes from b1 into main"
+cat notes.txt 
+clear
+git log --oneline --all --graph
+git diff main b2
+git switch main
+git merge b2
+nano notes.txt 
+git merge --abort
+git status
+cat notes.txt 
+git merge -X ours b2 -m "Merge b2 into main"
+cat notes.txt 
+git log --oneline --all --graph
+git push origin main
+git push origin --all
+echo "make edit in github w message `Add ninth line via GitHub`: to stay warm at night - GitHub"
+echo "make edit in github w message Add ninth line via GitHub: to stay warm at night - GitHub"
+read -p "Press enter to continue"
+echo "Add ninth line via GitHub: to stay warm at night - GitHub"
+read -p "After finishing the edit in Github, press enter to continue"
+cat notes.txt 
+echo "to stay warm at night - local" >> notes.txt
+git add notes.txt
+git commit -m "Add ninth line locally"
+git log --oneline --all --graph
+cat notes.txt 
+git config pull.rebase false
+git pull origin main
+nano notes.txt 
+help sed
+sed --help
+head -n -5 notes.txt 
+cat notes.txt 
+git status
+pwd
+cd ..
+ls 
+pwd
+cd De
+bash
+cd Desktop/
+mkdir weather-notes
+cd weather-notes/
+git init
+touch README.md
+touch LICENSE
+git add README.md LICENSE 
+git commit -m "Initial commit: add README and LICENSE"
+echo "The sun came out"
+echo "The sun came out" > notes.txt
+git add notes.txt 
+git commit -m "Add first line"
+echo "The air was fresh" >> notes.txt 
+git add notes.txt 
+git commit -m "Add second line"
+echo "A cloudy afternoon" >> notes.txt 
+git add notes.txt 
+git commit -m "Add third line"
+echo "*.log" > .gitignore
+echo "data/" >> .gitignore
+git add .gitignore
+git commit -m "Ignore all log and data files"
+git remote add origin git@github.com:catactg/weather-notes.git
+git push origin main
+git branch b1
+git switch b1
+git switch -c b2
+git switch main
+echo "A dramatic sunset" >> notes.txt 
+git add notes.txt 
+git commit -m "Add fourth line"
+git switch b1
+echo "A dramatic sunset" >> notes.txt 
+git add notes.txt 
+git commit -m "Add fourth line on branch b1"
+git switch main
+git switch b2 
+echo "A dramatic sunset" >> notes.txt 
+echo "The moon was bright" >> notes.txt 
+git add notes.txt 
+git commit -m "Add two more lines on b2"
+git switch main
+echo "A dramatic sunset (duplicate)" >> notes.txt
+git add notes.txt 
+git commit -m "Add fifth line on main (with mistake)" notes.txt
+git switch b1
+echo "The moon was bright" >> notes.txt 
+git add notes.txt 
+git commit -m "Add fifth line on b1" notes.txt
+git switch b1
+echo "It rained at night" >> notes.txt 
+echo "Give me my thick blanket" >> notes.txt
+git add notes.txt
+git commit -m "Add sixth and seventh lines on b1"
+git switch main
+git merge -X theirs b1 -m "Merge changes from b1 into main"
+git switch main
+git merge -X ours b2 -m "Merge b2 into main"
+git log --oneline --all --graph
+git push origin --all
+git switch main
+echo "or a hot water bottle - main" >> notes.txt
+git add notes.txt
+git commit -m "Add eighth line on main"
+git log --oneline --all --graph
+cat notes.txt 
+git log --oneline --all --graph
+git push origin --all
+echo "to stay warm at night - local" >> notes.txt
+git add notes.txt
+git commit -m "Add ninth line locally"
+git config pull.rebase false
+git pull origin main
+nano notes.txt 
+git add notes.txt
+git commit -m "Merge remote and local ninth line"
+git push origin main        # now succeeds
+git pull origin main
+git switch -c cool
+nano notes.txt 
+git add notes.txt 
+git commit -m "Modify line 2"
+git switch main
+nano notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Add new line"
+git switch cool
+git rebase main
+git log --oneline --all --graph
+git switch main
+git merge cool
+git log --oneline --all --graph
+git status
+git log --oneline --all --graph
+git push origin main
+git pull origin main
+git push origin main
+git push origin --all
+git push origin main
+git log --online --all --graph
+git log --oneline --all --graph
+git reset --hard HEAD~2
+git log --oneline --all --graph
+git switch cool
+git reset --hard HEAD~2
+git log --oneline --all --graph
+git push origin --all
+git log --oneline --all --graph
+git push origin main
+git pull origin main
+git merge --abort
+bash
+bash
+git clone git@github.com:catactg/remote_conflicts.git
+bash
+cd ~/Desktop/
+mkdir conflict_practical
+cd conflict_practical/
+git init
+bash
+clear
+pwd
+cd Desktop/
+mkdir conflicts_terminal
+cp conflict_practical/* ./conflict_term
+cp conflict_practical/* conflicts_terminal/
+ls conflicts_terminal/
+nano recipes/
+cd conflicts_terminal/
+nano recipe.txt 
+cat recipe.txt 
+git init
+git add .
+git commit -m "Initial files"
+bit switch -c alice
+git switch -c alice
+git log --oneline --graph --all
+nano recipe.txt 
+cat recipe.txt 
+git diff
+git add recipe.txt 
+git commit -m "alice: add stirring note"
+git log --oneline --graph --all
+git switch main
+git log --oneline --graph --all
+git switich -c bob
+git switch -c bob
+git log --oneline --graph --all
+nano recipe.txt 
+git log --oneline --graph --all
+git switch main
+git merge alice
+git diff
+git switch bob
+git diff
+git add recipe.txt 
+git log --oneline --graph --all
+git commit -m "bob: remind to season"
+git swtich main
+git switch main
+git log --oneline --graph --all
+git merge alice
+git merge bob
+nano recipe.txt 
+git add recipe.txt 
+git commit -m "Merge: combine alice and bob"
+git log --oneline --graph --all
+pwed
+pwd
+git log --oneline --graph --all
+cd Desktop/weather-notes/
+git log --oneline --graph --all
+bash
+clear
+clear
+clear
+clear
+cd /Users/ctobongomez/Documents/rds_modules/intermediate_version_control_with_git/
+cd Desktop/
+mkdir weather-notes
+cd weather-notes/
+git init
+touch README.md
+touch LICENSE
+git add README.md LICENSE 
+git commit -m "INitial commit: README and LICENSE"
+echo "The sun came out" > notes.txt
+git add notes.txt 
+git commit -m "Add first line"
+clear
+echo "The air was fresh" >> notes.txt 
+git add notes.txt 
+git commit -m "Add second line"
+echo "A cloudy afternoon" >> notes.txt 
+git add notes.txt 
+git commit -m "Add third line"
+cat notes.txt 
+git log --oneline
+echo "*.log" > .gitignore
+echo "data/" >> .gitignore
+cat .gitignore 
+git add .gitignore 
+git commit -m "Ignore all log and data files"
+git log --oneline
+git remote add origin git@github.com:catactg/weather-notes.git
+git remote -v
+git push origin main
+clear
+git branch
+pwd
+git branch b1
+git branch
+git status
+cat notes.txt 
+git log --oneline
+git branch -m b1 b2
+git branch
+git log --oneline
+git branch -d b2
+git log --oneline
+git branch b1
+git log --oneline
+git switch b1
+git log --oneline
+git switch -c b2
+git log --oneline
+git switch main
+git log --oneline
+clear
+git branch pa
+git branch pe
+git switch -c pi
+git log --oneline
+git switch pe
+git switch main
+git branch -m pa po
+git log --oneline
+git branch -d pe pi po
+git log --oneline
+clear
+git status
+cat notes.txt 
+echo "A dramatic sunset" >> notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Add fourth line"
+git status
+git switch b1
+echo "A dramatic sunset" >> notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Add fourth line on branch b1"
+git status
+git switch main
+git log --oneline --all
+git log --oneline --all --graph
+cat notes.txt 
+git switch b1
+cat notes.txt 
+clear
+git log --oneline --all --graph
+git switch main
+git log --oneline --all --graph
+clear
+git status
+git log --oneline --all --graph
+git switch b2
+cat notes.txt 
+echo "A dramatic sunset" >> notes.txt 
+echo "The moon was bright" >> notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Add two more lines on b2"
+git status
+git log --oneline --all --graph
+git push origin --all
+gitautopush --sleep 10 .
+tail -n 0 -f ~/.bash_history | tee -a /Users/ctobongomez/Documents/rds_modules/intermediate_version_control_with_git/material_for_participants/command.log 
+clear
+git branch
+history
+clear
+git switch main
+cat notes.txt 
+echo "A dramatic sunset (duplicate)" >> notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Add fifth line on main (with mistake)"
+git status
+cat notes.txt 
+git switch b1
+cat notes.txt 
+echo "The moon was bright" >> notes.txt 
+git diff 
+git add notes.txt 
+git commit -m "Add fifth line on b1"
+git status
+git log --oneline --all --grap
+git log --oneline --all --graph
+clear
+git switch main
+git diff
+git diff HEAD HEAD~1
+git diff HEAD~1 HEAD
+git diff main b1
+git diff main b1~1
+git diff main~1 b1~1
+clear
+git switch b2
+git diff HEAD
+git diff HEAD~1
+git diff HEAD~2
+git diff HEAD~3
+git diff HEAD~4
+git diff HEAD~5
+git diff HEAD~6
+clear
+git diff b2 b1
+git diff main b2~1
+clea
+clear
+git switch b1
+echo "It rained at night" >> notes.txt 
+echo "Give me my thick blanket" >> notes.txt 
+cat notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Add sixth and seventh lines on b1"
+git status
+git log --oneline --all --graph
+git switch main
+git diff main b1
+clear
+git merge -m "Merge b1" notes.txt 
+git merge -m "Merge b1" b1
+clear
+cat notes.txt 
+nano notes.txt 
+clear
+git status
+git commit -m "Merge changes from b1 into main"
+git add notes.txt 
+git status
+git commit -m "Merge changes from b1 into main"
+git status
+cat notes.txt 
+git log --oneline --all --graph
+git branch
+clear
+git diff main b2
+cat notes.txt 
+git branch
+git switch main
+clear
+git merge b2
+cat notes.txt 
+nano notes.txt 
+git status
+git add notes.txt 
+git status
+git commit -m "Merge b2 into main"
+git log --oneline --all --graph
+clear
+git status
+git branch bad-merge
+git switch bad-merge
+echo "or a hot water bottle - branch" >> notes.txt 
+cat notes.txt 
+git add notes.txt 
+git commit -m "Add eighth line in bad-merge"
+git status
+git switch main
+cat notes.txt 
+echo "or a hot water bottle - main" >> notes.txt 
+cat notes.txt 
+git add notes.txt 
+git commit -m "Add eighth line in main"
+clear
+git merge bad-merge
+cat notes.txt 
+git status
+git merge --abort
+git status
+cat notes.txt 
+git log --oneline --graph
+git log --oneline --graph --all
+git branch -D bad-merge
+git log --oneline --graph --all
+clear
+pwd
+git status
+git push origin main
+git push origin b1
+git push origin --all
+git pull origin b1
+git fetch --all
+clear
+git status
+ls
+echo "to stay warm at night - local" >> notes.txt 
+cat notes.txt 
+git add notes.txt 
+git commit -m "Add ninth line locally"
+git status
+git push origin main
+clear
+git config pull.rebase false
+git pull origin main
+git status
+cat notes.txt 
+nano notes.txt 
+git add notes.txt 
+git commit -m "Merge remote and local notes"
+git status
+git push origin main
+clear
+git diff HEAD~1
+clear
+git pull origin main
+git switch -c cool
+git status
+nano notes.txt 
+git add notes.txt 
+git commit -m "modify line 2"
+git history --oneline
+git log --oneline
+git switch main
+cat notes.txt 
+nano notes.txt 
+git diff
+git add notes.txt 
+git commit -m "Added new line"
+clear
+cat notes.txt 
+git switch cool
+cat notes.txt 
+clear
+git status
+git rebase main
+git log --oneline --all --graph
+git switch main
+git merge cool
+git log --oneline --all --graph
+clear
