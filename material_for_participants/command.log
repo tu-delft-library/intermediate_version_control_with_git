@@ -250,3 +250,4 @@ git switch main
 cat notes.txt 
 nano notes.txt 
 git diff
+git add notes.txt 
