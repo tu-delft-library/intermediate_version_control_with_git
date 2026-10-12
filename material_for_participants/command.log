@@ -193,3 +193,5 @@ git commit -m "Add eighth line in bad-merge"
 git status
 git switch main
 cat notes.txt 
+echo "or a hot water bottle - main" >> notes.txt 
+cat notes.txt 
