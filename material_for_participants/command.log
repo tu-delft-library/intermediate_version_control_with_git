@@ -41,3 +41,4 @@ git branch -m b1 b2
 git branch
 git log --oneline
 git branch -d b2
+git log --oneline
