@@ -128,3 +128,4 @@ git diff main b1
 git diff main b1~1
 git diff main~1 b1~1
 clear
+git switch b2
