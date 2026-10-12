@@ -4,3 +4,4 @@ cd Desktop/
 mkdir weather-notes
 cd weather-notes/
 git init
+touch README.md
