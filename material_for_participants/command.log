@@ -145,3 +145,4 @@ git switch b1
 echo "It rained at night" >> notes.txt 
 echo "Give me my thick blanket" >> notes.txt 
 cat notes.txt 
+git diff
