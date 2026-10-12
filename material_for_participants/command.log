@@ -200,3 +200,4 @@ git commit -m "Add eighth line in main"
 clear
 git merge bad-merge
 cat notes.txt 
+git status
