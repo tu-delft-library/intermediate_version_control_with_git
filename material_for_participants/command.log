@@ -36,3 +36,4 @@ git branch b1
 git branch
 git status
 cat notes.txt 
+git log --oneline
