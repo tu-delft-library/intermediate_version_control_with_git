@@ -171,3 +171,5 @@ git branch
 clear
 git diff main b2
 cat notes.txt 
+git branch
+git switch main
