@@ -105,3 +105,4 @@ clear
 git switch main
 cat notes.txt 
 echo "A dramatic sunset (duplicate)" >> notes.txt 
+git diff
