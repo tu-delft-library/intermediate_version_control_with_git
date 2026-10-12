@@ -86,3 +86,5 @@ git log --oneline --all --graph
 git switch main
 git log --oneline --all --graph
 clear
+git status
+git log --oneline --all --graph
