@@ -207,3 +207,5 @@ cat notes.txt
 git log --oneline --graph
 git log --oneline --graph --all
 git branch -D bad-merge
+git log --oneline --graph --all
+clear
