@@ -121,3 +121,4 @@ git log --oneline --all --grap
 git log --oneline --all --graph
 clear
 git switch main
+git diff
