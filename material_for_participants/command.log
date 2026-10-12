@@ -22,3 +22,5 @@ cat notes.txt
 git log --oneline
 echo "*.log" > .gitignore
 echo "data/" >> .gitignore
+cat .gitignore 
+git add .gitignore 
