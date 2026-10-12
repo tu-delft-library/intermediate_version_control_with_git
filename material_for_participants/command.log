@@ -70,3 +70,5 @@ git add notes.txt
 git commit -m "Add fourth line"
 git status
 git switch b1
+echo "A dramatic sunset" >> notes.txt 
+git diff
