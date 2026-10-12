@@ -239,3 +239,4 @@ clear
 git diff HEAD~1
 clear
 git pull origin main
+git switch -c cool
