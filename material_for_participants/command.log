@@ -114,3 +114,4 @@ git switch b1
 cat notes.txt 
 echo "The moon was bright" >> notes.txt 
 git diff 
+git add notes.txt 
