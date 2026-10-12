@@ -15,3 +15,5 @@ clear
 echo "The air was fresh" >> notes.txt 
 git add notes.txt 
 git commit -m "Add second line"
+echo "A cloudy afternoon" >> notes.txt 
+git add notes.txt 
