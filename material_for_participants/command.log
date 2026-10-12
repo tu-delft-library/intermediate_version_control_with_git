@@ -219,3 +219,4 @@ git fetch --all
 clear
 git status
 ls
+echo "to stay warm at night - local" >> notes.txt 
