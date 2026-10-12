@@ -142,3 +142,4 @@ git diff main b2~1
 clea
 clear
 git switch b1
+echo "It rained at night" >> notes.txt 
