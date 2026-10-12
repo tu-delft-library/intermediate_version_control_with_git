@@ -83,3 +83,4 @@ git switch b1
 cat notes.txt 
 clear
 git log --oneline --all --graph
+git switch main
