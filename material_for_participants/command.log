@@ -141,3 +141,4 @@ git diff b2 b1
 git diff main b2~1
 clea
 clear
+git switch b1
