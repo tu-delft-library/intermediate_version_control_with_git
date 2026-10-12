@@ -69,3 +69,4 @@ git diff
 git add notes.txt 
 git commit -m "Add fourth line"
 git status
+git switch b1
