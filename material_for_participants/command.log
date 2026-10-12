@@ -29,3 +29,4 @@ git log --oneline
 git remote add origin git@github.com:catactg/weather-notes.git
 git remote -v
 git push origin main
+clear
