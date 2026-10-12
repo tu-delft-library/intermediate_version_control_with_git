@@ -245,3 +245,4 @@ nano notes.txt
 git add notes.txt 
 git commit -m "modify line 2"
 git history --oneline
+git log --oneline
