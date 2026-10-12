@@ -189,3 +189,5 @@ git switch bad-merge
 echo "or a hot water bottle - branch" >> notes.txt 
 cat notes.txt 
 git add notes.txt 
+git commit -m "Add eighth line in bad-merge"
+git status
