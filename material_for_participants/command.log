@@ -176,3 +176,5 @@ git switch main
 clear
 git merge b2
 cat notes.txt 
+nano notes.txt 
+git status
