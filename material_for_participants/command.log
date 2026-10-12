@@ -222,3 +222,5 @@ ls
 echo "to stay warm at night - local" >> notes.txt 
 cat notes.txt 
 git add notes.txt 
+git commit -m "Add ninth line locally"
+git status
