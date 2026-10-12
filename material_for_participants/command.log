@@ -195,3 +195,4 @@ git switch main
 cat notes.txt 
 echo "or a hot water bottle - main" >> notes.txt 
 cat notes.txt 
+git add notes.txt 
