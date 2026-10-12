@@ -57,3 +57,5 @@ git switch -c pi
 git log --oneline
 git switch pe
 git switch main
+git branch -m pa po
+git log --oneline
