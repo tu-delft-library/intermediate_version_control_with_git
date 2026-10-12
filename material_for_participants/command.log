@@ -205,3 +205,4 @@ git merge --abort
 git status
 cat notes.txt 
 git log --oneline --graph
+git log --oneline --graph --all
