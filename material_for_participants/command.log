@@ -7,3 +7,4 @@ git init
 touch README.md
 touch LICENSE
 git add README.md LICENSE 
+git commit -m "INitial commit: README and LICENSE"
