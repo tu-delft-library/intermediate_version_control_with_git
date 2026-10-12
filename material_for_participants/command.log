@@ -202,3 +202,4 @@ git merge bad-merge
 cat notes.txt 
 git status
 git merge --abort
+git status
