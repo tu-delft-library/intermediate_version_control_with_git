@@ -165,3 +165,4 @@ git add notes.txt
 git status
 git commit -m "Merge changes from b1 into main"
 git status
+cat notes.txt 
