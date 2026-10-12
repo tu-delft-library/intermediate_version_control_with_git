@@ -230,3 +230,4 @@ git config pull.rebase false
 git pull origin main
 git status
 cat notes.txt 
+nano notes.txt 
