@@ -52,3 +52,5 @@ git switch main
 git log --oneline
 clear
 git branch pa
+git branch pe
+git switch -c pi
