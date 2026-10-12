@@ -152,3 +152,4 @@ git status
 git log --oneline --all --graph
 git switch main
 git diff main b1
+clear
