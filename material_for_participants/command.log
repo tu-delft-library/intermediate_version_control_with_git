@@ -137,3 +137,4 @@ git diff HEAD~4
 git diff HEAD~5
 git diff HEAD~6
 clear
+git diff b2 b1
