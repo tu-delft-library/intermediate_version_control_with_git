@@ -231,3 +231,4 @@ git pull origin main
 git status
 cat notes.txt 
 nano notes.txt 
+git add notes.txt 
