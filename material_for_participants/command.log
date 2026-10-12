@@ -211,3 +211,4 @@ git log --oneline --graph --all
 clear
 pwd
 git status
+git push origin main
