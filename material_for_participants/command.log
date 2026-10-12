@@ -125,3 +125,4 @@ git diff
 git diff HEAD HEAD~1
 git diff HEAD~1 HEAD
 git diff main b1
+git diff main b1~1
