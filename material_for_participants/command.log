@@ -24,3 +24,4 @@ echo "*.log" > .gitignore
 echo "data/" >> .gitignore
 cat .gitignore 
 git add .gitignore 
+git commit -m "Ignore all log and data files"
