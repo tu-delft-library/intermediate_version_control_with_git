@@ -187,3 +187,5 @@ git status
 git branch bad-merge
 git switch bad-merge
 echo "or a hot water bottle - branch" >> notes.txt 
+cat notes.txt 
+git add notes.txt 
