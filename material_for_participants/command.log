@@ -203,3 +203,4 @@ cat notes.txt
 git status
 git merge --abort
 git status
+cat notes.txt 
