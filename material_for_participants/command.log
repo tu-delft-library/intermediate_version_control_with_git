@@ -32,3 +32,5 @@ git push origin main
 clear
 git branch
 pwd
+git branch b1
+git branch
