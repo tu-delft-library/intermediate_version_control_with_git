@@ -103,3 +103,4 @@ git branch
 history
 clear
 git switch main
+cat notes.txt 
