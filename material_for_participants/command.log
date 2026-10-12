@@ -262,3 +262,4 @@ git rebase main
 git log --oneline --all --graph
 git switch main
 git merge cool
+git log --oneline --all --graph
