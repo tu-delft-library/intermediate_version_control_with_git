@@ -107,3 +107,4 @@ cat notes.txt
 echo "A dramatic sunset (duplicate)" >> notes.txt 
 git diff
 git add notes.txt 
+git commit -m "Add fifth line on main (with mistake)"
