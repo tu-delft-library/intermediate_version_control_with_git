@@ -150,3 +150,4 @@ git add notes.txt
 git commit -m "Add sixth and seventh lines on b1"
 git status
 git log --oneline --all --graph
+git switch main
