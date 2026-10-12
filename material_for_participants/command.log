@@ -59,3 +59,4 @@ git switch pe
 git switch main
 git branch -m pa po
 git log --oneline
+git branch -d pe pi po
