@@ -218,3 +218,4 @@ git pull origin b1
 git fetch --all
 clear
 git status
+ls
