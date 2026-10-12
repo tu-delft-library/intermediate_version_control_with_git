@@ -147,3 +147,4 @@ echo "Give me my thick blanket" >> notes.txt
 cat notes.txt 
 git diff
 git add notes.txt 
+git commit -m "Add sixth and seventh lines on b1"
