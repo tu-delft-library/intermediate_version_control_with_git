@@ -185,3 +185,4 @@ git log --oneline --all --graph
 clear
 git status
 git branch bad-merge
+git switch bad-merge
