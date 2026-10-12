@@ -63,3 +63,4 @@ git branch -d pe pi po
 git log --oneline
 clear
 git status
+cat notes.txt 
