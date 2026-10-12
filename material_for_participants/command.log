@@ -79,3 +79,5 @@ git switch main
 git log --oneline --all
 git log --oneline --all --graph
 cat notes.txt 
+git switch b1
+cat notes.txt 
