@@ -48,3 +48,4 @@ git switch b1
 git log --oneline
 git switch -c b2
 git log --oneline
+git switch main
