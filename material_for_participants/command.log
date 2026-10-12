@@ -242,3 +242,4 @@ git pull origin main
 git switch -c cool
 git status
 nano notes.txt 
+git add notes.txt 
