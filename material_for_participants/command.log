@@ -248,3 +248,5 @@ git history --oneline
 git log --oneline
 git switch main
 cat notes.txt 
+nano notes.txt 
+git diff
