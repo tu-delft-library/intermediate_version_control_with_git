@@ -180,3 +180,4 @@ nano notes.txt
 git status
 git add notes.txt 
 git status
+git commit -m "Merge b2 into main"
