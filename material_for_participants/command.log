@@ -131,3 +131,4 @@ clear
 git switch b2
 git diff HEAD
 git diff HEAD~1
+git diff HEAD~2
