@@ -254,3 +254,5 @@ git add notes.txt
 git commit -m "Added new line"
 clear
 cat notes.txt 
+git switch cool
+cat notes.txt 
