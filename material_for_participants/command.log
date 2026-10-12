@@ -92,3 +92,5 @@ git switch b2
 cat notes.txt 
 echo "A dramatic sunset" >> notes.txt 
 echo "The moon was bright" >> notes.txt 
+git diff
+git add notes.txt 
