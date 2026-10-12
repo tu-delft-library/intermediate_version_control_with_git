@@ -158,3 +158,5 @@ git merge -m "Merge b1" b1
 clear
 cat notes.txt 
 nano notes.txt 
+clear
+git status
