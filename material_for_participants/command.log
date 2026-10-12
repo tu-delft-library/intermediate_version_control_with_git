@@ -61,3 +61,4 @@ git branch -m pa po
 git log --oneline
 git branch -d pe pi po
 git log --oneline
+clear
