@@ -76,3 +76,4 @@ git add notes.txt
 git commit -m "Add fourth line on branch b1"
 git status
 git switch main
+git log --oneline --all
