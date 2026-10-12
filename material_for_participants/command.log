@@ -6,3 +6,4 @@ cd weather-notes/
 git init
 touch README.md
 touch LICENSE
+git add README.md LICENSE 
