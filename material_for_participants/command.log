@@ -258,3 +258,4 @@ git switch cool
 cat notes.txt 
 clear
 git status
+git rebase main
