@@ -215,3 +215,4 @@ git push origin main
 git push origin b1
 git push origin --all
 git pull origin b1
+git fetch --all
