@@ -17,3 +17,5 @@ git add notes.txt
 git commit -m "Add second line"
 echo "A cloudy afternoon" >> notes.txt 
 git add notes.txt 
+git commit -m "Add third line"
+cat notes.txt 
