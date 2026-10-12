@@ -31,3 +31,4 @@ git remote -v
 git push origin main
 clear
 git branch
+pwd
