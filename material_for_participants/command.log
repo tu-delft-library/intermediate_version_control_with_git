@@ -56,3 +56,4 @@ git branch pe
 git switch -c pi
 git log --oneline
 git switch pe
+git switch main
