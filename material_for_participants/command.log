@@ -8,3 +8,4 @@ touch README.md
 touch LICENSE
 git add README.md LICENSE 
 git commit -m "INitial commit: README and LICENSE"
+echo "The sun came out" > notes.txt
