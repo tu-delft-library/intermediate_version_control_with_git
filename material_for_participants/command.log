@@ -260,3 +260,4 @@ clear
 git status
 git rebase main
 git log --oneline --all --graph
+git switch main
