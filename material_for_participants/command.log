@@ -102,3 +102,4 @@ gitautopush --sleep 10 .
 git branch
 history
 clear
+git switch main
