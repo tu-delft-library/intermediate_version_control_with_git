@@ -232,3 +232,5 @@ git status
 cat notes.txt 
 nano notes.txt 
 git add notes.txt 
+git commit -m "Merge remote and local notes"
+git status
