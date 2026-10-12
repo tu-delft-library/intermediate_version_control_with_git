@@ -20,3 +20,4 @@ git add notes.txt
 git commit -m "Add third line"
 cat notes.txt 
 git log --oneline
+echo "*.log" > .gitignore
