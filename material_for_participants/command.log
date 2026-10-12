@@ -117,3 +117,5 @@ git diff
 git add notes.txt 
 git commit -m "Add fifth line on b1"
 git status
+git log --oneline --all --grap
+git log --oneline --all --graph
