@@ -72,3 +72,4 @@ git status
 git switch b1
 echo "A dramatic sunset" >> notes.txt 
 git diff
+git add notes.txt 
