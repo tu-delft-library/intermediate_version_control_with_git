@@ -51,3 +51,4 @@ git log --oneline
 git switch main
 git log --oneline
 clear
+git branch pa
