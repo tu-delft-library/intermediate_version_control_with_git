@@ -170,3 +170,4 @@ git log --oneline --all --graph
 git branch
 clear
 git diff main b2
+cat notes.txt 
