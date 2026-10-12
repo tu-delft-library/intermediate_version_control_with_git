@@ -237,3 +237,4 @@ git status
 git push origin main
 clear
 git diff HEAD~1
+clear
