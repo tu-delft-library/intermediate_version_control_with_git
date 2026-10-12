@@ -213,3 +213,4 @@ pwd
 git status
 git push origin main
 git push origin b1
+git push origin --all
