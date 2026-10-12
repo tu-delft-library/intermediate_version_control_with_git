@@ -210,3 +210,4 @@ git branch -D bad-merge
 git log --oneline --graph --all
 clear
 pwd
+git status
