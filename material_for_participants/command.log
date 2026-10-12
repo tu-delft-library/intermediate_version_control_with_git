@@ -184,3 +184,4 @@ git commit -m "Merge b2 into main"
 git log --oneline --all --graph
 clear
 git status
+git branch bad-merge
