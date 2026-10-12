@@ -97,3 +97,4 @@ git add notes.txt
 git commit -m "Add two more lines on b2"
 git status
 git log --oneline --all --graph
+git push origin --all
