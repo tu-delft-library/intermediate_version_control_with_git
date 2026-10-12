@@ -178,3 +178,4 @@ git merge b2
 cat notes.txt 
 nano notes.txt 
 git status
+git add notes.txt 
