@@ -111,3 +111,4 @@ git commit -m "Add fifth line on main (with mistake)"
 git status
 cat notes.txt 
 git switch b1
+cat notes.txt 
