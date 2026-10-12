@@ -192,3 +192,4 @@ git add notes.txt
 git commit -m "Add eighth line in bad-merge"
 git status
 git switch main
+cat notes.txt 
