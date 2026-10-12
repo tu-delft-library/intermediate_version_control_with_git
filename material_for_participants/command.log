@@ -167,3 +167,5 @@ git commit -m "Merge changes from b1 into main"
 git status
 cat notes.txt 
 git log --oneline --all --graph
+git branch
+clear
