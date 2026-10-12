@@ -251,3 +251,5 @@ cat notes.txt
 nano notes.txt 
 git diff
 git add notes.txt 
+git commit -m "Added new line"
+clear
