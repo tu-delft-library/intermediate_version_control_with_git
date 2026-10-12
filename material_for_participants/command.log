@@ -14,3 +14,4 @@ git commit -m "Add first line"
 clear
 echo "The air was fresh" >> notes.txt 
 git add notes.txt 
+git commit -m "Add second line"
