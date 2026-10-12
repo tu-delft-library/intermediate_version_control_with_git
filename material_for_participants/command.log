@@ -99,3 +99,4 @@ git status
 git log --oneline --all --graph
 git push origin --all
 gitautopush --sleep 10 .
+git branch
