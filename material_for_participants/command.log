@@ -88,3 +88,5 @@ git log --oneline --all --graph
 clear
 git status
 git log --oneline --all --graph
+git switch b2
+cat notes.txt 
