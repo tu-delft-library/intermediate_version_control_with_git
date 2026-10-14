@@ -29,7 +29,7 @@ Slides work better if you open them in your device: [slides](https://tud365.shar
 ## 9:30 - Participants land - 5' - CATA
 ☕ Reminder them about coffee at the entrance of library
 
-## 9:35 - Housekeeping - 15' - CATA
+## 9:35 - Housekeeping - 5' - CATA
 - ✅ Roll call + 🤝 Code of Conduct
 - 🙋 Getting help (🆘 red  ✅ green stickers)
 
