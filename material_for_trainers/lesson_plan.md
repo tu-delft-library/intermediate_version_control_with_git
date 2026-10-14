@@ -62,9 +62,7 @@ git add notes.txt
 git commit -m "Add third line"
 cat notes.txt
 git log --oneline
-echo "*.log" > .gitignore
-echo "data/*" >> .gitignore
-cat .gitignore
+touch .gitignore
 git add .gitignore
 git commit -m "Ignore all log and data files"
 git log --oneline
