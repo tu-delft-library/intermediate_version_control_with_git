@@ -20,7 +20,7 @@ tail -n 0 -f ~/.bash_history | tee -a <local-repo-directory>/material_for_partic
 ```
 Open another tab in the `hidden terminal`, `cd` to `<local-repo-directory>` and run autopush every 2-5 seconds
 ```bash
-gitautopush --sleep 5 .
+gitautopush --sleep 10 .
 ```
 #### Open slides
 
@@ -165,6 +165,12 @@ git status                                  # nothing to commit
 git switch main
 git log --oneline --all                    # show all branches - note change on both branches
 git log --oneline --all --graph            # show graph with all branches
+cat notes.txt                              # see same contents of file in main and b1
+git switch b1
+cat notes.txt                              #
+git log --oneline --all --graph            # the commits are different even if changes are the same. The commits have the metadata about branch
+git switch main
+git log --oneline --all --graph
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
@@ -181,6 +187,7 @@ git diff
 git add notes.txt
 git commit -m "Add two more lines on b2"
 git status
+git log --oneline --all --graph
 ```
 
 ## 10:40 - Break - 15' 
@@ -210,8 +217,10 @@ git log --oneline --all --graph                 # so many little changes
 Maybe we are confused about what was done on which branch. Let's see how to investigate the changes.
 
 ```bash
-git switch main                     
-git diff HEAD HEAD~1      # REMEMBER: changes between latest and one before latest commit
+git switch main       
+git diff        # changes from working dir to latest commit              
+git diff HEAD HEAD~1    # REMEMBER: changes between latest and one before latest commit
+git diff HEAD~1 HEAD    # differences the other way around
 git diff main b1 # changes between  main and b1
 git diff main b1~1 # changes between main and parent of the latest commit on branch B1
 git diff main~1 b1~1 # changes between parent of the latest commit on the main branch and the parent of the latest commit on branch B1
@@ -246,6 +255,7 @@ echo "Give me my thick blanket" >> notes.txt      # routine
 git diff                                                  # routine
 git add notes.txt                                         # routine
 git commit -m "Add sixth and seventh lines on b1"   # routine
+git status
 git log --oneline --all --graph                           # routine
 ```
 We are done with developing on `b1` and want to merge to `main`. 
