@@ -360,17 +360,17 @@ grep 'Meal price' *.txt
 
 Make a mistake on purpose, then undo it safely.
 
+There are two ways to do this. 
+1. Hard reset: means deleting the last commit from history. This modifies your commit history as if the commit never happened.
+2. Revert: It is like an "undo" operation. It applies the reserve operation from the latest commit (removes what was added, and/or adds what was removed).
+
+Hard reset was practiced already in **Conflict 2**. Let's practice reverting.
+
 - Delete the Ingredients section from `recipe.txt`
 - Stage `recipe.txt` and commit with the message `oops: accidentally deleted ingredients`
-- Undo the mistake without erasing history — this should add a new commit that reverses the previous one, staged but not yet committed
-- Commit the reversal with the message `Reinstating ingredients`
+- Undo the commit using `git revert --no-edit HEAD`
 - View the commit graph for all branches
 
-<details>
-<summary>🔍 Click here for hints! </summary>
-
-- To undo a commit use `git revert --no-commit HEAD`
-</details>
 
 > Reversing a commit this way is safe when you've already pushed to remote. If you haven't pushed yet, a hard reset to the previous commit removes the commit entirely.
 
