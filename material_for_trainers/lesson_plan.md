@@ -1,28 +1,44 @@
-## Tips for the day
+## 9:00 🚀 Prepare for take off - 20'
+### Room setup
 - Make sure to plug your computer to electricity. Otherwise the display will feed electricity to the laptop and potentially turn itself off.
+- Test the microphone
 - Write the edu.nl link pointing to `material_for_participants/links.md` document on the whiteboard 
     - Use dark marker on the board (not red)
-- If you are using a mac, make the terminal not transparent: 
-    - Open the terminal
-    - Open settings
-    - Go to background color
-    - Adjust opacity to 100%
-- Set your desktop to a color background instead of an image that can be distracting (e.g. a beach or a mountain)
-- Ask Paula to print a list of the participants so that they can check their name (roll call)
-- Start auto push [TODO] @halfordd step-by-step explanation
+- Place the list of the participants on a table at the entrance so that they can check their name (roll call)
+- [Optional] bring jugs with water and snacks (if you brought any)
 
-## 9:30 - Land - 5'
-☕ Coffee/tea 🫖
+### Laptop setup
 
-## 9:35 - Housekeeping - 15" CATA
+#### start autopush
+Make sure to set up the bash history forwarding before workshop day as explained in `materials_for_trainers/pre_workshop_checklist.md`
+
+Open another Terminal window. Let's call this the `hidden terminal` i.e. NOT to be shown during the workshop.
+
+On the `hidden terminal` forward only the last line of the history to `command.log`
+```bash
+tail -n 0 -f ~/.bash_history | tee -a <local-repo-directory>/material_for_participants/command.log
+```
+Open another tab in the `hidden terminal`, `cd` to `<local-repo-directory>` and run autopush every 2-5 seconds
+```bash
+gitautopush --sleep 10 .
+```
+#### Open slides
+
+Slides work better if you open them in your device: [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0) 
+
+## 9:30 - Participants land - 5' - CATA
+☕ Reminder them about coffee at the entrance of library
+
+## 9:35 - Housekeeping - 15' - CATA
 - ✅ Roll call + 🤝 Code of Conduct
 - 🙋 Getting help (🆘 red  ✅ green stickers)
 
-## 9:40 - Icebreaker - 5'
+## 9:40 - Icebreaker - 5'- CATA
 🎥 Icebreaker instructions on slides
 > *START AUTOPUSH* 
 
-## 9:45 - Solve assignment to create local repo - 10'  
+## 9:45 - Solve assignment to create local repo - 10' - CATA
+> Because we are doing trainer split today, it is easier to create the clone in github before hand and add the other trainer as collaborator.
 
 Below is the minimal set of instructions to generate the repository for today.
 
@@ -44,15 +60,23 @@ git commit -m "Add second line"
 echo "A cloudy afternoon" >> notes.txt 
 git add notes.txt 
 git commit -m "Add third line"
-touch debug.log
-mkdir data
-touch data/raw_dump.csv
-touch data/temperatures.csv
+cat notes.txt
+git log --oneline
 echo "*.log" > .gitignore
 echo "data/*" >> .gitignore
+cat .gitignore
 git add .gitignore
 git commit -m "Ignore all log and data files"
+git log --oneline
 ```
+> 🆘 red  ✅ green stickers
+
+Ask if everyone has the `weather-notes` repository with a similar history:
+- 1 initial commit
+- 3 commits for editing `notes.txt`
+- 1 `.gitignore` commit
+
+
 This should generate a local repository with a commit history. But we still need to add the remote repository:
 
 - Create a new empty repository on GitHub (no README/license — you already have those).
@@ -63,21 +87,13 @@ git push origin main
 ```
 - Refresh the GitHub page and confirm every file and all commits made it across.
 - Confirm locally that we have all the changes 
-
-```bash
-git log --oneline
-```
 > 🆘 red  ✅ green stickers
 
-Ask if everyone has the `weather-notes` repository with a similar history:
-- 1 initial commit
-- 3 commits for editing `notes.txt`
-- 1 `.gitignore` commit
 
-## 9:55 - Introduction to branches - 10' 
+## 9:55 - Introduction to branches - 10' - CATA
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
-## 10:05 - New commands for branching - 10' 
+## 10:05 - New commands for branching - 10' - CATA
 
 ```bash
 git branch              # check branches (explain the * pointing to main) 
@@ -88,11 +104,11 @@ git branch              # verify branch was created (output: b1, *main)
 ```bash
 git status              # on branch main / nothing to commit
 cat notes.txt           # three lines
-git log --oneline       # explain (HEAD -> main, b1)
+git log --oneline       # explain (HEAD -> main, origin/main, b1)
 git branch -m b1 b2     # rename branch (-m for move)
-git log --oneline       # branch b1 was renamed to b2 (HEAD -> main, b2)
+git log --oneline       # branch b1 was renamed to b2 (HEAD -> main, origin/main, b2)
 git branch -d b2        # delete branch
-git log --oneline       # verify main is the only branch
+git log --oneline       # verify main is the only branch (local and remote)
 git branch -d main      # fails - can't delete current branch
 git branch b1           # create again branch b1
 git log --oneline       # verify
@@ -110,8 +126,8 @@ Output should look like:
 hash (HEAD -> main, origin/main, b2, b1) Ignore all log and data files
 ```
 
-## 10:15 - 1 💪 Get familiar with branches - 10' 
-See `exercises.md`. There is an optional challenge under each numbered exercise.
+## 10:15 - 1 💪 Get familiar with branches - 10' - CATA
+See `exercises.md`. There is an optional challenge.
 
 Solution:
 ```bash
@@ -128,7 +144,7 @@ git branch -d pe pi po
 git log --oneline
 ```
 
-## 10:25 - Develop on different branches - 10' 
+## 10:25 - Develop on different branches - 10' - CATA
 
 
 ```bash
@@ -149,11 +165,17 @@ git status                                  # nothing to commit
 git switch main
 git log --oneline --all                    # show all branches - note change on both branches
 git log --oneline --all --graph            # show graph with all branches
+cat notes.txt                              # see same contents of file in main and b1
+git switch b1
+cat notes.txt                              #
+git log --oneline --all --graph            # the commits are different even if changes are the same. The commits have the metadata about branch
+git switch main
+git log --oneline --all --graph
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
-## 10:35 - 2 💪 Commit in a secondary branch - 5'
-See `exercises.md`. There is an optional challenge under each numbered exercise. 
+## 10:35 - 2 💪 Commit in a secondary branch - 5' - CATA
+See `exercises.md`. 
 
 Solution:
 ```bash
@@ -165,12 +187,15 @@ git diff
 git add notes.txt
 git commit -m "Add two more lines on b2"
 git status
+git log --oneline --all --graph
 ```
 
 ## 10:40 - Break - 15' 
+> **Trainer change** push and pull git@github.com:catactg/weather-notes.git
 
 
-## 10:55 - Explore differences across branches - 10' 
+## 10:55 - Explore differences across branches - 10' - HALFORD 
+> *START AUTOPUSH*
 
 Let's keep adding to our history:
 ```bash
@@ -192,17 +217,19 @@ git log --oneline --all --graph                 # so many little changes
 Maybe we are confused about what was done on which branch. Let's see how to investigate the changes.
 
 ```bash
-git switch main                     
-git diff HEAD HEAD~1      # REMEMBER: changes between latest and one before latest commit
+git switch main       
+git diff        # changes from working dir to latest commit              
+git diff HEAD HEAD~1    # REMEMBER: changes between latest and one before latest commit
+git diff HEAD~1 HEAD    # differences the other way around
 git diff main b1 # changes between  main and b1
 git diff main b1~1 # changes between main and parent of the latest commit on branch B1
 git diff main~1 b1~1 # changes between parent of the latest commit on the main branch and the parent of the latest commit on branch B1
 # No difference on this one. Both files have 4 lines
 ```
 
-## 11:05 - 3 💪  Explore differences across branches - 10'
+## 11:05 - 3 💪  Explore differences across branches - 10' - HALFORD 
 
-See `exercises.md`. There is an optional challenge under each numbered exercise.
+See `exercises.md`. There is an optional challenge.
 
 Solution:
 ```bash
@@ -218,16 +245,17 @@ git diff b2 b1
 git diff main b2~1
 ```
 
-## 11:15 - Merging branches and conflict resolution - 15' 
+## 11:15 - Merging branches and conflict resolution - 15' - HALFORD  
 
 Let's develop further on branch `b1`:
 ```bash
-git switch b1                                             # on branch b1
+git switch b1                                     # on branch b1
 echo "It rained at night" >> notes.txt            # routine
 echo "Give me my thick blanket" >> notes.txt      # routine
 git diff                                                  # routine
 git add notes.txt                                         # routine
 git commit -m "Add sixth and seventh lines on b1"   # routine
+git status
 git log --oneline --all --graph                           # routine
 ```
 We are done with developing on `b1` and want to merge to `main`. 
@@ -285,8 +313,8 @@ git log --oneline --all --graph                           # see merge visually
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:notes.txt :2:notes.txt`
 
-## 11:30 - 4 💪 A first type for merge  and 5 💪 Undo a Bad Merge  - 15' 
-See `exercises.md`. There is an optional challenge under each numbered exercise.
+## 11:30 - 4 💪 A first type for merge  and 5 💪 Undo a Bad Merge  - 15' - HALFORD  
+See `exercises.md`. There is an optional challenge under exercise 4.
 
 Solution:
 ```bash
@@ -327,9 +355,30 @@ git log --oneline --graph   # back to a clean main
 
 > **Before break:** Turn to a neighbour and compare the output of `git log --oneline --all --graph`. Does it look the same? Different commit hashes? Same shape?
 
+By now the history should like this:
+```bash
+* d3d5133 (HEAD -> main) Add eighth line on main
+*   717c1b7 (origin/main) Merge b2 into main
+|\  
+| * 5e37bdc (origin/b2, b2) Add two more lines on b2
+* |   fde8912 Merge changes from b1 into main
+|\ \  
+| * | 8eae382 (origin/b1, b1) Add sixth and seventh lines on b1
+| * | 8f1a9f8 Add fifth line on b1
+| * | 9356a1a Add fourth line on branch b1
+| |/  
+* | 6cfb0e0 Add fifth line on main (with mistake)
+* | 2dbbcf3 Add fourth line
+|/  
+* f80ded4 Ignore all log and data files
+* 093db52 Add third line
+* 3af1db1 Add second line
+* b24172e Add first line
+* e29bfcd Initial commit: add README and LICENSE
+```
 ## 11:45 - Break  - 15'
 
-## 12:00 -  💻 PRACTICAL - Understanding merge conflicts - 30'
+## 12:00 -  💻 PRACTICAL - Understanding merge conflicts - 30' - CATA
 see `PRACTICAL_merge_conflicts.md`
 
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
@@ -337,7 +386,7 @@ Do not solve the PRACTICAL live. Just ask questions, share experiences or highli
 ## 12:30 - 	Lunch - 60'	
 
 
-## 13:30 - Remote operations revisited - 10' 
+## 13:30 - Remote operations revisited - 10' - HALFORD
 
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
@@ -350,7 +399,7 @@ Explain **divergent branches**: both the local and remote `main` have moved forw
 
 Explain the two most common options: `merge` and `rebase`.
 
-## 13:40 - Remote operations live coding - 10' 
+## 13:40 - Remote operations live coding - 10' - HALFORD
 
 We made some local changes before lunch that are not pushed yet. So let's do that to ensure our remote repo is up to date
 ```bash
@@ -375,7 +424,7 @@ If you want to sync all the branches from the remote to your local repo, you nee
 git fetch --all
 ```
 
-## 13:50 - Solve a conflict when pushing - 10'
+## 13:50 - Solve a conflict when pushing - 10' - HALFORD
 
 Make a small edit directly on GitHub (via the web editor):
 1. Open `notes.txt` on GitHub
@@ -411,7 +460,7 @@ Visit GitHub and confirm the resolved file is there.
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
 
-## 14:00 - 6 💪 Rebase instead of merge - 15' 
+## 14:00 - 6 💪 Rebase instead of merge - 15' - HALFORD
 Solution:
 ```bash
 git pull origin main
@@ -427,6 +476,9 @@ git commit -m "Add new line"
 git switch cool          
 git rebase main     # Successfully rebased and updated refs/heads/cool
 git log --oneline --all --graph # cool sits in front of main
+```
+> *DO NOT* clear screen here. So that participants can see the effect of rebase
+```bash
 git switch main
 git merge cool          # Fast-forward
 git log --oneline --all --graph
@@ -438,53 +490,42 @@ Notice that instead of a merge, Git just slides the `main` pointer up to match, 
 
 ## 14:15 - Break -15' 
 
-## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' 
+## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - CATA
 see `PRACTICAL_remote_conflicts.md`
 
 Share experiences or highlight concepts that you noticed were still a bit confusing.
 
-## 15:10 - VS Code demo - 10'
+## 15:10 - VS Code demo - 10' - CATA
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
+I will demo VS code using the `PRACTICAL | Understanding Merge Conflicts`
 
-### Git by default
+### Initialize repo
 - Open VSCode
-- Open folder -> `weather-notes` folder
-- Explain the file browser
-- Open `notes.txt`
-- Go to git tab (left)
-- Explain GUI:
-    - log -> hover for details
-    - click on +- icon on the right to show changes
-    - right click for more options
-### Commit changes
-- Open `notes.md` from explorer
-- Make a change (e.g. add a line `for a new day`)
-- Save `notes.txt` (CTRL + S)
-- Notice badge on git icon
-- Click on `notes.txt` to see the changes on the right
+- Open folder -> make a new folder inside `Desktop` -> `conflict_practical`
+- Explain the left tab to find the git menu
+- Click on `Initialize Repository`
+- Go to the file browser
+- Make a new file `recipe.txt` and enter text from `PRACTICAL | Understanding Merge Conflicts`
+    - You only need one file for this demo
+    - Click on `recipe.txt` to see the changes on the right
     - red deleted
     - green added
-- Click on plus to stage
-- Write message and click on commit `Add tenth line locally`
+    - Click on plus to stage
+    - Write message and click on commit `Initial files`
 - Notice the update on the log
 
-### Merge conflict
-Let's generate a similar conflict than we did on the Terminal:
+### Branches and merge
+- Follow the instruction to solve `💪 Conflict 1: Same-line edit`
+    - Show how to switch branch + check out
+    - When merging the first time select "no commit" to recreate the same as in the terminal
+- Solve merge conflict
+    - Explain incoming and current branch
+    - Show the out of "Accept combination"
+    - Show it can also be edited manually
 
-- Open `notes.txt` on GitHub
-- Add a new line at the bottom: `for a new day - Github`
-- Commit with message `Add tenth line via GitHub`
 
-- Back VS code
-- Click on `Sync changes` which does a `pull` + `merge`
-- There is a conflict so the editor opens for you to resolve the merge conflicts
-- At the lower right corner there is a button `Resolve in Merge Editor`
-- In the merge editor we can pick one version `Accept incoming`, the other `Accept current` or a manual edit at the bottom
-- Complete the merge and commit
-- Click on `Sync changes` to push the merge to remote
-
-## 15:20 - Summarize key points - 5' 
+## 15:20 - Summarize key points - 5' - CATA
 Using VS code
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
 - **Merging**: bring changes together with `git merge`.
@@ -495,7 +536,7 @@ Git creates a merge commit
 
 
 
-## 15:25 - Give feedback about the course  5" 
+## 15:25 - Give feedback about the course  5' - CATA
 Go to the link in `links.md`
 
 
