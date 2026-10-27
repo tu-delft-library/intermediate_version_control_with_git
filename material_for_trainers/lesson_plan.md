@@ -1,3 +1,5 @@
+> Adapted from *Version Control and Collaborative Development for Research Software —GitCoDev*, TUDelft, licensed [CC-BY 4.0](https://4turesearchdata-carpentries.github.io/GitCoDev/licensing.html). 
+
 ## 9:00 🚀 Prepare for take off - 20'
 ### Room setup
 - Make sure to plug your computer to electricity. Otherwise the display will feed electricity to the laptop and potentially turn itself off.
