@@ -28,19 +28,19 @@ gitautopush --sleep 10 .
 
 Slides work better if you open them in your device: [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0) 
 
-## 9:30 - Participants land - 5' - CATA
+## 9:30 - Participants land - 5' - TRAINER ONE
 ☕ Reminder them about coffee at the entrance of library
 
-## 9:35 - Housekeeping - 5' - CATA
+## 9:35 - Housekeeping - 5' - TRAINER ONE
 - ✅ Roll call + 🤝 Code of Conduct
 - 🙋 Getting help (🆘 red  ✅ green stickers)
 
-## 9:40 - Icebreaker - 5'- CATA
+## 9:40 - Icebreaker - 5'- TRAINER ONE
 🎥 Icebreaker instructions on slides
 > *START AUTOPUSH* 
 
-## 9:45 - Solve assignment to create local repo - 10' - CATA
-> Because we are doing trainer split today, it is easier to create the clone in github before hand and add the other trainer as collaborator.
+## 9:45 - Solve assignment to create local repo - 10' - TRAINER ONE
+> If you are splitting the teaching between two trainers, it is easier to create the clone in github before hand and add the other trainer as collaborator.
 
 Below is the minimal set of instructions to generate the repository for today.
 
@@ -90,10 +90,10 @@ git push origin main
 > 🆘 red  ✅ green stickers
 
 
-## 9:55 - Introduction to branches - 10' - CATA
+## 9:55 - Introduction to branches - 10' - TRAINER ONE
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
-## 10:05 - New commands for branching - 10' - CATA
+## 10:05 - New commands for branching - 10' - TRAINER ONE
 
 ```bash
 git branch              # check branches (explain the * pointing to main) 
@@ -126,7 +126,7 @@ Output should look like:
 hash (HEAD -> main, origin/main, b2, b1) Ignore all log and data files
 ```
 
-## 10:15 - 1 💪 Get familiar with branches - 10' - CATA
+## 10:15 - 1 💪 Get familiar with branches - 10' - TRAINER ONE
 See `exercises.md`. There is an optional challenge.
 
 Solution:
@@ -144,7 +144,7 @@ git branch -d pe pi po
 git log --oneline
 ```
 
-## 10:25 - Develop on different branches - 10' - CATA
+## 10:25 - Develop on different branches - 10' - TRAINER ONE
 
 
 ```bash
@@ -174,7 +174,7 @@ git log --oneline --all --graph
 ```
 Notice the HEAD pointing to the main branch. The commits are different even if the changes are similar.
 
-## 10:35 - 2 💪 Commit in a secondary branch - 5' - CATA
+## 10:35 - 2 💪 Commit in a secondary branch - 5' - TRAINER ONE
 See `exercises.md`. 
 
 Solution:
@@ -194,7 +194,7 @@ git log --oneline --all --graph
 > **Trainer change** push and pull git@github.com:catactg/weather-notes.git
 
 
-## 10:55 - Explore differences across branches - 10' - HALFORD 
+## 10:55 - Explore differences across branches - 10' - TRAINER TWO 
 > *START AUTOPUSH*
 
 Let's keep adding to our history:
@@ -227,7 +227,7 @@ git diff main~1 b1~1 # changes between parent of the latest commit on the main b
 # No difference on this one. Both files have 4 lines
 ```
 
-## 11:05 - 3 💪  Explore differences across branches - 10' - HALFORD 
+## 11:05 - 3 💪  Explore differences across branches - 10' - TRAINER TWO 
 
 See `exercises.md`. There is an optional challenge.
 
@@ -245,7 +245,7 @@ git diff b2 b1
 git diff main b2~1
 ```
 
-## 11:15 - Merging branches and conflict resolution - 15' - HALFORD  
+## 11:15 - Merging branches and conflict resolution - 15' - TRAINER TWO  
 
 Let's develop further on branch `b1`:
 ```bash
@@ -313,7 +313,7 @@ git log --oneline --all --graph                           # see merge visually
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:notes.txt :2:notes.txt`
 
-## 11:30 - 4 💪 A first type for merge  and 5 💪 Undo a Bad Merge  - 15' - HALFORD  
+## 11:30 - 4 💪 A first type for merge  and 5 💪 Undo a Bad Merge  - 15' - TRAINER TWO  
 See `exercises.md`. There is an optional challenge under exercise 4.
 
 Solution:
@@ -378,7 +378,7 @@ By now the history should like this:
 ```
 ## 11:45 - Break  - 15'
 
-## 12:00 -  💻 PRACTICAL - Understanding merge conflicts - 30' - CATA
+## 12:00 -  💻 PRACTICAL - Understanding merge conflicts - 30' - TRAINER ONE
 see `PRACTICAL_merge_conflicts.md`
 
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
@@ -386,7 +386,7 @@ Do not solve the PRACTICAL live. Just ask questions, share experiences or highli
 ## 12:30 - 	Lunch - 60'	
 
 
-## 13:30 - Remote operations revisited - 10' - HALFORD
+## 13:30 - Remote operations revisited - 10' - TRAINER TWO
 
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
@@ -399,7 +399,7 @@ Explain **divergent branches**: both the local and remote `main` have moved forw
 
 Explain the two most common options: `merge` and `rebase`.
 
-## 13:40 - Remote operations live coding - 10' - HALFORD
+## 13:40 - Remote operations live coding - 10' - TRAINER TWO
 
 We made some local changes before lunch that are not pushed yet. So let's do that to ensure our remote repo is up to date
 ```bash
@@ -424,7 +424,7 @@ If you want to sync all the branches from the remote to your local repo, you nee
 git fetch --all
 ```
 
-## 13:50 - Solve a conflict when pushing - 10' - HALFORD
+## 13:50 - Solve a conflict when pushing - 10' - TRAINER TWO
 
 Make a small edit directly on GitHub (via the web editor):
 1. Open `notes.txt` on GitHub
@@ -460,7 +460,7 @@ Visit GitHub and confirm the resolved file is there.
 > **Key message:** the conflict resolution steps are identical whether the divergence comes from a colleague or from your own edit on GitHub. **Pull before you push.**
 
 
-## 14:00 - 6 💪 Rebase instead of merge - 15' - HALFORD
+## 14:00 - 6 💪 Rebase instead of merge - 15' - TRAINER TWO
 Solution:
 ```bash
 git pull origin main
@@ -490,12 +490,12 @@ Notice that instead of a merge, Git just slides the `main` pointer up to match, 
 
 ## 14:15 - Break -15' 
 
-## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - CATA
+## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - TRAINER ONE
 see `PRACTICAL_remote_conflicts.md`
 
 Share experiences or highlight concepts that you noticed were still a bit confusing.
 
-## 15:10 - VS Code demo - 10' - CATA
+## 15:10 - VS Code demo - 10' - TRAINER ONE
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode
 I will demo VS code using the `PRACTICAL | Understanding Merge Conflicts`
@@ -525,7 +525,7 @@ I will demo VS code using the `PRACTICAL | Understanding Merge Conflicts`
     - Show it can also be edited manually
 
 
-## 15:20 - Summarize key points - 5' - CATA
+## 15:20 - Summarize key points - 5' - TRAINER ONE
 Using VS code
 - **Branches**: create isolated lines of development with `git branch` and `git switch`.
 - **Merging**: bring changes together with `git merge`.
@@ -536,7 +536,7 @@ Git creates a merge commit
 
 
 
-## 15:25 - Give feedback about the course  5' - CATA
+## 15:25 - Give feedback about the course  5' - TRAINER ONE
 Go to the link in `links.md`
 
 
