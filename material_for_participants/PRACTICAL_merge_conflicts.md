@@ -18,6 +18,7 @@ Alice and Bob both want to improve the wording of the **same** `print` line in `
 
 - Navigate to your `free_fall` local repository
 - Create a new branch named `alice` and switch to it
+- Confirm you are indeed in the new branch `alice`
 - Open `time.py` for editing
 - Modify the last line (the `print` line) so that `An object dropped from` becomes `A stone dropped from`. The line should now read:
 ```python
@@ -31,8 +32,7 @@ print("A stone dropped from", height, "m reaches the ground after", time_round, 
 <details>
 <summary>🔍 Click here for hints! </summary>
 
-- To create use `git branch name_of_branch`
-- To switch between branches use `git switch name_of_branch`
+- To see the current branch use `git branch`
 - To create and switch in one step, add the flag `-c` to `git switch`
 - To see the commit graph for all branches use `git log --oneline --all --graph` or the alias `git lg`
 - To see the changes in a file use `git diff name_of_file`
@@ -43,7 +43,7 @@ print("A stone dropped from", height, "m reaches the ground after", time_round, 
 **Step 2 — Bob's branch**
 
 - Bob branches from `main`, not from `alice` branch. So first, switch back to `main`
-- View the commit graph for all branches
+- View the commit graph for all branches. Confirm the `HEAD` points to `main`
 - Create a new branch named `bob` and switch to it
 - Open `time.py` for editing
 - Modify the last line (the `print` line) so that `reaches the ground after` becomes `hits the ground after`. The line should now read:
@@ -107,9 +107,10 @@ print("A stone dropped from", height, "m hits the ground after", time_round, "s"
 - Delete all three marker lines (and the version of the `print` line you don't need), save, then:
 > **Nano tip:** You can use `^K` to delete a whole line 
 
-- Run `python time.py`. You should see `A stone dropped from 10 m hits the ground after 1.43 s`
 - Check the differences of file `time.py`
 - Stage `time.py` and commit with the message `Merge: combine Alice and Bob`
+- Run `python time.py`. You should see `A stone dropped from 10 m hits the ground after 1.43 s`
+- Check the status of git to make sure there are no local changes
 - View the commit graph for all branches. It should look like this: 
 
 ```bash
@@ -120,6 +121,24 @@ print("A stone dropped from", height, "m hits the ground after", time_round, "s"
 |/  
 * xxxxxxx Print gravity - correct units
 ```
+- With the merge complete and the script running, you can delete the branches `alice` and `bob`
+- View the commit graph for all branches. Notice that the graph stays the same but the `tags` of the branches are gone: 
+
+```bash
+*   xxxxxxx (HEAD -> main) Merge: combine Alice and Bob
+|\  
+| * xxxxxxx Bob: say hits the ground
+* | xxxxxxx Alice: say stone instead of object
+|/  
+* xxxxxxx Print gravity - correct units
+```
+
+<details>
+<summary>🔍 Click here for hints! </summary>
+
+- To delete a branch use `git branch -d name_of_branch name_of_another_branch`
+
+</details>
 
 ## 💪 Conflict 2: Delete vs edit
 
@@ -184,9 +203,9 @@ Unmerged paths:
 ```
 
 - Remove the comment entirely (keep no comment line), remove conflict markers and save
-- Run `python distance.py` to check that the script works
+- Use `cat` to confirm the contents of `distance.py`
 - Stage `distance.py` and commit with the message `Merge: Confirm removal of comment`
-- View the commit graph for all branches. It should look like this: 
+- View the commit graph. It should look like this: 
 ```bash
 *   xxxxxx (HEAD -> main) Merge: Confirm removal of comment
 |\  
@@ -215,23 +234,25 @@ Undo and resolve the other way:
 
 Imagine this code will be read by humans who are learning about free fall, so a comment with the formula is worth keeping.
 - Keep `# Free fall distance using formula: d = 0.5 * g * t^2`, remove conflict markers and save
-- Run `python distance.py` to check that the script works
+- Use `cat` to confirm the contents of `distance.py`
 - Stage `distance.py` and commit with the message `Merge: Keep comment with formula`
-- View the commit graph for all branches. It should look like this: 
+- Run `python distance.py` to ensure script still runs!
+- Check the status of git to make sure there are no local changes
+- With the merge complete and the script running, you can delete the branches `rewrite` and `remove`
+- View the commit graph. It should look like this: 
 ```bash
 *   xxxxxx (HEAD -> main) Merge: Keep comment with formula
 |\  
-| * xxxxxxx (rewrite) Rewrite comment to show the formula
-* | xxxxxxx (remove) Remove comment
+| * xxxxxxx Rewrite comment to show the formula
+* | xxxxxxx Remove comment
 |/  
 *   xxxxxxx Merge: combine Alice and Bob
 ```
-
-
 <details>
 <summary>🔍 Click here for hints! </summary>
 
 - To undo the latest commit (perform a hard reset) use `git reset --hard HEAD~1`
+- To delete a branch use `git branch -d name_of_branch name_of_another_branch`
 
 </details>
 
@@ -252,6 +273,7 @@ Two branches choose different planets. One of them changes **both** files, the o
 - Stage `time.py` and `distance.py`
 - Commit with the message `Use Jupiter gravity`
 - Switch back to `main`
+- View the commit graph for all branches. Confirm `HEAD` points to `main`
 - Create a new branch named `moon` and switch to it
 - Open `time.py`, modify gravity from `9.81` to `1.62` (Moon)
 - Check the differences
@@ -310,44 +332,24 @@ distance.py:gravity = 1.62
 time.py:gravity = 1.62
 velocity.py:gravity = 9.81
 ```
-oh oh! we still have one inconsistency
+oh oh! we still have one inconsistency on `velocity.py`
 
-**Step 3 — Use amend to fix inconsistency**
+**Step 3 — Use amend to flag inconsistency**
 
-- Open `velocity.py`
-- Change the value of gravity to that of the Moon (`1.62`)
-- Run `python velocity.py`. You should see:
-```
-After 2.0 s a free falling object reaches 3.24 m/s
-or 11.664000000000001 km/h
-under a gravity of 1.62 m/s2
-```
-Let's **amend** the latest commit. Using the `--no-edit` flag we keep the previous commit message  `Merge: Use Moon gravity in all files` because it still makes sense. 
+Because we are actively working on `velocity.py` on the `main` branch, we do not want to modify it now.
 
-- Stage `velocity.py`
-- Run `git commit --amend --no-edit`
-- Use `git diff HEAD~1 HEAD` to see the changes that are included in the latest commit.You should see:
-```
-...distance.py 
--gravity = 24.79
-+gravity = 1.62
+Let's use **amend** to make this clear in the commit message of the latest commit.
+- Run `git commit --amend -m "Merge: Moon gravity in all files - except velocity.py"`
+- Check the status of git to make sure there are no local changes
+- With the merge complete and the scripts running, you can delete the branches `jupiter` and `moon`
 
-...time.py
--gravity = 24.79
-+gravity = 1.62
-
-...velocity.py
--gravity = 9.81
-+gravity = 1.62
-```
--  If you see a `:` at the bottom of the screen, press `Enter` to continue the output. Once finished (e.g. you see `(END)`), press `q` to exit and go back to `bash`. 
-- View the commit graph for all branches. It should look like this: 
+- View the commit graph. It should look like this: 
 
 ```bash
-*   xxxxxxx (HEAD -> main) Merge: Use Moon gravity in both files
+*   xxxxxxx (HEAD -> main) Merge: Moon gravity in all files - except velocity.py
 |\  
-| * xxxxxxx (moon) Use Moon gravity in time.py
-* | xxxxxxx (jupiter) Use Jupiter gravity
+| * xxxxxxx Use Moon gravity in time.py
+* | xxxxxxx Use Jupiter gravity
 |/  
 *   xxxxxxx Merge: Keep comment with formula
 ```
