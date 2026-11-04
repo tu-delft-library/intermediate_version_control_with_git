@@ -326,7 +326,21 @@ Let's **amend** the latest commit. Using the `--no-edit` flag we keep the previo
 
 - Stage `velocity.py`
 - Run `git commit --amend --no-edit`
-- Use `git diff HEAD~1 HEAD` to see the changes that are included in the latest commit.
+- Use `git diff HEAD~1 HEAD` to see the changes that are included in the latest commit.You should see:
+```
+...distance.py 
+-gravity = 24.79
++gravity = 1.62
+
+...time.py
+-gravity = 24.79
++gravity = 1.62
+
+...velocity.py
+-gravity = 9.81
++gravity = 1.62
+```
+-  If you see a `:` at the bottom of the screen, press `Enter` to continue the output. Once finished (e.g. you see `(END)`), press `q` to exit and go back to `bash`. 
 - View the commit graph for all branches. It should look like this: 
 
 ```bash
