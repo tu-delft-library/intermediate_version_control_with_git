@@ -5,15 +5,15 @@
 
 Follow the steps listed below:
 
-1. Create two branches with any name you like
-1. Create a new branch and switch in one step
-1. Rename them and switch between them
-1. Check the status message and the history in each branch you are in
+- Create two branches with any name you like
+- Create a new branch and switch in one step
+- Rename them and switch between them
+- Check the status message and the history in each branch you are in
 
 When you are finished:
-1. If you have a branch `master`, rename it to `main`
-1. Return to the branch `main`
-1. Delete all other branches
+- If you have a branch `master`, rename it to `main`
+- Return to the branch `main`
+- Delete all other branches
 
 <details>
 <summary>🔍 Click here for hints! </summary>
@@ -28,15 +28,15 @@ When you are finished:
 
 #### 🚀 Optional challenge — safe delete vs force delete
 
-1. Create a branch called `moon` and switch to it
-1. Open `velocity.py` in nano
-1. Modify line 2 to `gravity = 1.62`
-1. Run the script. You should see the text `After 2.0 s ... 3.25 m/s`
-1. Commit your changes with the message `Change to Moon gravity`
-1. Switch back to main
-1. Try to delete `moon` with `git branch -d moon`
-1. Git will refuse. Read the error message carefully — why is it blocking you?
-1. Follow the hint in the error message to force delete the branch
+- Create a branch called `moon` and switch to it
+- Open `velocity.py` in nano
+- Modify line 2 to `gravity = 1.62`
+- Run the script. You should see the text `After 2.0 s ... 3.25 m/s`
+- Commit your changes with the message `Change to Moon gravity`
+- Switch back to main
+- Try to delete `moon` with `git branch -d moon`
+- Git will refuse. Read the error message carefully — why is it blocking you?
+- Follow the hint in the error message to force delete the branch
 
 
 <details>
@@ -53,9 +53,9 @@ When you are finished:
 
 Follow the steps listed below:
 
-1. Move to branch `b2` 
-1. Open `velocity.py` using nano
-1. Confirm that the file `velocity.py` looks like this:
+- Move to branch `b2` 
+- Open `velocity.py` using nano
+- Confirm that the file `velocity.py` looks like this:
 ```
 # Final velocity of an object after free falling during a given time
 gravity = 9.81
@@ -64,12 +64,12 @@ velocity = gravity * time
 print("After", time, "s a free falling object reaches", velocity, "m/s")
 ```
 
-1. Add this line to the file
+- Add this line to the file
 ```python
-velocity_kmh = velocity * 3.6
+velocity_kmh = 3.6 * velocity
 ```
-1. Commit your changes. Specify the branch name in the commit message!
-1. Inspect the working tree
+- Commit your changes. Specify the branch name in the commit message!
+- Inspect the working tree
 
 
 <details>
@@ -85,14 +85,14 @@ velocity_kmh = velocity * 3.6
 
 Follow the steps listed below:
 
-1. Move to branch `b2`
-1. Inspect several previous versions in the history of `b2` using `git diff` with appropriate arguments
-1. How far back in the history of branch `b2` can you go?
+- Move to branch `b2`
+- Inspect several previous versions in the history of `b2` using `git diff` with appropriate arguments
+- How far back in the history of branch `b2` can you go?
     - If you see `:` it means there is more content waiting to be shown. 
     - Click `Enter` to continue scrolling. 
     - When you reach the end, press `q` to exit
-1. Inspect the differences between the latest commit of branch `b2` and branch `b1`
-1. Inspect the differences between the `main` branch and the parent of the latest commit on branch `b2`
+- Inspect the differences between the latest commit of branch `b2` and branch `b1`
+- Inspect the differences between the `main` branch and the parent of the latest commit on branch `b2`
 
 <details>
 <summary>🔍 Click here for hints! </summary>
@@ -106,20 +106,22 @@ Follow the steps listed below:
 
 #### 🚀 Optional challenge — detect a specific change
 
-1. Use `git log --oneline --all` to list the commits across all branches
-1. Use `git diff <hash1> <hash2>` with pairs of commit hashes to narrow down which commit first introduced `fifth line`
-1. Confirm your answer with `git show <hash>` — this shows the full content of a single commit
+- Use `git log --oneline --all` to list the commits across all branches
+- Use `git diff <hash1> <hash2>` with pairs of commit hashes to narrow down which commit first introduced `fifth line`
+- Confirm your answer with `git show <hash>` — this shows the full content of a single commit
 
 
 ## 4 💪 A first type of merge
 
 Follow the steps listed below:
 
-1. Inspect the differences of `velocity.py` between branches. What lines are there in `velocity.py` in `main` but not in `b2`? 
-1. Merge `b2` into `main`
-1. Solve any conflicts. The equation is equivalent, but it's easier to keep the whole change from `main`
-1. Commit the merge
-1. Verify the outcome with a graphed `git log`
+- Inspect the differences of `velocity.py` between branches. What lines are there in `velocity.py` in `main` but not in `b2`? 
+- Merge `b2` into `main`
+- Solve any conflicts. The equation is equivalent, but it's easier to keep the whole change from `main`
+- Commit the merge
+- Verify the outcome with a graphed `git log`
+- Run the script. You should see the text `After 2.0 s ... 19.62 m/s or 70.632 km/h`
+- With the merge complete and the script running, you can delete the branch `b2`
 
 <details>
 <summary>🔍 Click here for hints! </summary>
@@ -145,25 +147,26 @@ Then verify your answers by inspecting the commits directly with
 
 Merges don't always go as planned. In this exercise you will practice how to cancel a merge while it is in progress.
 
-1. Create a new branch called `bad-merge` and step into it
-1. Open `velocity.py` with nano
-1. Add the line
+- Make sure you are on the `main` branch
+- Create a new branch called `bad-merge` and step into it
+- Open `velocity.py` with nano
+- Add the line
 ```python
 print("under a gravity of", gravity, "km/s2")
 ```
-1. Run the script. You should see the new line `under a gravity of 9.81 km/s2`
-1. Commit your changes with the message `Print gravity - wrong units`
-1. Switch back to `main`
-1. Open `velocity.py` with nano
-1. Add the line
+- Run the script. You should see the new line `under a gravity of 9.81 km/s2`
+- Commit your changes with the message `Print gravity - wrong units`
+- Switch back to `main`
+- Open `velocity.py` with nano
+- Add the line
 ```python
 print("under a gravity of", gravity, "m/s2")
 ```
-1. Run the script. You should see the new line `under a gravity of 9.81 m/s2`
-1. Commit your changes with the message `Print gravity - correct units`
-1. Merge `bad-merge` branch into `main`
-1. Use `cat` to see the content of `velocity.py`
-1. Check the status of git. You should see something like:
+- Run the script. You should see the new line `under a gravity of 9.81 m/s2`
+- Commit your changes with the message `Print gravity - correct units`
+- Merge `bad-merge` branch into `main`
+- Use `cat` to see the content of `velocity.py`
+- Check the status of git. You should see something like:
 ```
 You have unmerged paths.
   (fix conflicts and run "git commit")
@@ -173,12 +176,12 @@ Unmerged paths:
   (use "git add <file>..." to mark resolution)
 	both modified:   velocity.py
 ```
-1. You notice the changes from `bad-merge` do not make sense. So you decide to take a step back.
-1. Use the command `git merge --abort` to cancel the merge process
-1. Check the status of git
-1. Use `cat` to see the content of `velocity.py`
-1. Check the history of git and confirm there was no merge commit created
-1. Force delete the `bad-merge` branch using `git branch -D bad-merge`
+- You notice the changes from `bad-merge` do not make sense. So you decide to take a step back.
+- Use the command `git merge --abort` to cancel the merge process
+- Check the status of git
+- Use `cat` to see the content of `velocity.py`
+- Check the history of git and confirm there was no merge commit created
+- Force delete the `bad-merge` branch using `git branch -D bad-merge`
 
 <details>
 <summary>🔍 Click here for hints! </summary>
@@ -195,32 +198,42 @@ Unmerged paths:
 ## 6 💪 Rebase instead of merge
 We can use rebase when the changes touch different files or clearly separate parts of a file. This way the rebase is a clean, non-conflicting replay of `history`.
 
-1. Pull the latest `main` from remote
-1. Create a new branch called `longer` from `main` and switch to it in one step
-1. Open `velocity.py` and modify line 3 to `time = 4.0`
-1. Run the script. You should see `After 4.0 ... 39.24 m/s`
-1. Stage and commit it with the message `Increase time`
-1. Switch back to `main` 
-1. Open `velocity.py` and add a new line :
+Let's make the output more readable. We will round the value stored in the variable `velocity_kmh` to have only 2 decimals. We used this operation in the `PRACTICAL_collaboration.md` in the last session.
+
+- Pull the latest `main` from remote
+- Create a new branch called `round` from `main` and switch to it
+- Open `velocity.py` and change `velocity_kmh = round(velocity * 3.6, 2)`
+- Run the script. You should see
+```
+After 2.0 s a free falling object reaches 3.24 m/s
+or 11.66 km/h
+under Moon gravity of 1.62 m/s2
+```
+- Stage and commit it with the message `Round velocity_kmh to have 2 decimals`
+- Switch back to `main`
+- You decide the ensure the variable `velocity` also has two decimals
+- Open `velocity.py` and change `velocity = round(gravity * time, 2)`
+- Run `velocity.py`. You should see
 ```python
-print('Calculation finished')
+After 2.0 s a free falling object reaches 3.24 m/s
+or 11.664000000000001 km/h
+under Moon gravity of 1.62 m/s2
 ```
-1. Run the script. You should see the last line `Calculation finished`
-1. Stage and commit it with the message `Add closing message`
-1. Inspect the result with `git lg` (or the longer version `git log --oneline --all --graph`).
-1. Notice that the two branches (`main` and `longer`) have now diverged
-1. Switch back to `longer` and run `git rebase main`. You should see:
+- Stage and commit it with the message `Round velocity to have 2 decimals`
+- Inspect the result with `git lg` (or the longer version `git log --oneline --all --graph`).
+- Notice that the two branches (`main` and `round`) have now diverged
+- Switch back to `round` and run `git rebase main`. You should see:
 ```
-Successfully rebased and updated refs/heads/longer.
+Successfully rebased and updated refs/heads/round.
 ```
-1. Inspect the result with `git lg` (or the longer version `git log --oneline --all --graph`)
+- Inspect the result with `git lg` (or the rebase version `git log --oneline --all --graph`)
 
     Compare what you see with the graph from the previous merges:
-    - Where does `longer` sit relative to `main`?
-    - What happened to the original commit on `longer`?
+    - Where does `round` sit relative to `main`?
+    - What happened to the original commit on `round`?
 
-1. Switch to `main` and merge `longer` with `git merge longer`
-1. Check the graph again — notice that instead of a merge, Git just slides the `main` pointer up to match, like `fast-forwarding` a video to where you already know it ends.
+- Switch to `main` and merge `round` with `git merge round`
+- Check the graph again — notice that instead of a merge, Git just slides the `main` pointer up to match, like `fast-forwarding` a video to where you already know it ends.
 
 > ⚠️ Rebase rewrites commit history. It is safe on a local branch that you
 > have not shared with anyone. Avoid rebasing branches that have already been pushed.
@@ -228,5 +241,5 @@ Successfully rebased and updated refs/heads/longer.
 
 ## 7 🚀 Optional: Interactive Git 
 
-1. Go to this link https://learngitbranching.js.org/
-1. Play with your favorite episode
+- Go to this link https://learngitbranching.js.org/
+- Play with your favorite episode
