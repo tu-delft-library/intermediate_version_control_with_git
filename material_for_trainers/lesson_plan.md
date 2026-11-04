@@ -152,11 +152,11 @@ git log --oneline
 ## 10:25 - Develop on different branches - 10' - TRAINER ONE
 
 ```
-git status
+git status                  # confirm branch b1
 python velocity.py          # After 2.0 s ... 19.62 m/s
 nano velocity.py            
 ```
-Convert the velocity to km/h
+Add a new line to convert velocity to km/h
 ```python
 velocity_kmh = velocity * 3.6
 ``` 
@@ -193,7 +193,7 @@ git config --global alias.lg "log --oneline --all --graph -n 10"
 git lg                      # same output, much shorter to type
 ```
 
-From now on we use `git lg`.
+From now on we use `git lg`
 
 ## 10:35 - 2 💪 Commit in a secondary branch - 5' - TRAINER ONE
 
@@ -205,9 +205,9 @@ Solution:
 git switch b2
 nano velocity.py            
 ```
-Add conversion formula
+Add conversion formula (same formula but different order)
 ```python
-velocity_kmh = velocity * 3.6
+velocity_kmh = 3.6 * velocity
 ```
 ```
 git diff
@@ -236,18 +236,18 @@ print("or", velocity_kmh, "m/s")
 ```
 ```
 git diff
+python velocity.py          # prints number with WRONG units: or 70.632 m/s 
 git add velocity.py
 git commit -m "Print velocity on main (wrong unit)"
-python velocity.py          # prints number with WRONG units
 git switch b1
-nano velocity               # add print statement with correct units
+nano velocity               # add print statement with correct units 
 ```
 ```python
 print("or", velocity_kmh, "km/h")
 ```
 ```
-git diff                    # 7 lines (7th line is new)
-python velocity             # prints number with CORRECT units 
+git diff                    # the new print line
+python velocity             # prints number with CORRECT units: or 70.632 km/h 
 git add velocity.py
 git commit -m "Print velocity on b1"
 git lg                      # so many little changes
@@ -258,11 +258,10 @@ Maybe we are confused about what was done on which branch. Let's see how to inve
 ```
 git switch main
 git diff                # changes from working dir to latest commit
-git diff HEAD HEAD~1    # REMEMBER: changes between latest and one before latest commit
-git diff HEAD~1 HEAD    # differences the other way around
+git diff HEAD~1 HEAD    # REMEMBER: changes between latest and one before latest commit
 git diff main b1        # changes between main and b1
 git diff main b1~1      # changes between main and parent of the latest commit on branch b1
-git diff main~1 b1~1    # changes between parent of the latest commit on main and parent of the latest commit on b1
+git diff main~1 b1~1    # changes between parent of latest commit on main and parent of latest commit on b1
                         # No difference on this one. Both files have the same content
 ```
 
@@ -295,17 +294,17 @@ git merge -m "Merge b1" b1          # right syntax: fails because of conflict
 git status                          # see which files are in conflict
 git diff velocity.py                # verify differences
 ```
+> **Reading the markers:**
+>
+> - `<<<<<<< HEAD` -> your current branch's version
+> - `=======` -> dividing line
+> - `>>>>>>>` -> the incoming branch's version
 
 To resolve the merge conflict:
 
 1. edit manually the conflicting sections: keep current branch (aka `ours`), incoming branch (aka `theirs`), combine or make entirely different changes.
 2. remove the conflict markers
 
-> **Reading the markers:**
->
-> - `<<<<<<< HEAD` -> your current branch's version
-> - `=======` -> dividing line
-> - `>>>>>>>` -> the incoming branch's version
 
 ```
 nano velocity.py         # edit the file within the conflict markers
@@ -353,15 +352,19 @@ Solution 4:
 ```
 git diff main b2                # show differences all files
 ```
-these two lines are on `main` but not on `b2`
+The equation is different and the print line is `main` but not on `b2`
+
 ```python
-velocity_kmh = velocity * 3.6
-print("or", velocity_kmh, "km/h")
+-velocity_kmh = velocity * 3.6
+-print("or", velocity_kmh, "km/h")
++velocity_kmh = 3.6 * velocity
+```
+
 ```
 git switch main                 # stand on main
 git merge b2                    # merge b2 into main
 nano velocity.py                # fix conflicts
-```
+
 <<<<<<< HEAD
 velocity_kmh = velocity * 3.6
 print("or", velocity_kmh, "km/h")
@@ -369,12 +372,15 @@ print("or", velocity_kmh, "km/h")
 velocity_kmh = 3.6 * velocity
 >>>>>>> b2
 ```
+
 The equation is equivalent, but it's easier to keep the whole change from `main`. Delete the marker lines.
 ```
+git diff
 git add velocity.py
 git commit -m "Merge b2 into main"
 git lg                          # verify
-python velocity                 # it runs!
+python velocity                 # it still runs!
+git branch -d b2                # the history stays but 'tags' of the branch is deleted
 ```
 
 
@@ -414,15 +420,13 @@ git lg                      # back to a clean main
 
 `git merge --abort` is only available **while a merge is in progress**
 
-> **Before break:** Turn to a neighbor and compare the output of `git lg`. Does it look the same? Different commit hashes? Same shape?
-
 The top of the history should look like this (hashes will differ, and remote decorations depend on what you have pushed):
 
 ```
 * d6565ee (HEAD -> main) Print gravity - correct units
 *   41bccfb Merge b2 into main
 |\  
-| * f6a3c41 (b2) Convert velocity to km/h on b2
+| * f6a3c41 Convert velocity to km/h on b2
 * |   834ba50 Merge changes from b1 into main
 |\ \  
 | * | 34c33d1 (b1) Print velocity on b1
@@ -439,7 +443,6 @@ The top of the history should look like this (hashes will differ, and remote dec
 
 ## 12:00 - 💻 PRACTICAL - Understanding merge conflicts - 30' - TRAINER ONE
 
-TODO: rewrite using `distance.py` and `time.py`
 see `PRACTICAL_merge_conflicts.md`
 
 Do not solve the PRACTICAL live. Just ask questions, share experiences or highlight concepts that you noticed were still a bit confusing.
@@ -490,12 +493,13 @@ git fetch --all
 ```
 
 ## 13:50 - Solve a conflict when pushing - 10' - TRAINER TWO
+=== tipple tested up to here including exercises and practical ===
 
 Make a small edit directly on GitHub (via the web editor):
 
 1. Open `velocity.py` on GitHub
-2. Add a new line at the bottom: `print('Time:', time, 's')`
-3. Commit with message `Add time print via GitHub`
+2. Modify the last line mention `Earth` like this `print("under Earth gravity of", gravity, "m/s2")`
+3. Commit with message `Mention Earth in print via GitHub`
 
 Now, back in the terminal, make a **different** local change without pulling:
 
@@ -517,8 +521,27 @@ Resolve it:
 ```
 git pull origin main        # fetch + attempt merge -> conflict in velocity.py
 git status                  # velocity.py listed as "both modified"
-nano velocity.py            # resolve conflict markers - here we keep both lines
-git diff
+```
+Since our current task is to unify the gravity values across files, we want to keep the moon gravity and moon print statement.
+```
+print("or", velocity_kmh, "km/h")
+<<<<<<< HEAD
+print("under Moon gravity of", gravity, "m/s2")
+=======
+print("under Earth gravity of", gravity, "m/s2")
+>>>>>>> 55236b36a361c706133116bd4ef1b61164f01c8d
+```
+Notice the incoming change has a `hash` this is the one coming from the remote repository
+```
+nano velocity.py            # keep print mentioning moon
+python velocity.py          
+```
+```python
+After 2.0 s a free falling object reaches 3.24 m/s
+or 11.664000000000001 km/h
+under Moon gravity of 1.62 m/s2
+```
+```
 git add velocity.py
 git commit -m "Merge remote and local changes to velocity.py"
 git push origin main        # now succeeds
@@ -534,31 +557,36 @@ Solution:
 
 ```
 git pull origin main
-git switch -c longer
-nano velocity.py        # modify line 3 to `time = 10.0`
+git switch -c round
+nano velocity.py        # modify velocity_kmh = round(velocity * 3.6, 2)
 git diff
 git add velocity.py
-git commit -m "Increase time"
+git commit -m "Round velocity_kmh to have 2 decimals"
 git switch main
-nano velocity.py        # new last line `print('Calculation finished')`
+nano velocity.py        # modify velocity = round(gravity * time, 2)
 git diff
 git add velocity.py
-git commit -m "Add closing message"
-git switch longer
-git rebase main        # Successfully rebased and updated refs/heads/longer
-git lg                 # longer sits in front of main
+git commit -m "Round velocity to have 2 decimals"
+git switch round
+git rebase main        # Successfully rebased and updated refs/heads/round
+git lg                 # round sits in front of main
 ```
 
 > *DO NOT* clear screen here. So that participants can see the effect of rebase
 
 ```
 git switch main
-git merge longer          # Fast-forward
-git lg
-python velocity.py      # both changes are in the script: time is 4.0 and the closing message is printed
+git merge round          # Fast-forward
+git lg                   # main label moves forward
 ```
-
 Notice that instead of a merge, Git just slides the `main` pointer up to match, like `fast-forwarding` a video to where you already know it ends.
+```
+python velocity.py      # both changes are in the script
+
+After 2.0 s a free falling object reaches 3.24 m/s
+or 11.66 km/h
+under Moon gravity of 1.62 m/s2
+```
 
 > ⚠️ Rebase rewrites commit history. It is safe on a local branch that you have not shared with anyone. Avoid rebasing branches that have already been pushed.
 
@@ -571,7 +599,6 @@ see `PRACTICAL_remote_conflicts.md`
 Share experiences or highlight concepts that you noticed were still a bit confusing.
 
 ## 15:10 - VS Code demo - 10' - TRAINER ONE
-==== continue here =====
 
 Some people prefer to use a GUI to work with Git. Let's explore that using VSCode I will demo VS code using the `PRACTICAL | Understanding Merge Conflicts`
 
