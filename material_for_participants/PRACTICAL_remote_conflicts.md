@@ -322,21 +322,20 @@ print("A stone dropped from", height, "m hits the Earth's surface at", velocity,
 
 ## 🚀 Optional challenge: Diverged history (branches + Pull Request on GitHub)
 
-This time you'll each work on your **own branch** and merge using a **Pull Request (PR)** in GitHub. A PR is a tool to merge the changes from a `branch` into `main`.
+This time you'll each work on your **own branch** and merge using a **Pull Request (PR)** in GitHub. A PR is a tool to merge the changes from a `branch` into `main`. Each of you will choose a different planet for the gravity, so Git won't be able to decide for you.
 
-**Step 1 — Partner One branches, adds a conversion, opens a PR**
+**Step 1 — Partner One branches, changes the gravity, opens a PR**
 
 **Partner One:**
 - Pull the latest changes from `origin/main`
-- Create and switch to a new branch called `mph`
+- Create and switch to a new branch called `mars`
 - Open `velocity_height.py` for editing
-- Add two new lines at the bottom:
+- Modify the gravity from `9.81` to `3.73` (Mars). The line should now read:
 ```python
-velocity_mph = velocity * 2.237
-print("or", velocity_mph, "mph")
+gravity = 3.73
 ```
 - Check the differences in `velocity_height.py`
-- Stage `velocity_height.py` and commit with the message `One: add velocity in mph`
+- Stage `velocity_height.py` and commit with the message `One: use Mars gravity`
 - Push the branch to remote
 
 <details>
@@ -349,24 +348,24 @@ print("or", velocity_mph, "mph")
 - Go to GitHub
 - Since a new branch was pushed, GitHub automatically offers to `Compare & pull request` 
 - Click on the `Compare & pull request` icon
-- A `Comparing changes` window will show. Browse down to see the changes at the bottom. Only your two new lines should appear
-- Add a mini description like `Add mph` and click on `Create pull request`
+- A `Comparing changes` window will show. Browse down to see the changes at the bottom. Only the gravity line should appear
+- Add a mini description like `Use Mars gravity` and click on `Create pull request`
 - **Do not merge it yet.**
 
 🔔 **Tell Partner A you've opened a PR — don't merge yet.**
 
-**Step 2 — Partner A branches, adds a different line, opens a PR**
+**Step 2 — Partner A branches, changes the gravity to a different planet, opens a PR**
 
 **Partner A:**
 - Pull the latest changes from `origin/main`
-- Create and switch to a new branch called `earth_note`
+- Create and switch to a new branch called `moon`
 - Open `velocity_height.py` for editing
-- Add one new line at the bottom:
+- Modify the gravity from `9.81` to `1.62` (Moon). The line should now read:
 ```python
-print("under Earth gravity of", gravity, "m/s2")
+gravity = 1.62
 ```
 - Check the differences in `velocity_height.py`
-- Stage `velocity_height.py` and commit with the message `A: mention Earth gravity`
+- Stage `velocity_height.py` and commit with the message `A: use Moon gravity`
 - Push the branch to remote
 
 <details>
@@ -381,7 +380,7 @@ print("under Earth gravity of", gravity, "m/s2")
 - Since a new branch was pushed, GitHub automatically offers to `Compare & pull request` 
 - Click on the `Compare & pull request` icon
 - A `Comparing changes` window will show. Browse down to see the changes at the bottom
-- Add a mini description like `Add Earth gravity note` and click on `Create pull request`
+- Add a mini description like `Use Moon gravity` and click on `Create pull request`
 - **Do not merge it yet.**
 
 > Both PRs target `main`. Neither branch has been merged yet, so GitHub will happily let you open both.
@@ -401,27 +400,39 @@ This branch has conflicts that must be resolved
 because `main` moved on (Partner One's merge) since you branched.
 
 - Click **Resolve conflicts** in the GitHub interface
-- You'll see the same `<<<<<<<` / `=======` / `>>>>>>>` markers, but editable in the browser
+- You'll see the same markers as in your terminal, but editable in the browser:
+
+```
+<<<<<<< moon
+gravity = 1.62
+=======
+gravity = 3.73
+>>>>>>> main
+```
 
 **Step 5 — Resolve in the GitHub editor and merge**
 
-Both additions are good — the problem is only that both were added at the same place, at the end of the file. Edit the web editor so the file reads:
+Both of you changed the **same** line, and only one planet can win. Partner One's PR was merged first, so we keep Mars.
+
+- Keep `gravity = 3.73`, and delete the other gravity line and all conflict markers
+- The `print` line still says `Earth's surface`, and Git did not warn you about it. Whatever planet you choose, **the text should name the same planet**. Edit that line so it reads:
+```python
+print("A stone dropped from", height, "m hits the Mars surface at", velocity, "m/s")
+```
+- Click **Mark as resolved**, then **Commit merge**
+- Merge the Pull Request. GitHub might need a moment to enable the merge. Patience 🧘
+
+The file should now read:
 ```python
 # Final velocity of an object dropped from a given height: v = sqrt(2 * g * h)
-gravity = 9.81
+gravity = 3.73
 height = 20
 import math
 velocity = math.sqrt(2 * gravity * height)
-print("A stone dropped from", height, "m hits the Earth's surface at", velocity, "m/s")
+print("A stone dropped from", height, "m hits the Mars surface at", velocity, "m/s")
 velocity_kmh = velocity * 3.6
 print("or", velocity_kmh, "km/h")
-velocity_mph = velocity * 2.237
-print("or", velocity_mph, "mph")
-print("under Earth gravity of", gravity, "m/s2")
 ```
-- Delete all conflict markers
-- Click **Mark as resolved**, then **Commit merge**
-- Merge the Pull Request. GitHub might need a moment to enable the merge. Patience 🧘
 
 🔔 **Tell Partner One the PR is merged — time to pull.**
 
@@ -431,8 +442,8 @@ print("under Earth gravity of", gravity, "m/s2")
 - Switch back to your local `main` branch
 - Pull the latest changes from `origin/main`
 - View the contents of `velocity_height.py`
-- Run `python velocity_height.py`. You should see four lines, the last one being `under Earth gravity of 9.81 m/s2`
-- Now that your branch is merged, delete your local branch (`mph` for Partner One, `earth_note` for Partner A)
+- Run `python velocity_height.py`. You should see `A stone dropped from 20 m hits the Mars surface at 12.214745187681975 m/s` followed by `or 43.973082675655114 km/h`
+- Now that your branch is merged, delete your local branch (`mars` for Partner One, `moon` for Partner A)
 - View the commit graph for all branches
 
 <details>
@@ -443,7 +454,7 @@ print("under Earth gravity of", gravity, "m/s2")
 - To delete a branch use `git branch -d name_of_branch`
 </details>
 
-> **Success:** Both of you now see the km/h lines, the mph lines and the Earth gravity note in `velocity_height.py`, no conflict markers, and both PRs appear as **Merged** on GitHub. The commit graph shows new merge commits on top of `main`.
+> **Success:** Both of you now have `gravity = 3.73` and a `print` line that mentions Mars in `velocity_height.py`, no conflict markers, and both PRs appear as **Merged** on GitHub. The commit graph shows new merge commits on top of `main`.
 
 ---
 
@@ -452,5 +463,5 @@ print("under Earth gravity of", gravity, "m/s2")
 - In Conflict 1, Partner A edited a different line than Partner One. Why was the push still rejected?
 - What is the difference between a **push rejected** and a **pull conflict**? At which moment does Git detect each of them?
 - Why does Git ask you to pull before you push, rather than just overwriting the remote?
-- Why is it useful to work on separate branches and merge with a PR instead of everyone pushing straight to `main`?
+- In the optional challenge, why is it useful to work on separate branches and merge with a PR instead of everyone pushing straight to `main`?
 - What habits would help you and your collaborators run into fewer conflicts in a real project?
