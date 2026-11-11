@@ -608,29 +608,46 @@ Share experiences or highlight concepts that you noticed were still a bit confus
 
 ## 15:10 - VS Code demo - 10' - TRAINER ONE
 
-Some people prefer to use a GUI to work with Git. Let's explore that using VSCode I will demo VS code using the `PRACTICAL | Understanding Merge Conflicts`
+Some people prefer to use a GUI to work with Git. Let's explore that using VSCode. I will do a short demo.
 
-### Initialize repo
+### Find the repo and explain GUI
 
 - Open VSCode
-- Open folder -> make a new folder inside `Desktop` -> `conflict_practical`
+- Open folder `free_fall`
+- Explain file browser
+- Click on each file to show content: `velocity.py, time.py.distance.py, .gitignore`
 - Explain the left tab to find the git menu
-- Click on `Initialize Repository`
-- Go to the file browser
-- Make a new file `recipe.txt` and enter text from `PRACTICAL | Understanding Merge Conflicts`
-  - You only need one file for this demo
-  - Click on `recipe.txt` to see the changes on the right
+  - Show the log in the bottom left
+  - Also open `Git graph` as it is your favorite plugin
+
+
+### Branch
+- Make a new branch `mars`
+  - Show how to switch branch + check out
+  - Show how to confirm the branch (lower left corner)
+- Click on `velocity.py`
+  - Change `gravity = 3.72` and `moon -> mars`
   - red deleted
   - green added
-  - Click on plus to stage
-  - Write message and click on commit `Initial files`
+- Click on plus to stage
+- Write message and click on commit `Using mars gravity in velocity.py`
 - Notice the update on the log
 
-### Branches and merge
+### Conflict
+- Go back to `main` (double click on `main`)
+  - only the HEAD circle moves
+- Open `velocity.py` notice the file went back to previous values (`moon`)
+- Change values to `jupiter`
+  - Change `gravity = 24.79` and `moon -> jupiter`
+  - red deleted
+  - green added
+- Click on plus to stage
+- Write message and click on commit `Using jupiter gravity on velocity.py`
+- Notice the update on the log
 
-- Follow the instruction to solve `💪 Conflict 1: Same-line edit`
-  - Show how to switch branch + check out
-  - When merging the first time select "no commit" to recreate the same as in the terminal
+### Merge
+- Right click on `mars` branch to say `merge into current branch`
+
 - Solve merge conflict
   - Explain incoming and current branch
   - Show the out of "Accept combination"
