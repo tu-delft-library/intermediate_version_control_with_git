@@ -493,20 +493,27 @@ git fetch --all
 ```
 
 ## 13:50 - Solve a conflict when pushing - 10' - TRAINER TWO
-=== tipple tested up to here including exercises and practical ===
+
 
 Make a small edit directly on GitHub (via the web editor):
 
 1. Open `velocity.py` on GitHub
 2. Modify the last line mention `Earth` like this `print("under Earth gravity of", gravity, "m/s2")`
-3. Commit with message `Mention Earth in print via GitHub`
+3. Commit with message `Mention Earth in print - GitHub`
 
 Now, back in the terminal, make a **different** local change without pulling:
 
 ```
-echo "print('Average velocity:', velocity / 2, 'm/s')" >> velocity.py
+nano velocity.py
+```
+```python
+gravity = 1.62
+...
+print("under Moon gravity of", gravity, "m/s2")
+```
+```
 git add velocity.py
-git commit -m "Print average velocity locally"
+git commit -m "Use Moon gravity in velocity.py"
 git push origin main        # fails! rejected - remote contains work you do not have
 ```
 
@@ -593,6 +600,7 @@ under Moon gravity of 1.62 m/s2
 ## 14:15 - Break -15'
 
 ## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - TRAINER ONE
+
 
 see `PRACTICAL_remote_conflicts.md`
 
