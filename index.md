@@ -9,7 +9,7 @@ title: Readiness Quiz - Intermediate Version Control with Git
 
 - It is **not graded**
 
-- If the test felt too hard, we recommend taking the [Intermediate Version Control with Git](TODO) at TU Delft
+- If the test felt too hard, we recommend taking the [Version Control with Git](https://www.tudelft.nl/library/data-management/trainingen/trainingen-voor-onderzoekers-en/version-control-with-git) at TU Delft
  
 --- 
  
