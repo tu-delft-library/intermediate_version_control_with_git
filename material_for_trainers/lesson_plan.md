@@ -1,6 +1,6 @@
 > Adapted from *Version Control and Collaborative Development for Research Software —GitCoDev*, TUDelft, licensed [CC-BY 4.0](https://4turesearchdata-carpentries.github.io/GitCoDev/licensing.html).
 
-## 9:00 🚀 Prepare for take off - 20'
+## 9:00 - 🚀 Prepare for take off - 20'
 
 ### Room setup
 
@@ -21,19 +21,21 @@ Open another Terminal window. Let's call this the `hidden terminal` i.e. NOT to 
 
 On the `hidden terminal` forward only the last line of the history to `command.log`
 
-```
+```console
 tail -n 0 -f ~/.bash_history | tee -a <local-repo-directory>/material_for_participants/command.log
 ```
 
 Open another tab in the `hidden terminal`, `cd` to `<local-repo-directory>` and run autopush every 2-5 seconds
 
-```
+```console
 gitautopush --sleep 10 .
 ```
 
 #### Open slides
 
 Slides work better if you open them in your device: [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
+
+## 9:20 - Buffer - 10'
 
 ## 9:30 - Participants land - 5' - TRAINER ONE
 
@@ -44,7 +46,7 @@ Slides work better if you open them in your device: [slides](https://tud365.shar
 - ✅ Roll call + 🤝 Code of Conduct
 - 🙋 Getting help (🆘 red ✅ green stickers)
 
-## 9:40 - Icebreaker - 5'- TRAINER ONE
+## 9:40 - Icebreaker - 5' - TRAINER ONE
 
 🎥 Icebreaker instructions on slides
 
@@ -58,7 +60,7 @@ Slides work better if you open them in your device: [slides](https://tud365.shar
 
 Today we continue in the repository we started last time. Everyone moves into it and checks the state:
 
-```
+```console
 cd ~/Desktop/free_fall
 git status                  # clean working tree
 git remote -v               # origin points to my own GitHub repository
@@ -69,7 +71,7 @@ cat velocity.py
 
 `velocity.py` should look like this:
 
-```
+```python
 # Final velocity of an object after free falling during a given time
 gravity = 9.81
 time = 2.0
@@ -94,7 +96,7 @@ Ask participants who did not finish the home assignment, or whose repo got messy
 
 ## 10:05 - New commands for branching - 10' - TRAINER ONE
 
-```
+```console
 git branch              # check branches (explain the * pointing to main)
 git branch b1           # add argument to create new branch
 git branch              # verify branch was created (output: b1, *main)
@@ -102,7 +104,7 @@ git branch              # verify branch was created (output: b1, *main)
 
 `b1` is a name. It can be any name. Recommendations: use lowercase and underscores/dashes
 
-```
+```console
 git status              # on branch main / nothing to commit
 python velocity.py      # After 2.0 s ... 19.62 m/s
 git log --oneline       # explain (HEAD -> main, origin/main, b1)
@@ -125,7 +127,7 @@ git log --oneline       # notice HEAD -> main
 
 Output should look similar to (`origin/main` decoration may appear in a different order):
 
-```
+```text
 hash (HEAD -> main, origin/main, b2, b1) Ignore log and data files
 ```
 
@@ -135,7 +137,7 @@ See `exercises.md`. There is an optional challenge.
 
 Solution:
 
-```
+```console
 git branch pa
 git branch pe
 git switch -c pi
@@ -151,7 +153,7 @@ git log --oneline
 
 ## 10:25 - Develop on different branches - 10' - TRAINER ONE
 
-```
+```console
 git status                  # confirm branch b1
 python velocity.py          # After 2.0 s ... 19.62 m/s
 nano velocity.py            
@@ -160,7 +162,7 @@ Add a new line to convert velocity to km/h
 ```python
 velocity_kmh = velocity * 3.6
 ``` 
-```
+```console
 git diff
 git add velocity.py
 git commit -m "Convert velocity to km/h"    # commit changes on main
@@ -172,7 +174,7 @@ nano velocity.py          # same change on b1
 ```python
 velocity_kmh = velocity * 3.6
 ```
-```
+```console
 git diff
 git add velocity.py
 git commit -m "Convert velocity to km/h on b1"   # commit changes on b1
@@ -187,7 +189,7 @@ Notice the HEAD pointing to the main branch. The **commits are different** even 
 
 This command is long and we will type it many times. Let's make a shortcut (an *alias*). `-n 10` shows only that last 10 commits.
 
-```
+```console
 git log --oneline --all --graph -n 10      # limit to last 10 commits
 git config --global alias.lg "log --oneline --all --graph -n 10"
 git lg                      # same output, much shorter to type
@@ -201,7 +203,7 @@ See `exercises.md`.
 
 Solution:
 
-```
+```console
 git switch b2
 nano velocity.py            
 ```
@@ -209,7 +211,7 @@ Add conversion formula (same formula but different order)
 ```python
 velocity_kmh = 3.6 * velocity
 ```
-```
+```console
 git diff
 git add velocity.py
 git commit -m "Convert velocity to km/h on b2"
@@ -227,14 +229,14 @@ git lg
 
 Let's keep adding to our history:
 
-```
+```console
 git switch main
 nano velocity.py         # on main: add a print line (with mistake - wrong unit)
 ```
 ```python
 print("or", velocity_kmh, "m/s")
 ```
-```
+```console
 git diff
 python velocity.py          # prints number with WRONG units: or 70.632 m/s 
 git add velocity.py
@@ -245,7 +247,7 @@ nano velocity               # add print statement with correct units
 ```python
 print("or", velocity_kmh, "km/h")
 ```
-```
+```console
 git diff                    # the new print line
 python velocity             # prints number with CORRECT units: or 70.632 km/h 
 git add velocity.py
@@ -255,7 +257,7 @@ git lg                      # so many little changes
 
 Maybe we are confused about what was done on which branch. Let's see how to investigate the changes.
 
-```
+```console
 git switch main
 git diff                # changes from working dir to latest commit
 git diff HEAD~1 HEAD    # REMEMBER: changes between latest and one before latest commit
@@ -271,7 +273,7 @@ See `exercises.md`. There is an optional challenge.
 
 Solution:
 
-```
+```console
 git switch b2
 git diff HEAD
 git diff HEAD~1
@@ -286,7 +288,7 @@ git diff main b2~1
 
 We are done with developing on `b1` and want to merge to `main`. For this we first *stand* on main branch (with `switch`) and then apply the merge.
 
-```
+```console
 git switch main                     # on branch main
 git diff main b1                    # verify
 git merge -m "Merge b1" velocity.py # wrong syntax - merge expects branch not file
@@ -306,7 +308,7 @@ To resolve the merge conflict:
 2. remove the conflict markers
 
 
-```
+```console
 nano velocity.py         # edit the file within the conflict markers
                          # keep line with "km/h"
                          # demo ^k to delete whole line
@@ -314,7 +316,7 @@ nano velocity.py         # edit the file within the conflict markers
 
 `velocity.py` should look like this:
 
-```
+```python
 # Final velocity of an object after free falling during a given time
 gravity = 9.81
 time = 2.0
@@ -325,14 +327,14 @@ print("or", velocity_kmh, "km/h")
 ```
 In this example, the conflict has been resolved by keeping the changes from branch `b1` (the line with the wrong `m/s` label is gone).
 
-```
+```console
 git status
 git diff             # diff shows nothing! merge state - similar to staging
 ```
 
 During a merge, conflicting files go to a different state while the conflict is resolved and a commit is done. The easiest way to see the state of the file is to show the content using `cat`.
 
-```
+```console
 python velocity.py                                       # now it runs
 git add velocity.py                                      # mark resolution
 git status                                               # verify
@@ -349,18 +351,18 @@ See `exercises.md`. There is an optional challenge under exercise 4.
 
 Solution 4:
 
-```
+```console
 git diff main b2                # show differences all files
 ```
 The equation is different and the print line is `main` but not on `b2`
 
-```python
+```diff
 -velocity_kmh = velocity * 3.6
 -print("or", velocity_kmh, "km/h")
 +velocity_kmh = 3.6 * velocity
 ```
 
-```
+```console
 git switch main                 # stand on main
 git merge b2                    # merge b2 into main
 nano velocity.py                # fix conflicts
@@ -374,7 +376,7 @@ velocity_kmh = 3.6 * velocity
 ```
 
 The equation is equivalent, but it's easier to keep the whole change from `main`. Delete the marker lines.
-```
+```console
 git diff
 git add velocity.py
 git commit -m "Merge b2 into main"
@@ -386,7 +388,7 @@ git branch -d b2                # the history stays but 'tags' of the branch is 
 
 Solution 5:
 
-```
+```console
 git switch main
 git branch bad-merge
 git switch bad-merge
@@ -395,7 +397,7 @@ in `velocity.py` add
 ```python
 print("under a gravity of", gravity, "km/s2")
 ```
-```
+```console
 git add velocity.py
 git commit -m "Print gravity on bad-merge"
 git switch main
@@ -404,7 +406,7 @@ in `velocity.py` add
 ```python
 print("under a gravity of", gravity, "m/s2")
 ```
-```
+```console
 git add velocity.py
 git commit -m "Print gravity on main"
 git merge bad-merge          # conflict!
@@ -422,7 +424,7 @@ git lg                      # back to a clean main
 
 The top of the history should look like this (hashes will differ, and remote decorations depend on what you have pushed):
 
-```
+```text
 * d6565ee (HEAD -> main) Print gravity - correct units
 *   41bccfb Merge b2 into main
 |\  
@@ -467,13 +469,13 @@ Explain the two most common options: `merge` and `rebase`.
 
 We made some local changes before lunch that are not pushed yet. So let's do that to ensure our remote repo is up to date
 
-```
+```console
 git push origin main
 ```
 
 We confirm in GitHub that we see the changes. Notice that only the `main` branch was pushed. You can push other branches by specifying the branch name or by using the flag `--all`
 
-```
+```console
 git push origin b1
 git push origin --all
 ```
@@ -482,13 +484,13 @@ Check in GitHub that you can see the branches.
 
 Similarly, you can pull from a specific branch
 
-```
+```console
 git pull origin b1
 ```
 
 If you want to sync all the branches from the remote to your local repo, you need to use `fetch`. Remember that `fetch` downloads the data but does not modify your files. It does not attempt to merge.
 
-```
+```console
 git fetch --all
 ```
 
@@ -503,7 +505,7 @@ Make a small edit directly on GitHub (via the web editor):
 
 Now, back in the terminal, make a **different** local change without pulling:
 
-```
+```console
 nano velocity.py
 ```
 ```python
@@ -511,7 +513,7 @@ gravity = 1.62
 ...
 print("under Moon gravity of", gravity, "m/s2")
 ```
-```
+```console
 git add velocity.py
 git commit -m "Use Moon gravity in velocity.py"
 git push origin main        # fails! rejected - remote contains work you do not have
@@ -519,18 +521,18 @@ git push origin main        # fails! rejected - remote contains work you do not 
 
 Let's ask Git to use `merge` by default
 
-```
+```console
 git config pull.rebase false      # merge
 ```
 
 Resolve it:
 
-```
+```console
 git pull origin main        # fetch + attempt merge -> conflict in velocity.py
 git status                  # velocity.py listed as "both modified"
 ```
 Since our current task is to unify the gravity values across files, we want to keep the moon gravity and moon print statement.
-```
+```text
 print("or", velocity_kmh, "km/h")
 <<<<<<< HEAD
 print("under Moon gravity of", gravity, "m/s2")
@@ -539,16 +541,16 @@ print("under Earth gravity of", gravity, "m/s2")
 >>>>>>> 55236b36a361c706133116bd4ef1b61164f01c8d
 ```
 Notice the incoming change has a `hash` this is the one coming from the remote repository
-```
+```console
 nano velocity.py            # keep print mentioning moon
 python velocity.py          
 ```
-```python
+```text
 After 2.0 s a free falling object reaches 3.24 m/s
 or 11.664000000000001 km/h
 under Moon gravity of 1.62 m/s2
 ```
-```
+```console
 git add velocity.py
 git commit -m "Merge remote and local changes to velocity.py"
 git push origin main        # now succeeds
@@ -562,7 +564,7 @@ Visit GitHub and confirm the resolved file is there.
 
 Solution:
 
-```
+```console
 git pull origin main
 git switch -c round
 nano velocity.py        # modify velocity_kmh = round(velocity * 3.6, 2)
@@ -581,13 +583,13 @@ git lg                 # round sits in front of main
 
 > *DO NOT* clear screen here. So that participants can see the effect of rebase
 
-```
+```console
 git switch main
 git merge round          # Fast-forward
 git lg                   # main label moves forward
 ```
 Notice that instead of a merge, Git just slides the `main` pointer up to match, like `fast-forwarding` a video to where you already know it ends.
-```
+```console
 python velocity.py      # both changes are in the script
 
 After 2.0 s a free falling object reaches 3.24 m/s
@@ -597,7 +599,7 @@ under Moon gravity of 1.62 m/s2
 
 > ⚠️ Rebase rewrites commit history. It is safe on a local branch that you have not shared with anyone. Avoid rebasing branches that have already been pushed.
 
-## 14:15 - Break -15'
+## 14:15 - Break - 15'
 
 ## 14:30 - 💻 PRACTICAL - Conflicts with Remote Repositories - 40' - TRAINER ONE
 
@@ -663,6 +665,6 @@ Using VS code
 - **Remote workflows**: `clone`, `push`, `pull`. Pull before you push. Conflicts can happen on remotes too, and are resolved the same way
 - **Escape hatches**: if a conflict surprises you and you need time to think `git merge --abort` is a safe exit
 
-## 15:25 - Give feedback about the course 5' - TRAINER ONE
+## 15:25 - Give feedback about the course - 5' - TRAINER ONE
 
 Go to the link in `links.md`
