@@ -259,7 +259,7 @@ Maybe we are confused about what was done on which branch. Let's see how to inve
 
 ```console
 git switch main
-git diff                # changes from working dir to latest commit
+git diff                # changes from working tree to latest commit
 git diff HEAD~1 HEAD    # REMEMBER: changes between latest and one before latest commit
 git diff main b1        # changes between main and b1
 git diff main b1~1      # changes between main and parent of the latest commit on branch b1
