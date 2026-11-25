@@ -95,6 +95,12 @@ Ask participants who did not finish the home assignment, or whose repo got messy
 🎥 Use [slides](https://tud365.sharepoint.com/:p:/r/sites/ResearchDataServices/Gedeelde%20documenten/Training/Research_Software_Training/lesson_plans/resources/Intermediate%20version%20control%20with%20Git.pptx?d=w33d15b9f24e94794aaa7624d5b908dd3&csf=1&web=1&e=rgIzM0)
 
 ## 10:05 - New commands for branching - 10' - CATA
+As we add branches the output of `git log` becomes more crowded. So let's change one thing in settings to make it easier to read
+
+```
+git config --global log.excludeDecoration 'refs/remotes/origin/HEAD'
+```
+This hides the position of the `head` in the remote. This is rarely useful so there is no harm in hiding it. We still keep the `origin/main` tag which tells us where in the history there remote is.
 
 ```console
 git branch              # check branches (explain the * pointing to main)
