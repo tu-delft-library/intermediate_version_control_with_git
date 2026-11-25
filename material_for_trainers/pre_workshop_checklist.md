@@ -38,8 +38,9 @@
 - Original instructions on setting up autopush can be found[here](https://github.com/4TUResearchData-Carpentries/workshop_notes)
 
 ## Clean up your system
-- Delete the `weather-notes` repo from your github
-- Delete `weather-notes` from your `Desktop`
+- Ensure your `free_fall` repository is at the same state after `Git fundamentals` day one` + home assignment. Check [the solution from the home assignment](https://github.com/tu-delft-library/introduction_to_version_control_with_git/blob/main/material_for_participants/PRACTICAL_putting_it_all_together.md#%EF%B8%8Fsolution-to-start-this-practical%EF%B8%8F)
+
+
 - If you are using a mac, make the terminal not transparent: 
     - Open the terminal
     - Open settings
