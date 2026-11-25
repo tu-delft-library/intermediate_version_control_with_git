@@ -31,7 +31,7 @@ When you are finished:
 - Create a branch called `moon` and switch to it
 - Open `velocity.py` in nano
 - Modify line 2 to `gravity = 1.62`
-- Run the script. You should see the text `After 2.0 s ... 3.25 m/s`
+- Run the script. You should see the text `After 2.0 s ... 3.24 m/s`
 - Commit your changes with the message `Change to Moon gravity`
 - Switch back to main
 - Try to delete `moon` with `git branch -d moon`
@@ -68,6 +68,7 @@ print("After", time, "s a free falling object reaches", velocity, "m/s")
 ```python
 velocity_kmh = 3.6 * velocity
 ```
+- Inspect the differences
 - Commit your changes. Specify the branch name in the commit message!
 - Inspect the working tree
 
@@ -106,7 +107,7 @@ Follow the steps listed below:
 
 #### 🚀 Optional challenge — detect a specific change
 
-- Use `git log --oneline --all` to list the commits across all branches
+- Use `git log --oneline --all` or the shortcut `git lg` to list the commits across all branches
 - Use `git diff <hash1> <hash2>` with pairs of commit hashes to narrow down which commit first introduced `fifth line`
 - Confirm your answer with `git show <hash>` — this shows the full content of a single commit
 
@@ -129,6 +130,7 @@ Follow the steps listed below:
 - To inspect differences between branches `git diff name_of_branch name_of_another_branch`
 - To merge branches, first stand on the branch that will *receive* the changes with `git switch target_branch` and then do the merge with `git merge incoming_branch`
 - Use `nano file_in_conflict` to edit the file manually
+- To delete a branch use `git branch -d name_of_branch`
 </details>
 
 #### 🚀 Optional challenge — read the graph
@@ -150,10 +152,11 @@ Merges don't always go as planned. In this exercise you will practice how to can
 - Make sure you are on the `main` branch
 - Create a new branch called `bad-merge` and step into it
 - Open `velocity.py` with nano
-- Add the line
+- Add the line (yes we are using the wrong units on purpose)
 ```python
 print("under a gravity of", gravity, "km/s2")
 ```
+> ⚠️ **Watch out:** Make sure there are not double quotes `"` between the variable (gravity) and the commas `,`
 - Run the script. You should see the new line `under a gravity of 9.81 km/s2`
 - Commit your changes with the message `Print gravity - wrong units`
 - Switch back to `main`

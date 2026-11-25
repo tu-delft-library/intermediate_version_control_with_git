@@ -64,19 +64,24 @@ Today we continue in the repository we started last time. Everyone moves into it
 cd ~/Desktop/free_fall
 git status                  # clean working tree
 git remote -v               # origin points to my own GitHub repository
-git log --oneline           
-ls                          # LICENSE	README.md	distance.py	time.py	velocity.py data debug.log
+          
+ls          # LICENSE	README.md	
+            # distance.py	time.py	velocity.py 
+            # if you didn't pull fresh - untracked files data debug.log
 cat velocity.py
 ```
 
 `velocity.py` should look like this:
 
 ```python
-# Final velocity of an object after free falling during a given time
+# Final velocity of a free falling object after given time
 gravity = 9.81
 time = 2.0
 velocity = gravity * time
 print("After", time, "s a free falling object reaches", velocity, "m/s")
+```
+```console
+git log --oneline 
 ```
 Ask if everyone has a similar history (the exact number of commits will differ):
 
@@ -173,7 +178,9 @@ git diff
 git add velocity.py
 git commit -m "Convert velocity to km/h"    # commit changes on main
 git status
-git switch b1
+git switch b1            # IMPORTANT: note if git confirms the switch
+                         # Switched to branch 'b1'
+git branch               # if in doubt, check in which branch you are                        
 git log --oneline
 nano velocity.py          # same change on b1
 ```
@@ -191,7 +198,7 @@ cat velocity.py                             # see same contents of file in main 
 git log --oneline --all --graph             # NEW COMMAND: see all branches + graph
 ```
 
-Notice the HEAD pointing to the main branch. The **commits are different** even if the changes are similar. The commits have the metadata about branch.
+Notice the HEAD pointing to the main branch. The **commits are different** even if the changes are similar. The commits have the metadata about branch + hash.
 
 This command is long and we will type it many times. Let's make a shortcut (an *alias*). `-n 10` shows only that last 10 commits.
 
@@ -236,6 +243,8 @@ git lg
 Let's keep adding to our history:
 
 ```console
+git status              # confirm no local changes
+git lg                  # see three last commits on 3 branches          
 git switch main
 nano velocity.py         # on main: add a print line (with mistake - wrong unit)
 ```
@@ -323,7 +332,7 @@ nano velocity.py         # edit the file within the conflict markers
 `velocity.py` should look like this:
 
 ```python
-# Final velocity of an object after free falling during a given time
+# Final velocity of a free falling object after given time
 gravity = 9.81
 time = 2.0
 velocity = gravity * time
@@ -341,12 +350,12 @@ git diff             # diff shows nothing! merge state - similar to staging
 During a merge, conflicting files go to a different state while the conflict is resolved and a commit is done. The easiest way to see the state of the file is to show the content using `cat`.
 
 ```console
-python velocity.py                                       # now it runs
-git add velocity.py                                      # mark resolution
-git status                                               # verify
-git commit -m "Merge changes from b1 into main"          # conclude merge 
-git status                                               # verify
-git lg                                                   # see merge visually
+python velocity.py          # now it runs
+git add velocity.py         # mark resolution
+git status                  # verify
+git commit -m "Merge changes from b1 into main" # conclude merge 
+git status                  # verify
+git lg                      # see merge visually
 ```
 
 > **ADVANCED** If you really want to see the differences during a merge use: `git diff :1:velocity.py :2:velocity.py`
@@ -399,13 +408,13 @@ git switch main
 git branch bad-merge
 git switch bad-merge
 ```
-in `velocity.py` add
+in `velocity.py` add (yes - wrong units)
 ```python
 print("under a gravity of", gravity, "km/s2")
 ```
 ```console
 git add velocity.py
-git commit -m "Print gravity on bad-merge"
+git commit -m "Print gravity - wrong units"
 git switch main
 ```
 in `velocity.py` add
@@ -414,7 +423,7 @@ print("under a gravity of", gravity, "m/s2")
 ```
 ```console
 git add velocity.py
-git commit -m "Print gravity on main"
+git commit -m "Print gravity - correct units"
 git merge bad-merge          # conflict!
 cat velocity.py             # conflict markers are visible
 git status                  # velocity.py listed as "both modified"
@@ -443,7 +452,7 @@ The top of the history should look like this (hashes will differ, and remote dec
 * | 1d1f992 Print velocity on main (wrong unit)
 * | 8dd6d57 Convert velocity to km/h
 |/  
-* 9c793c1 (origin/main, origin/HEAD) Ignore log and data files
+* 9c793c1 (origin/main) Ignore log and data files
 * 9bfc0aa Show result in human readable format
 ```
 
